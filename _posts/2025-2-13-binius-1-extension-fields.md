@@ -7,8 +7,6 @@ twitter: https://x.com/0xteddav
 date: 2025-02-13
 ---
 
-# From 0 to Bi(ge)nius: \"Basic maths\"
-
 _Thanks a lot to [Oba](https://x.com/obatirou), Nuliel, [Hyunmin](https://x.com/qpzmly), [Nico](https://x.com/nico_mnbl) and [Jim](https://x.com/jimpo_potamus) for the review ❤️_  
 _Feel free to DM me on Twitter: [@0xteddav](https://twitter.com/0xteddav) if you find mistakes in this article or if you have any question._
 
@@ -495,7 +493,7 @@ the elements of $\tau_2$ are $\{0000,1000,0100,1100,0010,1010,...,1111\}$
 if we take 1011 → $(1x_0+1)x_1+0x_0+1$  
 we see that $a=11$ and $b=10$  
 When representing higher extensions, things become a bit confusing. Vitalik wrote an example in [his article on Binius](https://vitalik.eth.limo/general/2024/04/29/binius.html#binaryfields):  
-![vitalik example](https://teddav.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb6c22ef4-36ea-4b63-a2a2-ffd85cc8552f%2Fb3343d1c-b232-4311-bd18-65cd091e6fed%2FScreenshot_2024-11-06_at_22.34.57.png?table=block&id=136688fe-089b-80c0-afc7-d2c56537530b&spaceId=b6c22ef4-36ea-4b63-a2a2-ffd85cc8552f&width=1420&userId=&cache=v2)  
+![vitalik example]({{ site.baseurl }}/images/binius-article/vitalik_extension.png)  
 We’re here in $\tau_3$ we can write the full value like this:  
 $(((x_0 + 1)x_1 + x_0 + 1
 )x_2 + (0x_0 + 0)x_1 + 0x_0 + 1
@@ -559,7 +557,7 @@ Again, it checks out with the XOR
 | u + 1 | 0   | u + 1 | 1     | u     |
 
 Table for $\tau_2$  
-![table_t2.png](https://teddav.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb6c22ef4-36ea-4b63-a2a2-ffd85cc8552f%2Fe9f7fa5f-cabb-4d34-bc2d-ba3a5ccd4fc7%2Ftable_t2.png?table=block&id=136688fe-089b-8011-8995-e6402f92b4c0&spaceId=b6c22ef4-36ea-4b63-a2a2-ffd85cc8552f&width=1420&userId=&cache=v2)  
+![table_t2.png]({{ site.baseurl }}/images/binius-article/table_t2.png)  
 I used Sage to print that table:
 
 ```python
