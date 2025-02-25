@@ -139,24 +139,8 @@ Without additional constraints, there’s no way to determine which one is corre
 
 ## A note on Sagemath
 
-A quick tip for using SageMath: I find it easiest to run their official Docker image, `sagemath/sagemath`.
-If you’re on an ARM Mac, use the `--platform linux/amd64` flag
-
-```bash
-docker pull --platform linux/amd64 sagemath/sagemath
-```
-
-Then you can just run a script or launch the Sage REPL for interactive commands:
-
-```bash
-# on mac
-docker run -it --rm --platform linux/amd64 sagemath/sagemath
-docker run --rm --platform linux/amd64 -v $(pwd):/app -w /app sagemath/sagemath 'sage myscript.sage'
-
-# not on mac
-docker run -it --rm sagemath/sagemath
-docker run --rm -v $(pwd):/app -w /app sagemath/sagemath 'sage myscript.sage'
-```
+A quick tip for using SageMath: I find it easiest to run their official Docker image, `sagemath/sagemath`.  
+See this article for help: [https://teddav.github.io/sagemath](https://teddav.github.io/sagemath)
 
 ## Polynomial interpolation
 
@@ -335,7 +319,7 @@ We define the following parameters:
 - **Codeword length:** n=7
 - **Message length:** k=3
 - **Message:** [1, 2, 3]
-- **Evaluation points** (referred to as `$a_i$`): $a_i=0,1,2,3,4,5,6$
+- **Evaluation points** (referred to as $a_i$): $a_i=0,1,2,3,4,5,6$
 
 How many errors can we correct?
 
@@ -414,11 +398,13 @@ We solve that matrix and find the coefficients for E and Q.
 
 What does “solving the matrix” mean? It’s just like solving a system of equations. Basically the above matrix is like solving the following equations:
 
-$b_1e_0+e_1b_1a_1-q_0+q_1a_1+q_2a_1^2+q_3a_1^3+q_4a_1^4=-b_1a_1^2 \\
+$$
+b_1e_0+e_1b_1a_1-q_0+q_1a_1+q_2a_1^2+q_3a_1^3+q_4a_1^4=-b_1a_1^2 \\
 b_2e_0+e_1b_2a_2-q_0+q_1a_2+q_2a_2^2+q_3a_2^3+q_4a_2^4=-b_2a_2^2 \\
 b_3e_0+e_1b_3a_3-q_0+q_1a_3+q_2a_3^2+q_3a_3^3+q_4a_3^4=-b_3a_3^2 \\
 ... \\
-b_7e_0+e_1b_7a_7-q_0+q_1a_7+q_2a_7^2+q_3a_7^3+q_4a_7^4=-b_7a_7^2$
+b_7e_0+e_1b_7a_7-q_0+q_1a_7+q_2a_7^2+q_3a_7^3+q_4a_7^4=-b_7a_7^2
+$$
 
 Once we solve for the coefficients $e_0,e_1,q_0,q_1,q_2,...$, we recover the error polynomial $E(x)$ and $Q(x)$
 
