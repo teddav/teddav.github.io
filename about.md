@@ -12,4 +12,4 @@ I work on projects involving cryptography, zero knowledge proofs, and systems se
 
 ### Contact me
 
-[Twitter @0xteddav](https://twitter.com/0xteddav)
+Twitter: [@0xteddav](https://twitter.com/0xteddav)

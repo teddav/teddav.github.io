@@ -1,5 +1,5 @@
 ---
-title: 'From 0 to Bi(ge)nius: "Basic maths"'
+title: "From 0 to Bi(ge)nius: field extensions"
 subtitle: "𝔽₂ and Beyond: A Gentle Guide to Field Extensions"
 tags: [cryptography, algebra]
 author: teddav
@@ -494,7 +494,7 @@ if we take 1011 → $(1x_0+1)x_1+0x_0+1$
 we see that $a=11$ and $b=10$  
 When representing higher extensions, things become a bit confusing. Vitalik wrote an example in [his article on Binius](https://vitalik.eth.limo/general/2024/04/29/binius.html#binaryfields):  
 ![vitalik example]({{ site.baseurl }}/images/binius-article/vitalik_extension.png)  
-We’re here in $\tau_3$ we can write the full value like this:  
+We're here in $\tau_4$ we can write the full value like this:  
 $(((x_0 + 1)x_1 + x_0 + 1
 )x_2 + (0x_0 + 0)x_1 + 0x_0 + 1
 )x_3 + (
