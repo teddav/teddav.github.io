@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I'm a developer focused on zero knowledge proofs and security engineering. I have a particular interest in low-level systems and their implementation.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+I work on projects involving cryptography, zero knowledge proofs, and systems security. I enjoy diving deep into the underlying mechanisms of computer systems and building secure solutions.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[Twitter @0xteddav](https://twitter.com/0xteddav)
