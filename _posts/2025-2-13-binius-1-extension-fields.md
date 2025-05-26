@@ -7,8 +7,10 @@ twitter: https://x.com/0xteddav
 date: 2025-02-13
 ---
 
+# From 0 to Bi(ge)nius: field extensions
+
 _Thanks a lot to [Oba](https://x.com/obatirou), Nuliel, [Hyunmin](https://x.com/qpzmly), [Nico](https://x.com/nico_mnbl) and [Jim](https://x.com/jimpo_potamus) for the review ❤️_  
-_Feel free to DM me on Twitter: [@0xteddav](https://twitter.com/0xteddav) if you find mistakes in this article or if you have any question._
+_Feel free to DM me on Twitter: [@0xteddav](https://twitter.com/0xteddav) if you find mistakes in this article or if you have any question._
 
 Binius is a new way to build SNARKs by Benjamin Diamond and Jim Posen (from Irreducible). It uses “towers of binary fields” (yes, it sounds complicated but it should become obvious by the end of this article) and a variation of the Hyperplonk IOP over binary fields, combined with the Brakedown polynomial commitment scheme for better prover efficiency.  
 Here’s the paper: [Succinct Arguments over Towers of Binary Fields](https://eprint.iacr.org/2023/1784.pdf).  
@@ -124,7 +126,7 @@ for f in R.polynomials(of_degree=2):
         print(f)
 ```
 
-It found 126 possibilities 😨 here are the first ones:
+It found 126 possibilities 😨 here are the first ones:
 
 ```python
 u^2 + 1
@@ -193,7 +195,7 @@ How?
   $A(u)\mod B(u) = 24u^2+16u+15u+10+u+2=2u^2+10u+1$  
   $A(u)\mod B(u) = 2(3u+2)+10u+1=6u+4+10u+1=5u+5$
 
-Now you’re a pro 🥳🥳🥳 We can continue!
+Now you’re a pro 🥳🥳🥳 We can continue!
 
 ### Back to our extension
 
@@ -399,7 +401,7 @@ And that’s all! You did great! Now you understand: finite fields, field extens
 If you understood everything we’ve seen until now, binary fields should be easy.  
 Until now we used `p = 7`, so all our coefficients where modulo 7. In binary fields we just use 2, so our coefficients can only be 0 or 1.  
 And then we just build our tower of extension on top of it.  
-In this section, sometimes I’m going to use $x_0, x_1, x_2, ...$ instead of $u, v, w, ...$ depending on what I find the most convenient. That’s because we can add many extensions and we don’t have enough letters… (sorry 😕 if it’s too confusing, just message me on Twitter and I’ll try to change it).  
+In this section, sometimes I’m going to use $x_0, x_1, x_2, ...$ instead of $u, v, w, ...$ depending on what I find the most convenient. That’s because we can add many extensions and we don’t have enough letters… (sorry 😕 if it’s too confusing, just message me on Twitter and I’ll try to change it).  
 And we will use $\tau_i$ to identify the “level” we’re on.  
 In the case of Binius, the good thing is that the irreducible polynomial in each level will always have the same form: ${x_k}^2+x_{k-1}x_k+1$.  
 I’ll come back later to why/how this was chosen.  
@@ -593,7 +595,7 @@ You can [find here](https://github.com/ethereum/research/blob/139e3dd83b06fae918
 
 ## Conclusion
 
-That was a long one! 😰 But I hope you learned a lot!  
+That was a long one! 😰 But I hope you learned a lot!  
 You’re now a master of binary extension fields $\mathbb{F}_{2^n}$  
 We now have the knowledge to go on to more advanced topics. In the next article we’ll start looking into Binius and understand how we can create ZK proofs from it.  
 If something in the article is wrong, or if you have any question, I’ll be happy to answer on Twitter. Don’t hesitate to message me: [@0xteddav](https://x.com/0xteddav)

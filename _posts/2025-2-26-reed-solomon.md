@@ -7,6 +7,8 @@ twitter: https://x.com/0xteddav
 date: 2025-02-24
 ---
 
+# Reed-Solomon Codes: The Math Behind Error Correction and Zero-Knowledge Proofs
+
 What are Reed-Solomon codes? What even is a “code” in this context??? That’s the question I kept asking myself.
 
 I had no idea what “coding theory” was… yet I kept coming across those “RS codes”. So I decided to dig in.
@@ -15,15 +17,15 @@ Let’s start with a high level overview before going deeper. I’ll try to keep
 
 From now on, I’ll mostly use “RS” as shorthand for Reed-Solomon codes, because typing it out every time is tiring 😁
 
-# The big picture
+## The big picture
 
-## What are RS codes?
+### What are RS codes?
 
 Forget about the word “code” for a second, it can be confusing.
 
 RS is essentially a way to correct errors when transmitting data. That’s it. Simple.
 
-### Practical Applications
+#### Practical Applications
 
 RS codes are everywhere:
 
@@ -34,7 +36,7 @@ RS codes are everywhere:
 
 A common example: QR codes. When you scan a QR code, RS helps ensure the data is correctly interpreted. That’s why, even if the image has a small scratch, you can still retrieve the data through error correction.
 
-## How do they work?
+### How do they work?
 
 By adding redundancy to the data.
 
@@ -46,7 +48,7 @@ The reality is that your camera doesn’t actually need all 400 squares to under
 
 Finally, an RS decoding algorithm takes these squares and reconstructs the correct data, even if some are missing or incorrect.
 
-# Coding theory
+## Coding theory
 
 Here’s the [Wikipedia definition](https://en.wikipedia.org/wiki/Coding_theory):
 
@@ -66,7 +68,7 @@ Does that make things clearer? 💡
 
 By the way, when discussing RS codes, you’ll often see the term “**alphabet**.” In this context, it is simply another word for **“code”,** it refers to the set of symbols being used.
 
-## RS codewords
+### RS codewords
 
 What about code and codeword in RS?
 
@@ -94,13 +96,13 @@ If we decide to use the field $\mathbb{F}_{113}$:
 - our code (or alphabet) will be all the numbers from 0 to 112 (included).
 - The **codeword length** is chosen in advance. Suppose we decide on a length of 9, then a possible codeword could be: [106, 57, 14, 109, 66, 99, 46, 28, 8]
 
-# Let’s get real (or finite)
+## Let’s get real (or finite)
 
 Ok that’s terrible. I’m sorry for the “joke”, but I’m going to leave it anyway 🥲
 
 First, I’ll define the key parameters we’re going to use, and then we’ll dive into the technical details to see how everything actually works.
 
-## Parameters
+### Parameters
 
 - `n` → Length of the codeword. This is the entire transmitted data, including redundancy.
 - `k` → Length of the message. This is the actual message the sender wants to transmit, without redundancy.
@@ -109,7 +111,7 @@ In simple terms: if we want to send a message of length `k`, we must expand it t
 
 That means `n - k` symbols are used for errors correction, and **the maximum number of errors we can correct is $\frac{n-k}{2}$**
 
-## Encode messages
+### Encode messages
 
 For all this magic to work, we need polynomials.
 
@@ -122,13 +124,13 @@ That’s it! 😂 I swear it’s really that simple.
 
 I’ll provide examples soon, but first, let’s build some intuition about why RS codes work.
 
-## Why does it work?
+### Why does it work?
 
 RS codes rely on the principle that a polynomial of degree `d` is uniquely determined by `d+1` points. If some points are corrupted, we can still reconstruct the original polynomial, as long as we have at least `d+1` valid points.
 
 In the case of RS codes, we need slightly more than `d+1` points to ensure we are interpolating the correct data.
 
-### Example:
+#### Example:
 
 Say `n = 10` and `k = 5`. We could interpolate two different polynomials:
 
@@ -137,12 +139,12 @@ Say `n = 10` and `k = 5`. We could interpolate two different polynomials:
 
 Without additional constraints, there’s no way to determine which one is correct.
 
-## A note on Sagemath
+### A note on Sagemath
 
 A quick tip for using SageMath: I find it easiest to run their official Docker image, `sagemath/sagemath`.  
 See this article for help: [https://teddav.github.io/sagemath](https://teddav.github.io/sagemath)
 
-## Polynomial interpolation
+### Polynomial interpolation
 
 If you're not familiar with polynomial interpolation, there are plenty of great resources online, so I won’t go into full detail here.
 
@@ -208,7 +210,7 @@ P3:  48*x^7 + 70*x^6 + 99*x^5 + 81*x^4 + 35*x^3 + 19*x^2 + 9*x
 
 You can see how the last polynomial is completely different even though we just changed 1 point.
 
-# Encoding
+## Encoding
 
 Now comes the fun part!
 
@@ -253,7 +255,7 @@ codeword:  [84, 36, 83, 16, 10, 36, 81, 65, 61, 10, 42, 90, 9]
 
 Now that our codeword is ready, it can be transmitted. Upon receiving it, the recipient will check for errors.
 
-## Decoding without error
+### Decoding without error
 
 The receiver already knows the parameters:
 
@@ -299,11 +301,11 @@ We’ve successfully sent and decoded a Reed-Solomon encoded message.
 
 Now, just for fun, let’s introduce an error and see how we can still recover the message.
 
-# Decoding
+## Decoding
 
-There are several ways to decode Reed-Solomon codes. Today we’ll use the [Berlekamp–Welch algorithm](https://en.wikipedia.org/wiki/Berlekamp%E2%80%93Welch_algorithm).
+There are several ways to decode Reed-Solomon codes. Today we’ll use the [Berlekamp–Welch algorithm](https://en.wikipedia.org/wiki/Berlekamp-Welch_algorithm).
 
-To make things easier, I’ll start with [this example](https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction#Berlekamp_Welch_decoder) from Wikipedia and break it down step by step.
+To make things easier, I’ll start with [this example](https://en.wikipedia.org/wiki/Reed-Solomon_error_correction#Berlekamp_Welch_decoder) from Wikipedia and break it down step by step.
 
 Once we understand the process, we’ll apply the same algorithm to our own example to recover the original message.
 
@@ -311,7 +313,7 @@ Here’s the Wikipedia example:
 
 ![wikipedia example]({{ site.baseurl }}/images/binius-article/rs-wikipedia.png)
 
-## Setup
+### Setup
 
 We define the following parameters:
 
@@ -345,7 +347,7 @@ c = { P(0), P(1), ... , P(6) } = { 1, 6, 17, 34, 57, 86, 121 }
 
 The receiver receives **b** (a possibly corrupted version of c), and their task is to determine if there are errors and recover the original message.
 
-## Error polynomial
+### Error polynomial
 
 To detect and correct errors, we introduce an **error polynomial $E(x)$**, which satisfies the following conditions:
 
@@ -392,7 +394,7 @@ If we put this into a matrix you get the following:
 
 ![solve matrix]({{ site.baseurl }}/images/binius-article/rs-matrix.png)
 
-## Solve the matrix
+### Solve the matrix
 
 We solve that matrix and find the coefficients for E and Q.
 
@@ -491,7 +493,7 @@ E:  x^2 + 924*x + 6
 recovered P:  3*x^2 + 2*x + 1
 ```
 
-## Back to our example
+### Back to our example
 
 Let's continue with our previous example using the original codeword:
 
@@ -596,7 +598,7 @@ message:  ['T', 'E', 'D', 'D', 'A', 'V']
 
 WOW 🔥 That was awesome! I hope you enjoyed it as much as I did 😁
 
-# Conclusion
+## Conclusion
 
 We've successfully explored how Reed-Solomon encoding and decoding work, from encoding a message into a polynomial, detecting errors, and finally correcting them using the Berlekamp-Welch algorithm. These principles aren't just theoretical, they form the backbone of error correction in real-world applications like CDs, QR codes, and space communications.
 
