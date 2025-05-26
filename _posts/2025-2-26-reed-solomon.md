@@ -309,7 +309,7 @@ Once we understand the process, we’ll apply the same algorithm to our own exam
 
 Here’s the Wikipedia example:
 
-![wikipedia example]({{ site.baseurl }}/images/reed-solomon/wikipedia.png)
+![wikipedia example]({{ site.baseurl }}/images/binius-article/rs-wikipedia.png)
 
 ## Setup
 
@@ -390,7 +390,7 @@ $$
 
 If we put this into a matrix you get the following:
 
-![solve matrix]({{ site.baseurl }}/images/reed-solomon/matrix.png)
+![solve matrix]({{ site.baseurl }}/images/binius-article/rs-matrix.png)
 
 ## Solve the matrix
 
