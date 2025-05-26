@@ -7,6 +7,8 @@ twitter: https://x.com/0xteddav
 date: 2025-02-24
 ---
 
+# Easy Sagemath setup
+
 I recently started using SageMath and it’s a game changer! 🔥 Prototyping simple or more complex mathematical thoughts has never been this smooth!
 
 I work daily on both an **ARM MacBook** and an **x64 Ubuntu machine**, setting it up properly on both was a bit of a hassle at first. After some trial and error, I found the simplest solution: **running SageMath in Docker**.
@@ -29,7 +31,7 @@ docker run -it --rm sagemath/sagemath
 docker run --rm -v $(pwd):/app -w /app sagemath/sagemath 'sage myscript.sage'
 ```
 
-### Small change on Linux
+## On Linux
 
 Recently, I noticed a small change on **Linux** that required me to run the script as **root**. You might not need this, but if you run into permission issues, try using `sudo`:
 
