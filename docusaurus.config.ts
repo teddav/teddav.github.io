@@ -19,8 +19,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "teddav", // Usually your GitHub org/user name.
+  projectName: "teddav", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -44,7 +44,7 @@ const config: Config = {
 
   presets: [
     [
-      "classic",
+      "@docusaurus/preset-classic",
       {
         docs: {
           sidebarPath: "./sidebars.ts",
@@ -73,6 +73,10 @@ const config: Config = {
         },
         theme: {
           customCss: "./src/css/custom.css",
+        },
+        gtag: {
+          trackingID: "G-46SDB0ZKXC",
+          anonymizeIP: false,
         },
       } satisfies Preset.Options,
     ],
