@@ -3,8 +3,8 @@ title: "Sum-Check: The Backbone of ZK Proofs"
 subtitle: "Compressing Computation One Bit at a Time"
 tags: [cryptography, algebra, polynomial]
 authors: teddav
-twitter: https://x.com/0xteddav
 date: 2025-05-01
+slug: sumcheck
 ---
 
 <!-- truncate -->

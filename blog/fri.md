@@ -3,8 +3,8 @@ title: "FRI: Folding Polynomials and Catching Cheaters"
 subtitle: "Folding and Merkle trees, understand the magic behind STARKs"
 tags: [cryptography, algebra, polynomial]
 authors: teddav
-twitter: https://x.com/0xteddav
 date: 2025-03-31
+slug: fri
 ---
 
 <!-- truncate -->

@@ -3,8 +3,8 @@ title: "From 0 to Bi(ge)nius: field extensions"
 subtitle: "𝔽₂ and Beyond: A Gentle Guide to Field Extensions"
 tags: [cryptography, algebra]
 authors: teddav
-twitter: https://x.com/0xteddav
 date: 2025-02-13
+slug: field-extensions
 ---
 
 <!-- truncate -->

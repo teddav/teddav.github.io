@@ -3,8 +3,8 @@ title: "Reed-Solomon Codes: The Math Behind Error Correction and Zero-Knowledge 
 subtitle: From QR codes to ZK, discover how Reed-Solomon codes correct errors and secure digital communication
 tags: [cryptography, algebra]
 authors: teddav
-twitter: https://x.com/0xteddav
 date: 2025-02-24
+slug: reed-solomon
 ---
 
 <!-- truncate -->
