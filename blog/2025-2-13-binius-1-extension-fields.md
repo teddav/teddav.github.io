@@ -2,10 +2,12 @@
 title: "From 0 to Bi(ge)nius: field extensions"
 subtitle: "𝔽₂ and Beyond: A Gentle Guide to Field Extensions"
 tags: [cryptography, algebra]
-author: teddav
+authors: teddav
 twitter: https://x.com/0xteddav
 date: 2025-02-13
 ---
+
+<!-- truncate -->
 
 # From 0 to Bi(ge)nius: field extensions
 
@@ -495,7 +497,7 @@ the elements of $\tau_2$ are $\{0000,1000,0100,1100,0010,1010,...,1111\}$
 if we take 1011 → $(1x_0+1)x_1+0x_0+1$  
 we see that $a=11$ and $b=10$  
 When representing higher extensions, things become a bit confusing. Vitalik wrote an example in [his article on Binius](https://vitalik.eth.limo/general/2024/04/29/binius.html#binaryfields):  
-![vitalik example]({{ site.baseurl }}/images/binius-article/vitalik-extension.png)  
+![vitalik example](/img/binius-article/vitalik-extension.png)  
 We're here in $\tau_4$ we can write the full value like this:  
 $(((x_0 + 1)x_1 + x_0 + 1
 )x_2 + (0x_0 + 0)x_1 + 0x_0 + 1
@@ -559,7 +561,7 @@ Again, it checks out with the XOR
 | u + 1 | 0   | u + 1 | 1     | u     |
 
 Table for $\tau_2$  
-![table_t2.png]({{ site.baseurl }}/images/binius-article/table_t2.png)  
+![table_t2.png](/img/binius-article/table_t2.png)  
 I used Sage to print that table:
 
 ```python

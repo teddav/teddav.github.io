@@ -2,10 +2,12 @@
 title: Easy Sagemath setup
 subtitle: Using Sagemath's docker image
 tags: [cryptography, algebra]
-author: teddav
+authors: teddav
 twitter: https://x.com/0xteddav
 date: 2025-02-24
 ---
+
+<!-- truncate -->
 
 # Easy Sagemath setup
 
