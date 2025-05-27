@@ -46,12 +46,7 @@ const config: Config = {
     [
       "@docusaurus/preset-classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/teddav/teddav.github.io/",
-        },
+        docs: false,
         blog: {
           showReadingTime: true,
           feedOptions: {
