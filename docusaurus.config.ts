@@ -42,6 +42,12 @@ const config: Config = {
     },
   ],
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ["@docusaurus/theme-mermaid"],
+
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -55,7 +61,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/teddav/teddav.github.io/",
+          editUrl: "https://github.com/teddav/teddav.github.io/blob/master/",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
