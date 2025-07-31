@@ -199,3 +199,61 @@ body {
 .prose a[href^="http"]:not([href*="teddav.github.io"]):hover::after {
   opacity: 1;
 }
+
+/* Syntax highlighting */
+.prose pre {
+  background-color: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+.prose code {
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* Highlight.js theme overrides */
+.hljs {
+  background: #f6f8fa !important;
+  color: #24292e !important;
+}
+
+.hljs-keyword {
+  color: #d73a49 !important;
+}
+
+.hljs-string {
+  color: #032f62 !important;
+}
+
+.hljs-comment {
+  color: #6a737d !important;
+  font-style: italic;
+}
+
+.hljs-number {
+  color: #005cc5 !important;
+}
+
+.hljs-function {
+  color: #6f42c1 !important;
+}
+
+.hljs-variable {
+  color: #e36209 !important;
+}
