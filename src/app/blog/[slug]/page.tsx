@@ -12,6 +12,8 @@ import rehypeStringify from "rehype-stringify";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeHighlight from "rehype-highlight";
+import { common } from "lowlight";
+import MermaidRenderer from "../../components/MermaidRenderer";
 
 interface ArticlePageProps {
   params: {
@@ -48,7 +50,7 @@ async function parseMarkdown(content: string) {
         children: [{ type: "text", value: "#" }],
       }),
     })
-    .use(rehypeHighlight)
+    .use(rehypeHighlight, { languages: { ...common } })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
 }
@@ -110,6 +112,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           className="prose prose-lg prose-gray max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900 prose-code:text-gray-800 prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-200 prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+        <MermaidRenderer />
       </article>
     </div>
   );
