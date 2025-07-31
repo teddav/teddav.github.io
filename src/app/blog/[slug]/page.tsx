@@ -11,6 +11,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypeHighlight from "rehype-highlight";
 
 interface ArticlePageProps {
   params: {
@@ -21,10 +22,9 @@ interface ArticlePageProps {
 async function parseMarkdown(content: string) {
   return unified()
     .use(remarkParse)
-    .use(remarkRehype)
     .use(remarkGfm)
-    .use(rehypeStringify)
     .use(remarkMath)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeKatex, {
       strict: false,
       trust: true,
@@ -47,6 +47,8 @@ async function parseMarkdown(content: string) {
         children: [{ type: "text", value: "#" }],
       }),
     })
+    .use(rehypeHighlight)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
 }
 
@@ -84,7 +86,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <article className="prose prose-lg max-w-none">
+      <article className="prose prose-lg prose-gray max-w-none">
         <header className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">{article.title}</h1>
           {article.subtitle && <p className="text-xl text-gray-600 mb-4">{article.subtitle}</p>}
@@ -103,7 +105,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           )}
         </header>
 
-        <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: article.content }} />
+        <div
+          className="prose prose-lg prose-gray max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900 prose-code:text-gray-800 prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-200 prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        />
       </article>
     </div>
   );
