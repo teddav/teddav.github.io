@@ -42,7 +42,8 @@ async function parseMarkdown(content: string) {
         tagName: "a",
         properties: {
           href: `#${String(arg.properties?.id)}`,
-          style: "margin-right: 10px",
+          className: "anchor-link",
+          style: "margin-right: 8px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280;",
         },
         children: [{ type: "text", value: "#" }],
       }),
