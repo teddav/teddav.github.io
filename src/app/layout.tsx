@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "./components/Navigation";
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/github.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-screen">{children}</main>
       </body>
+      {/* <GoogleAnalytics gaId="G-46SDB0ZKXC" /> */}
     </html>
   );
 }
