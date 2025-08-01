@@ -17,7 +17,7 @@ import { toHtml } from "hast-util-to-html";
 
 function remarkTocPlugin() {
   return (tree: Root, file: VFile) => {
-    const result = toc(tree);
+    const result = toc(tree, { maxDepth: 4 });
     console.log(result.map);
     if (result.map) {
       const hast = toHast(result.map);
@@ -62,7 +62,7 @@ export async function parseMarkdown(content: string) {
         properties: {
           href: `#${String(arg.properties?.id)}`,
           className: "anchor-link",
-          style: "margin-right: 8px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280;",
+          style: "margin-right: 2px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280; font-size: 0.75em;",
         },
         children: [{ type: "text", value: "#" }],
       }),

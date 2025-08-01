@@ -180,7 +180,7 @@ body {
 }
 
 .prose a:visited {
-  color: #7c3aed;
+  color: #2563eb;
 }
 
 .prose a:active {
@@ -277,4 +277,113 @@ body {
 .prose .mermaid {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+/* Table of Contents Styling */
+.toc-desktop,
+.toc-mobile {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.toc-desktop ul,
+.toc-mobile ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-desktop li,
+.toc-mobile li {
+  margin-bottom: 0.125rem;
+}
+
+.toc-desktop ul ul,
+.toc-mobile ul ul {
+  padding-left: 0.75rem;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+  border-left: 1px solid #e5e7eb;
+  margin-left: 0.5rem;
+}
+
+.toc-desktop a,
+.toc-mobile a {
+  color: #2563eb;
+  text-decoration: none;
+  display: block;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.15s ease;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.toc-desktop a:hover,
+.toc-mobile a:hover {
+  color: #1d4ed8;
+  background-color: #f1f5f9;
+  padding-left: 0.5rem;
+}
+
+.toc-desktop a:active,
+.toc-mobile a:active {
+  color: #dc2626;
+}
+
+/* Active TOC link styling */
+.toc-desktop a.active,
+.toc-mobile a.active {
+  color: #1d4ed8;
+  font-weight: 500;
+  background-color: #eff6ff;
+  padding-left: 0.5rem;
+}
+
+/* Nested TOC items */
+.toc-desktop ul ul a,
+.toc-mobile ul ul a {
+  font-size: 0.8rem;
+  color: #2563eb;
+  padding: 0.1rem 0.25rem;
+}
+
+.toc-desktop ul ul a:hover,
+.toc-mobile ul ul a:hover {
+  color: #1d4ed8;
+  background-color: #f1f5f9;
+}
+
+/* Remove paragraph margins in TOC */
+.toc-desktop p,
+.toc-mobile p {
+  margin: 0;
+  padding: 0;
+}
+
+/* TOC container styling */
+.toc-desktop,
+.toc-mobile {
+  max-height: none;
+}
+
+.toc-desktop::-webkit-scrollbar,
+.toc-mobile::-webkit-scrollbar {
+  width: 3px;
+}
+
+.toc-desktop::-webkit-scrollbar-track,
+.toc-mobile::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-desktop::-webkit-scrollbar-thumb,
+.toc-mobile::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+.toc-desktop::-webkit-scrollbar-thumb:hover,
+.toc-mobile::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
