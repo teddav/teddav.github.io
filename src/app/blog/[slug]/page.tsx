@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { parseMarkdown } from "@/lib/markdown";
 import MermaidRenderer from "../../components/MermaidRenderer";
 import TableOfContents from "../../components/TableOfContents";
+import Link from "next/link";
 
 interface ArticlePageProps {
   params: {
@@ -48,11 +49,26 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <article className="lg:ml-80">
+        <div className="mb-6">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Articles
+          </Link>
+        </div>
         <header className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">{article.title}</h1>
           {article.subtitle && <p className="text-xl text-gray-600 mb-4">{article.subtitle}</p>}
           <div className="flex items-center gap-4 text-sm text-gray-500">
-            <span>{new Date(article.date).toLocaleDateString()}</span>
+            <span>
+              {new Date(article.date).toLocaleDateString(undefined, {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </span>
             {article.authors && <span>by {article.authors}</span>}
           </div>
           {article.tags && article.tags.length > 0 && (

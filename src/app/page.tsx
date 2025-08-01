@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Section from "./components/Section";
+import ProjectCard from "./components/ProjectCard";
+import { projects, otherWork } from "@/projects";
 
 export default function HomePage() {
   return (
@@ -47,159 +50,32 @@ export default function HomePage() {
       </section>
 
       {/* Latest Articles */}
-      <section className="mb-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Writings</h2>
-          <Link href="/blog" className="text-blue-600 hover:text-blue-700 font-medium">
-            View all →
+      <Section title="Writings">
+        <p className="text-gray-600">Explore my latest thoughts on cryptography, algebra, and zero-knowledge proofs.</p>
+        <div className="mt-4">
+          <Link href="/blog" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Read Articles
           </Link>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <p className="text-gray-600">Explore my latest thoughts on cryptography, algebra, and zero-knowledge proofs.</p>
-          <div className="mt-4">
-            <Link href="/blog" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-              Read Articles
-            </Link>
-          </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Projects & Tooling */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Projects & Tooling</h2>
+      <Section title="Projects & Tooling">
         <div className="space-y-6">
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              <a
-                href="https://github.com/teddav/zk-tenant"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                zk-tenant
-              </a>
-            </h3>
-            <p className="text-gray-700 mb-3">
-              Privacy-preserving housing application using{" "}
-              <a
-                href="https://ants.gouv.fr/nos-missions/les-solutions-numeriques/2d-doc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                2D-Doc
-              </a>
-            </p>
-            <div className="flex gap-2">
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Privacy</span>
-              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Housing</span>
-              <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Noir</span>
-            </div>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              <a
-                href="https://github.com/teddav/co-match.noir"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                co-match
-              </a>
-            </h3>
-            <p className="text-gray-700 mb-3">Secure MPC matching via TACEO&apos;s co-snarks</p>
-            <div className="flex gap-2">
-              <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">MPC</span>
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Co-snarks</span>
-              <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">TACEO</span>
-            </div>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              <a
-                href="https://github.com/orgs/noir-lang/discussions/8595"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                Noir WebProof SDK proposal
-              </a>
-              <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Granted</span>
-            </h3>
-            <p className="text-gray-700 mb-3">Helping bring zk proofs to the browser with a WebAssembly-friendly Noir SDK</p>
-            <div className="flex gap-2">
-              <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">WebAssembly</span>
-              <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Noir</span>
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">zk-tls</span>
-            </div>
-          </div>
+          {projects.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Other Work */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Other Work</h2>
+      <Section title="Other Work">
         <div className="space-y-6">
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              <a
-                href="https://github.com/teddav/halo2-starter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                halo2-starter
-              </a>
-            </h3>
-            <p className="text-gray-700 mb-3">Battle-tested testing patterns for Halo2 development</p>
-            <div className="flex gap-2">
-              <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Halo2</span>
-              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Testing</span>
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Patterns</span>
-            </div>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              <a
-                href="https://github.com/teddav/halo2-soundness-bugs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                halo2-soundness-bugs
-              </a>
-            </h3>
-            <p className="text-gray-700 mb-3">Exploring edge cases and exploits in Halo2 implementations</p>
-            <div className="flex gap-2">
-              <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Halo2</span>
-              <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Security</span>
-              <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Research</span>
-            </div>
-          </div>
-
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              <a
-                href="https://github.com/privacy-scaling-explorations/halo2/pull/352"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700"
-              >
-                PR #352
-              </a>
-            </h3>
-            <p className="text-gray-700 mb-3">Emulating malicious provers by modifying cell values in the Mock Prover</p>
-            <div className="flex gap-2">
-              <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Halo2</span>
-              <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Mock Prover</span>
-              <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Security</span>
-            </div>
-          </div>
+          {otherWork.map((work) => (
+            <ProjectCard key={work.title} {...work} />
+          ))}
         </div>
-      </section>
+      </Section>
     </div>
   );
 }
