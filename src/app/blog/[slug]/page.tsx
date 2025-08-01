@@ -2,57 +2,13 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
-import remarkGfm from "remark-gfm";
-import { unified } from "unified";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import rehypeHighlight from "rehype-highlight";
-import { common } from "lowlight";
+import { parseMarkdown } from "@/lib/markdown";
 import MermaidRenderer from "../../components/MermaidRenderer";
 
 interface ArticlePageProps {
   params: {
     slug: string;
   };
-}
-
-async function parseMarkdown(content: string) {
-  return unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkMath)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeKatex, {
-      strict: false,
-      trust: true,
-      macros: {
-        "\\eqref": "\\href{#1}{}",
-      },
-      errorColor: " #cc0000",
-      throwOnError: false,
-      displayMode: false,
-    })
-    .use(rehypeSlug)
-    .use(rehypeAutolinkHeadings, {
-      content: (arg) => ({
-        type: "element",
-        tagName: "a",
-        properties: {
-          href: `#${String(arg.properties?.id)}`,
-          className: "anchor-link",
-          style: "margin-right: 8px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280;",
-        },
-        children: [{ type: "text", value: "#" }],
-      }),
-    })
-    .use(rehypeHighlight, { languages: { ...common } })
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(content);
 }
 
 async function getArticle(slug: string) {
@@ -73,6 +29,7 @@ async function getArticle(slug: string) {
       tags: data.tags || [],
       authors: data.authors,
       content: contentHtml,
+      toc: processedContent.data.toc,
     };
   } catch (error) {
     console.error(error);
@@ -82,6 +39,7 @@ async function getArticle(slug: string) {
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = await getArticle(params.slug);
+  console.log(article?.toc);
 
   if (!article) {
     notFound();
@@ -108,6 +66,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           )}
         </header>
 
+        <div className="toc" dangerouslySetInnerHTML={{ __html: article.toc as string }} />
         <div
           className="prose prose-lg prose-gray max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900 prose-code:text-gray-800 prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-200 prose-blockquote:border-l-4 prose-blockquote:border-gray-300 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-700"
           dangerouslySetInnerHTML={{ __html: article.content }}
