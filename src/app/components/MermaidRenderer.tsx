@@ -17,7 +17,6 @@ export default function MermaidRenderer() {
       //   mermaidBlocks.forEach((block, index) => {
       //     if (block.dataset.rendered !== "true") {
       //       mermaid.render(`mermaid-${index}`, block.textContent || "").then(({ svg }) => {
-      //         console.log("svg", svg);
       //         block.innerHTML = svg;
       //         block.dataset.rendered = "true";
       //       });

@@ -32,7 +32,7 @@ export default function RootLayout({
         <Navigation />
         <main className="min-h-screen">{children}</main>
       </body>
-      {/* <GoogleAnalytics gaId="G-46SDB0ZKXC" /> */}
+      <GoogleAnalytics gaId="G-46SDB0ZKXC" />
     </html>
   );
 }

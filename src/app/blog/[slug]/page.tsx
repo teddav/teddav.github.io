@@ -8,9 +8,9 @@ import TableOfContents from "../../components/TableOfContents";
 import Link from "next/link";
 
 interface ArticlePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 async function getArticle(slug: string) {
@@ -40,7 +40,8 @@ async function getArticle(slug: string) {
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const article = await getArticle(params.slug);
+  const { slug } = await params;
+  const article = await getArticle(slug);
 
   if (!article) {
     notFound();

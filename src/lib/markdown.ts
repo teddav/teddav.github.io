@@ -18,7 +18,6 @@ import { toHtml } from "hast-util-to-html";
 function remarkTocPlugin() {
   return (tree: Root, file: VFile) => {
     const result = toc(tree, { maxDepth: 4 });
-    console.log(result.map);
     if (result.map) {
       const hast = toHast(result.map);
       file.data.toc = toHtml(hast);
@@ -28,7 +27,6 @@ function remarkTocPlugin() {
     // if (result.map) {
     //   // Replace <!-- toc --> HTML comment with ToC
     //   visit(tree, "html", (node, index, parent) => {
-    //     console.log(node);
     //     if (node.value.trim() === "<!-- toc -->" && parent) {
     //       parent.children.splice(index, 1, result.map);
     //     }
