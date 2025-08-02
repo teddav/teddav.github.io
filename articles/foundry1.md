@@ -1,7 +1,7 @@
 ---
 title: "Open Source: Contributing to Foundry"
 subtitle: "How I contributed to Ethereum's development toolkit"
-tags: [open source, evm, solidity]
+tags: [open source, evm, solidity, rust]
 authors: teddav
 date: 2023-03-02
 slug: foundry1

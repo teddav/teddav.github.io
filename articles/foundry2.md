@@ -1,7 +1,7 @@
 ---
 title: "Open Source: adding a cheatcode to Foundry"
 subtitle: "Contributing to Ethereum's development toolkit"
-tags: [open source, evm, solidity]
+tags: [open source, evm, solidity, rust]
 authors: teddav
 date: 2023-04-04
 slug: foundry2
