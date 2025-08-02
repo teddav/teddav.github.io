@@ -1,13 +1,11 @@
 ---
 title: "GKR: Sumcheck's best friend"
 subtitle: "Verifying Computations Layer by Layer"
-tags: [cryptography, algebra, polynomial]
+tags: [zero-knowledge, cryptography, algebra, polynomial]
 authors: teddav
 date: 2025-06-01
 slug: gkr
 ---
-
-# GKR: Sumcheck's best friend
 
 Today, let’s talk about GKR. I won’t go too deep into the details here. The goal is to keep this article relatively “light”, and I’ll link to some resources if you want to dive deeper.
 

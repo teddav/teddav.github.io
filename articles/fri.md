@@ -1,13 +1,11 @@
 ---
 title: "FRI: Folding Polynomials and Catching Cheaters"
 subtitle: "Folding and Merkle trees, understand the magic behind STARKs"
-tags: [cryptography, algebra, polynomial]
+tags: [zero-knowledge, cryptography, algebra, polynomial]
 authors: teddav
 date: 2025-03-31
 slug: fri
 ---
-
-# FRI: Folding Polynomials and Catching Cheaters
 
 ## Introduction
 

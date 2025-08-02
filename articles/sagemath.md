@@ -1,13 +1,11 @@
 ---
 title: Easy Sagemath setup
 subtitle: Using Sagemath's docker image
-tags: [cryptography, algebra]
+tags: [math, algebra]
 authors: teddav
 date: 2025-02-24
 slug: sagemath
 ---
-
-# Easy Sagemath setup
 
 I recently started using SageMath and it’s a game changer! 🔥 Prototyping simple or more complex mathematical thoughts has never been this smooth!
 

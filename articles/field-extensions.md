@@ -1,13 +1,11 @@
 ---
 title: "From 0 to Bi(ge)nius: field extensions"
 subtitle: "𝔽₂ and Beyond: A Gentle Guide to Field Extensions"
-tags: [cryptography, algebra]
+tags: [zero-knowledge, cryptography, algebra]
 authors: teddav
 date: 2025-02-13
 slug: field-extensions
 ---
-
-# From 0 to Bi(ge)nius: field extensions
 
 _Thanks a lot to [Oba](https://x.com/obatirou), Nuliel, [Hyunmin](https://x.com/qpzmly), [Nico](https://x.com/nico_mnbl) and [Jim](https://x.com/jimpo_potamus) for the review ❤️_  
 _Feel free to DM me on Twitter: [@0xteddav](https://twitter.com/0xteddav) if you find mistakes in this article or if you have any question._

@@ -1,13 +1,11 @@
 ---
 title: "Sum-Check: The Backbone of ZK Proofs"
 subtitle: "Compressing Computation One Bit at a Time"
-tags: [cryptography, algebra, polynomial]
+tags: [zero-knowledge, cryptography, algebra, polynomial]
 authors: teddav
 date: 2025-05-01
 slug: sumcheck
 ---
-
-# Sum-Check: The Backbone of ZK Proofs
 
 _Huge thanks to [Oba](https://x.com/obatirou), [Ziemann](https://x.com/ziemannzk) and [Nico](https://x.com/nico_mnbl) for their help and feedback! ❤️_
 

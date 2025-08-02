@@ -56,13 +56,14 @@ export async function parseMarkdown(content: string) {
     })
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
+      behavior: "append",
       content: (arg) => ({
         type: "element",
         tagName: "a",
         properties: {
           href: `#${String(arg.properties?.id)}`,
           className: "anchor-link",
-          style: "margin-right: 2px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280; font-size: 0.75em;",
+          style: "margin-left: 4px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280;",
         },
         children: [{ type: "text", value: "#" }],
       }),

@@ -1,13 +1,11 @@
 ---
 title: "Reed-Solomon Codes: The Math Behind Error Correction and Zero-Knowledge Proofs"
 subtitle: From QR codes to ZK, discover how Reed-Solomon codes correct errors and secure digital communication
-tags: [cryptography, algebra]
+tags: [zero-knowledge, cryptography, algebra]
 authors: teddav
 date: 2025-02-24
 slug: reed-solomon
 ---
-
-# Reed-Solomon Codes: The Math Behind Error Correction and Zero-Knowledge Proofs
 
 What are Reed-Solomon codes? What even is a “code” in this context??? That’s the question I kept asking myself.
 
