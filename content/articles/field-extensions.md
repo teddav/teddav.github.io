@@ -4,7 +4,6 @@ subtitle: "𝔽₂ and Beyond: A Gentle Guide to Field Extensions"
 tags: [zero-knowledge, cryptography, algebra]
 authors: teddav
 date: 2025-02-13
-slug: field-extensions
 ---
 
 _Thanks a lot to [Oba](https://x.com/obatirou), Nuliel, [Hyunmin](https://x.com/qpzmly), [Nico](https://x.com/nico_mnbl) and [Jim](https://x.com/jimpo_potamus) for the review ❤️_  

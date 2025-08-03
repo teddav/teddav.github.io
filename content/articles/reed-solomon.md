@@ -4,7 +4,6 @@ subtitle: From QR codes to ZK, discover how Reed-Solomon codes correct errors an
 tags: [zero-knowledge, cryptography, algebra]
 authors: teddav
 date: 2025-02-24
-slug: reed-solomon
 ---
 
 What are Reed-Solomon codes? What even is a “code” in this context??? That’s the question I kept asking myself.

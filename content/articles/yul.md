@@ -4,7 +4,6 @@ subtitle: "Mastering low-level EVM programming"
 tags: [evm, solidity, yul, assembly]
 authors: teddav
 date: 2022-07-08
-slug: yul
 ---
 
 Assembly has been really hyped lately and all the cool kids seem to have started learning it. So I decided to do the same and learn what Yul is and how I can write my contracts with it. I started learning a few weeks ago and today I’m going to show you the basics so you can start enjoying it.

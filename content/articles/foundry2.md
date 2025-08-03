@@ -4,7 +4,6 @@ subtitle: "Contributing to Ethereum's development toolkit"
 tags: [open source, evm, solidity, rust]
 authors: teddav
 date: 2023-04-04
-slug: foundry2
 ---
 
 We scratched the surface of [Foundry’s code](https://github.com/foundry-rs/foundry/) in [part 1](https://dev.to/teddav/foundry-open-source-contribution-1k2d). Let’s go a bit deeper and try to create a new cheatcode this time.

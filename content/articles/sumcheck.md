@@ -4,7 +4,6 @@ subtitle: "Compressing Computation One Bit at a Time"
 tags: [zero-knowledge, cryptography, algebra, polynomial]
 authors: teddav
 date: 2025-05-01
-slug: sumcheck
 ---
 
 _Huge thanks to [Oba](https://x.com/obatirou), [Ziemann](https://x.com/ziemannzk) and [Nico](https://x.com/nico_mnbl) for their help and feedback! ❤️_
@@ -17,11 +16,11 @@ We’ll break down the key concepts needed to understand the Sum-Check Protocol 
 
 To assist you, I wrote a few scripts with Sage: https://github.com/teddav/sumcheck-article
 
-## **Building Blocks for Sum-Check**
+## Building Blocks for Sum-Check
 
 Before diving into the Sum-Check Protocol, we need to understand some fundamental mathematical concepts.
 
-### **1. Multivariate and multilinear polynomials**
+### 1. Multivariate and multilinear polynomials
 
 A **multivariate polynomial** is a polynomial with more than one variable. For example:
 
@@ -125,7 +124,7 @@ Other example, with multilinear terms
 x*y*z + 5*x*y + 7*y + 7
 ```
 
-### **2. Boolean hypercube**
+### 2. Boolean hypercube
 
 If you Google “hypercube” you’ll probably see geometric shapes representing cubes in higher dimensions.
 
@@ -179,7 +178,7 @@ Example for `n = 3`:
 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 1]]
 ```
 
-### **3. Connect multivariate polynomials and the boolean hypercube**
+### 3. Connect multivariate polynomials and the boolean hypercube
 
 The link between multilinear polynomials and hypercubes is simple:
 
@@ -263,7 +262,7 @@ P: 6*a*b*c + 5*a*b + 4*a*c + 2*b*c + 3*a + b + 7
 Sum of the polynomial over the hypercube: 15
 ```
 
-### **4. What is a "multilinear extension" (MLE)?**
+### 4. What is a "multilinear extension" (MLE)?
 
 You’ll often see the term **“multilinear extension”** in papers and documentation. At first, this confused me, but it’s just a fancy way of saying **a multilinear polynomial that accepts more than boolean inputs.**
 
@@ -417,7 +416,7 @@ $$
 
 The goal of Sum-Check is to allow a prover to convince a verifier that this sum is correct, without requiring the verifier to compute every evaluation directly.
 
-## **Why Does This Matter?**
+## Why Does This Matter?
 
 The Sum-Check Protocol has many applications, which we’ll explore later. However, one of its most important uses is in zero-knowledge (ZK) proof systems.
 
@@ -431,7 +430,7 @@ In fact, the Sum-Check Protocol allows the verifier to be convinced in just **n 
 
 For example, in **PLONK**, Sumcheck can replace the divisibility test (or quotient test) and the KZG polynomial commitment (based on pairings), leading to performance improvements. That’s what HyperPlonk does.
 
-### **How Many Variables Does My Polynomial Need?**
+### How Many Variables Does My Polynomial Need?
 
 Suppose we need to interpolate a polynomial over $2^n$ values.
 
@@ -530,7 +529,7 @@ You can find a deeper explanation on Rareskills’ blog: https://www.rareskills.
 
 And remember: this interactive protocol can be made **non-interactive** using the **Fiat–Shamir transform**, replacing the verifier's randomness with a hash. That's how we get succinct, trustless proofs for the real world.
 
-### **Next Round: Continuing the Process**
+### Next Round: Continuing the Process
 
 In the second round, we apply the same process again. We define a new polynomial:
 

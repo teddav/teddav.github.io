@@ -4,7 +4,6 @@ subtitle: "Solve CTFs with low-level code"
 tags: [evm, solidity, yul, assembly, ctf]
 authors: teddav
 date: 2023-03-04
-slug: ethernaut
 ---
 
 After learning the basics of Solidity assembly in [Part 1: Playing with Yul](https://dev.to/teddav/playing-with-yul-assembly-1i5h) let’s now dive deeper! 💪

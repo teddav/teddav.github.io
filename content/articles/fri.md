@@ -4,7 +4,6 @@ subtitle: "Folding and Merkle trees, understand the magic behind STARKs"
 tags: [zero-knowledge, cryptography, algebra, polynomial]
 authors: teddav
 date: 2025-03-31
-slug: fri
 ---
 
 ## Introduction

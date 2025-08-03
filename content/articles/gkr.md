@@ -4,14 +4,17 @@ subtitle: "Verifying Computations Layer by Layer"
 tags: [zero-knowledge, cryptography, algebra, polynomial]
 authors: teddav
 date: 2025-06-01
-slug: gkr
 ---
 
 Today, let’s talk about GKR. I won’t go too deep into the details here. The goal is to keep this article relatively “light”, and I’ll link to some resources if you want to dive deeper.
 
-The GKR protocol, introduced by Goldwasser, Kalai, and Rothblum in 2008, is an interactive proof system for verifying the correctness of computations represented as arithmetic circuits. It’s a natural extension of the Sumcheck protocol and works especially well for computations that can be expressed as layered circuits.
+The GKR protocol, introduced by Goldwasser, Kalai, and Rothblum in 2008, is an interactive proof system for verifying the correctness of computations represented as arithmetic circuits.
 
-Suppose you have a computation that takes a large input and applies several layers of arithmetic operations to produce an output. Re-running the entire computation just to verify the output would be expensive. But what if the verifier could efficiently check the result without redoing all the work or blindly trusting the prover? Sounds familiar, right? That’s the Sumcheck spirit, and GKR builds on that.
+It builds on the **Sumcheck protocol**, using it as a key tool to efficiently verify layered circuits (circuits where each layer depends on the one below).
+
+Suppose you have a computation that takes a large input and applies several layers of arithmetic operations to produce an output. Re-running the entire computation just to verify the output would be expensive.
+
+But what if the verifier could efficiently check the result without redoing all the work or blindly trusting the prover? Sounds familiar, right? That’s the Sumcheck spirit.
 
 ## Layered circuit
 

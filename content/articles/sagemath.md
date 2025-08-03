@@ -4,7 +4,6 @@ subtitle: Using Sagemath's docker image
 tags: [math, algebra]
 authors: teddav
 date: 2025-02-24
-slug: sagemath
 ---
 
 I recently started using SageMath and it’s a game changer! 🔥 Prototyping simple or more complex mathematical thoughts has never been this smooth!

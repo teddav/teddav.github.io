@@ -4,7 +4,6 @@ subtitle: "How I contributed to Ethereum's development toolkit"
 tags: [open source, evm, solidity, rust]
 authors: teddav
 date: 2023-03-02
-slug: foundry1
 ---
 
 Contributing to open source projects can be a bit scary sometimes 👻 But it’s usually not that hard!

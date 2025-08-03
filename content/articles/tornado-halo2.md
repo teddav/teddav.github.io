@@ -4,7 +4,6 @@ subtitle: "From theory to practice: implementing privacy"
 tags: [privacy, zero-knowledge, cryptography, rust]
 authors: teddav
 date: 2024-02-09
-slug: tornado-halo2
 ---
 
 tl; dr: You already heard of Tornado Cash? And Halo2? Great! Here we’re going to mix those 2 and re-write the Tornado Cash circuits from Circom to Halo2.
