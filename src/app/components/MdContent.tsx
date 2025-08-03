@@ -1,3 +1,5 @@
+"use client";
+
 import { ContentProps } from "@/lib/content";
 import MermaidRenderer from "./MermaidRenderer";
 import TableOfContents from "./TableOfContents";

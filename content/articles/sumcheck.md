@@ -282,7 +282,7 @@ Just as Lagrange interpolation uniquely determines a polynomial that passes thro
 
 The MLE of a function is often written with `~`. So the MLE of $f(x)$ will be written as $\tilde{f}(x)$.
 
-### **5. Multilinear Lagrange interpolation over the boolean hypercube**
+### 5. Multilinear Lagrange interpolation over the boolean hypercube
 
 The last tool we need before diving into the Sum-Check Protocol is **Lagrange interpolation** for multilinear polynomials. This is how we’re going to construct our MLEs.
 

@@ -30,7 +30,7 @@ git checkout -- README.md
 
 Let me know if you have issues with something, maybe I can (try to) help.
 
-# VerifyingKey.sol
+## VerifyingKey.sol
 
 Let’s start with the [VerifyingKey contract](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/contracts/src/VerifyingKey.sol#L5) because it’s needed for the other contracts.
 
@@ -50,13 +50,13 @@ That way we know exactly what our contract code will be and we will easily be ab
 
 Ok I think that’s all we need, it’s probably already too much details 😁
 
-# Summa.sol
+## Summa.sol
 
 I’m not going to spend too much time on Summa.sol so I can focus more on the Verifier contracts. You can find a bit of documentation on [Summa’s Gitbook](https://summa.gitbook.io/summa/smart-contract/summa.sol).
 
 There is a full flow in `/backend/examples/summa_solvency_flow.rs` where we can see how the contracts are being used, but we’ll come back to it later.
 
-## validateVKPermutationsLength
+### validateVKPermutationsLength
 
 The function is called in the constructor and checks that VerifyingKey.sol is correctly formatted. To verify, we check the number of permutations in the circuit.
 
@@ -121,7 +121,7 @@ Then we [do our thing](https://github.com/summa-dev/summa-solvency/blob/fec83a74
 
 As you might have noticed, and [as noted by @obatirou](https://github.com/zBlock-2/summa-solvency/issues/10), that check could easily be cheated if the contract is modified and the number of fixed commitments and permutations changes. But [@alexkuzmin also stated that it’s more of a “nice to have” feature](https://discord.com/channels/877252171983360072/1230201530582568962/1230478481977114644) and it’s not that important because the key is public and could be verified by users.
 
-## submitCommitment
+### submitCommitment
 
 We pass as input:
 
@@ -136,7 +136,7 @@ The grandSumProof is a concatenation of G1 points (1 for each currency), where e
 
 And we’ll [slice the first 192 bytes](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/contracts/src/Summa.sol#L252) of the snark proof and store it in the contract. What do these bytes correspond to?
 
-### What’s in the snark proof?
+#### What’s in the snark proof?
 
 First let’s see how the proof is built in Halo2. This part might be completely wrong 😅 I hope someone more expert than me will review it. I’m just following the code and hoping it makes sense.
 
@@ -156,7 +156,7 @@ That’s why we [remove the first 64 bytes of the proof](https://github.com/summ
 
 We can just finally call `verifyProof` on the GrandSumVerifier to make sure the proof provided by the exchange is valid.
 
-## verifyInclusionProof
+### verifyInclusionProof
 
 This function is meant to be called by the user with its inclusion proof to verify that he was correctly included in the liabilities commitment.
 
@@ -196,7 +196,7 @@ We [verify our proof](https://github.com/summa-dev/summa-solvency/blob/fec83a747
 
 The rest of the contract is pretty straight forward so I’m not going to detail it. Let’s go to the Verifiers now!
 
-# GrandSumVerifier.sol
+## GrandSumVerifier.sol
 
 This contract is entirely written in Yul so it will be fun to review 🥳 If you’re not comfortable with Yul, it’s not that hard and [I can give you an introduction](https://dev.to/teddav/playing-with-yul-assembly-1i5h).
 
@@ -208,7 +208,7 @@ There is only one function `verifyProof` which takes 3 inputs:
 
 Since we’re in assembly, we’re gonna need a lot of memory and calldata manipulation.
 
-## calldata structure
+### calldata structure
 
 Here’s what our calldata looks like.
 
@@ -231,7 +231,7 @@ After 0x84 we can’t know for sure the offset because it depends on the proof�
 
 I hope it’s more clear now!
 
-## get data from VK
+### get data from VK
 
 First we [copy some values](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/contracts/src/GrandSumVerifier.sol#L86) from the verifying key into our memory with [extcodecopy](https://www.evm.codes/#3c?fork=cancun)
 
@@ -258,7 +258,7 @@ Then we get the proof length from the calldata and [make sure it’s divisible b
 
 This also ensures that the calldata is correctly aligned and then when we get the `values` length on the next line we can just add the proof_length to the PROOF_LEN_CPTR. Otherwise we would get some random value, or we would need to pad to the next bytes32.
 
-### potential critical issue
+#### potential critical issue
 
 There is not issue currently but let me walk you through how a critical issue could appear if we’re not careful. Maybe it will help you in finding other issues 😀
 
@@ -292,7 +292,7 @@ Because for each value we get 2 G1 points:
 - the commitment to our polynomial: $C$
 - the commitment to the proof polynomial: $\pi$
 
-## ec points verification
+### ec points verification
 
 Finally we reach the for loop where we are going to verify our kzg commitments thanks to the pairing precompile on Ethereum.
 
@@ -317,7 +317,7 @@ Notice that we use [`div(proof_length, 2)`](https://github.com/summa-dev/summa-s
 we use the [ecPairing precompile](https://www.evm.codes/precompiled#0x08?fork=cancun) for that (you can check how the pairing function is implemented [in revm](https://github.com/bluealloy/revm/blob/1ca3d39f6a9e9778f8eb0fcb74fe529345a531b4/crates/precompile/src/bn128.rs#L161) or [in the halo2_curves lib](https://github.com/privacy-scaling-explorations/halo2curves/blob/8af4f1ebab640405c799e65d9873847a4acf04f8/src/bn256/engine.rs#L625)). It takes as input an array of 1 $\mathbb{G}_1$ point and 1 $\mathbb{G}_2$ point, it’s going to compute the pairing for each pair of point. Since G1 is 64 bytes, and G2 is 128 bytes, we must always pass multiples of 192 bytes (6 32-bytes values).
 It’s going to compute each pairing and multiply them to each other and the result must be `1` if it’s a success. You can check the [EIP-197 specification](https://eips.ethereum.org/EIPS/eip-197).
 
-## success
+### success
 
 You probably noticed the use of `success` throughout the contract. It’s a good way to verify that everything is going alright.
 
@@ -325,7 +325,7 @@ All operations return 0 if they fail, 1 if they succeed. Same for [`staticcall` 
 
 So the idea is to use a bitwise `AND` to always make sure `success` variable is `1`
 
-# InclusionVerifier.sol
+## InclusionVerifier.sol
 
 The InclusionVerifier works exactly same way: we fetch values from the VerifyingKey, and we compute our pairing. Except that this time we are verifying a proof for the user’s balance inclusion in the polynomial, so the challenge is going to be $y=\omega^{i}$ and the result will be the balance: $z=balance$.
 

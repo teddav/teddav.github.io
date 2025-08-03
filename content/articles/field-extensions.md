@@ -210,7 +210,7 @@ And that’s it! In our extension field $\mathbb{F}_{7^2}$ : $(3u+2)(4u+5)=4u+2$
 Like we did before, we could do that manually by replacing $u^2$ with $-u-3=6u+4$  
 → $5*(6u+4)+2u+3=30u+20+2u+3=32u+23=4u+2$
 
-#### **Mental representation**
+#### Mental representation
 
 At first I tried to represent values in extension fields as integers because I was getting confused by the polynomials. But it’s a bad idea.  
 If you tried to do that here, you would have:
@@ -229,7 +229,7 @@ Want some more examples? Ok, you got it! Just to make sure everything is clear.
 let’s say we have `u` and `u + 5` → $u + (u + 5)=2u+5$  
 Easy…
 
-#### **Multiplication**
+#### Multiplication
 
 Now let’s multiply: `3u` and `5u + 1`  
 $3u * (5u+1) = 15u^2+3u$  
@@ -251,7 +251,7 @@ print(F7_2(u) + F7_2(u+5))
 print(F7_2(3*u) * F7_2(5*u+1))
 ```
 
-### **Polynomial evaluation**
+### Polynomial evaluation
 
 One thing I struggled a bit with was how to “evaluate a polynomial in our extension”. That’s really useful for polynomial commitment schemes for example. If you’re working in a small field, you want to increase the security when sampling a random value from the field. So instead of picking a value from the base field, you sample from the extension, but how do you evaluate the polynomial you want to commit?  
 Let’s say we have a polynomial G such that $G(x) = 4x^3 + 2x + 6$ and we want to “move it” into our extension (for more security).  

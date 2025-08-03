@@ -1,13 +1,70 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface TableOfContentsProps {
   toc: string;
 }
 
+function useActiveHeading() {
+  const [activeId, setActiveId] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -70% 0px",
+        threshold: 1,
+      }
+    );
+
+    const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    headings.forEach((heading) => observer.observe(heading));
+
+    return () => {
+      headings.forEach((heading) => observer.unobserve(heading));
+    };
+  }, []);
+
+  return activeId;
+}
+
+// Hook to update active class in TOC
+function useTocActiveClass(activeId: string) {
+  const updateActiveClass = (element: HTMLElement | null) => {
+    if (!element) return;
+
+    element.querySelectorAll(".active").forEach((el) => {
+      el.classList.remove("active");
+    });
+
+    if (activeId) {
+      const activeLink = element.querySelector(`a[href="#${activeId}"]`);
+      if (activeLink) {
+        activeLink.classList.add("active");
+      }
+    }
+  };
+
+  return updateActiveClass;
+}
+
 export default function TableOfContents({ toc }: TableOfContentsProps) {
   const [isOpen, setIsOpen] = useState(true);
+  const activeId = useActiveHeading();
+  const updateActiveClass = useTocActiveClass(activeId);
+
+  const desktopTocRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    updateActiveClass(desktopTocRef.current);
+  }, [activeId, updateActiveClass]);
 
   return (
     <>
@@ -40,7 +97,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
       <div className="hidden lg:block lg:fixed lg:top-24 lg:left-8 lg:w-64 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
         <div className="bg-gray-50 rounded-lg p-4 border sticky top-24">
           <h3 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Table of Contents</h3>
-          <div className="toc-desktop prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
+          <div ref={desktopTocRef} className="toc-desktop prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
         </div>
       </div>
     </>

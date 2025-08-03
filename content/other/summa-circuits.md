@@ -11,11 +11,11 @@ I hope [part 1 on the contracts](./summa-contracts) was useful! Today we’ll lo
 
 There is only 1 circuit: [UnivariateGrandSum circuit](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L11) so it should be fast 😊 It takes a “Config” as input, we’ll look at that first
 
-# UnivariateGrandSumConfig
+## UnivariateGrandSumConfig
 
 `CONFIG` passed to the circuit must implement the [CircuitConfig trait](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L14).
 
-## CircuitConfig
+### CircuitConfig
 
 We can see from the `get_username()` and `get_balances()` functions that we’re going to need (at least) 1 advice column for the usernames, and `N_CURRENCIES` advice columns for balances (1 per currency).
 
@@ -40,7 +40,7 @@ First [the username](https://github.com/summa-dev/summa-solvency/blob/fec83a747e
 
 It creates a [vector of cells](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L235) where all the balances are, and returns it. It’ll be useful for the RangeCheck, we’ll see that later.
 
-## UnivariateGrandSumConfig
+### UnivariateGrandSumConfig
 
 ```rust
 pub struct UnivariateGrandSumConfig<const N_CURRENCIES: usize, const N_USERS: usize>
@@ -55,7 +55,7 @@ where
 }
 ```
 
-### configure()
+#### configure()
 
 That’s where we create our columns and setup the base for our circuit.
 
@@ -71,7 +71,7 @@ We also create an [`instance` column](https://github.com/summa-dev/summa-solvenc
 
 Finally we setup our RangeCheck chip which we’ll detail soon. And obviously we call `meta.enable_equality` on it.
 
-### synthesize()
+#### synthesize()
 
 First we [construct our RangeCheck chips](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L127) from their config.
 
@@ -81,19 +81,19 @@ Finally we loop through the previously `assigned_balances` cells and perform a r
 
 You can see on the last line how we [check for](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L169) [`0`](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L165) thanks to the `instance` column.
 
-## NoRangeCheckConfig
+### NoRangeCheckConfig
 
 There is a much simpler config that can be passed to the circuit which doesn’t perform a range check. It’s obviously useless in production but it was added for easier testing.
 
-# RangeCheckChip
+## RangeCheckChip
 
 The range check is pretty similar to the v1. The idea is to [decompose a value into chunks of 2 bytes](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L140) and check each chunk against the fixed column. If each chunk is indeed in the fixed column it’s a good start but we’re not done: we also need to make sure that each value is equal to the previous one divided by $2^{16}$, so $zs[i+1]=\frac{zs[i]}{2^{16}}$ or put differently: $zs[i]-zs[i+1]*2^{16}$ is in the lookup table. That’s what is done [in the configure() function](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L93).
 
 The table is constructed in the `assign()` function: we just [divide the current value by](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L153) [$2^{16}$](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L150) and assign it to the next column in the same row. And then the constraints are going to be applied. Actually since we are in finite fields, [we multiply by the inverse](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L147).
 
-## lookup
+### lookup
 
-### in MockProver
+#### in MockProver
 
 An interesting part is how the [`meta.lookup_any()` call](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L100) works. At first, to me, it seemed to [query a specific row in the fixed column](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/chips/range/range_check.rs#L100), so I didn’t understand how the lookup was performed. So I looked into Halo2 source code.
 
@@ -120,11 +120,11 @@ Let’s now see how each lookup is verified step by step:
 - then we [load the values from the advice column](https://github.com/privacy-scaling-explorations/halo2/blob/81c449a136b898e6edf507cac78bc39be6aae7ed/halo2_frontend/src/dev.rs#L1013) that are going to be checked
 - finally we check that the [input value is present in the lookup table](https://github.com/privacy-scaling-explorations/halo2/blob/81c449a136b898e6edf507cac78bc39be6aae7ed/halo2_frontend/src/dev.rs#L1036) with a binary search
 
-# GrandSum circuit
+## GrandSum circuit
 
 Once we’ve covered the RangeCheck and the Config, [the circuit](https://github.com/summa-dev/summa-solvency/blob/fec83a747ead213261aecfaf4a01b43fff9731ee/prover/src/circuits/univariate_grand_sum.rs#L245) is actually really simple and can be summarized to “call the `synthesize()` function of the config”. So the major part will be in the config.
 
-## Tests
+### Tests
 
 Let’s look at some tests to see if we find anything interesting.
 
