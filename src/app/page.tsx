@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Section from "./components/Section";
 import ProjectCard from "./components/ProjectCard";
-import { projects, otherWork } from "@/projects";
+import { projects, otherWork, zkAuditing } from "@/projects";
 
 export default function HomePage() {
   return (
@@ -13,18 +13,45 @@ export default function HomePage() {
         <h1 className="text-5xl font-bold text-gray-900 mb-6">teddav</h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
           Exploring the fascinating world of zero-knowledge proofs, cryptography, and privacy-preserving technologies.
+          <br />
+          Currently building, breaking, and writing about ZK and MPC.
         </p>
       </div>
 
       {/* About & Contact */}
       <section className="mb-16">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">About & Contact</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-8">About</h2>
 
         <p className="text-gray-700 mb-4">
-          I&apos;m passionate about zero-knowledge proofs, cryptography, and building privacy-preserving applications.
+          These days, I&apos;m deep into cryptography: zero-knowledge proofs, MPC, FHE. Interested in building privacy-preserving
+          applications.
           <br />
           My work focuses on exploring the boundaries of what&apos;s possible with modern cryptographic techniques.
+          <br />
+          I used to do DevSecOps for Big Tech, now I&apos;m more excited about low-level stuff like assembly and wasm.
+          <br />
+          I also worked on smart contract security and the EVM, having fun with solidity and yul.
+          <br />I work at the intersection of zero-knowledge, smart contract security, and cryptographic engineering.
         </p>
+
+        <div className="bg-gray-50 rounded-lg p-6 mb-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Achievements</h3>
+          <ul className="space-y-2 text-gray-700">
+            <li className="flex items-start gap-2">
+              <span>🥇</span>
+              <span>
+                First place in <strong>Secureum Epoch 0</strong> (smart contract security bootcamp)
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span>🧪</span>
+              <span>
+                ZK Security Fellow @ <strong>Electi</strong> (formerly yAcademy)
+              </span>
+            </li>
+          </ul>
+        </div>
+
         <div className="flex flex-wrap gap-4 text-sm">
           <a
             href="https://github.com/teddav"
@@ -66,6 +93,14 @@ export default function HomePage() {
         <div className="space-y-6">
           {projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </Section>
+
+      <Section title="ZK Auditing">
+        <div className="space-y-6">
+          {zkAuditing.map((audit) => (
+            <ProjectCard key={audit.title} {...audit} />
           ))}
         </div>
       </Section>

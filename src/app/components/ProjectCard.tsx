@@ -1,26 +1,65 @@
 "use client";
 
+import { Tags } from "@/projects";
+
 interface ProjectCardProps {
   title: string;
   description: string;
   href: string;
-  tags: string[];
+  tags: Tags[];
   badge?: string;
   details?: React.ReactNode;
 }
 
-const randomColor = () => {
-  const colors = [
-    "bg-red-100 text-red-800",
-    "bg-orange-100 text-orange-800",
-    "bg-purple-100 text-purple-800",
-    "bg-blue-100 text-blue-800",
-    "bg-green-100 text-green-800",
-    "bg-gray-100 text-gray-800",
-    "bg-pink-100 text-pink-800",
-    "bg-yellow-100 text-yellow-800",
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
+const tagColor = (tag: Tags) => {
+  // https://tailwindcss.com/docs/colors
+  enum colors {
+    red = "bg-red-100 text-red-800",
+    orange = "bg-orange-100 text-orange-800",
+    amber = "bg-amber-100 text-amber-800",
+    yellow = "bg-yellow-100 text-yellow-800",
+    lime = "bg-lime-100 text-lime-800",
+    green = "bg-green-100 text-green-800",
+    emerald = "bg-emerald-100 text-emerald-800",
+    teal = "bg-teal-100 text-teal-800",
+    cyan = "bg-cyan-100 text-cyan-800",
+    sky = "bg-sky-100 text-sky-800",
+    blue = "bg-blue-100 text-blue-800",
+    indigo = "bg-indigo-100 text-indigo-800",
+    violet = "bg-violet-100 text-violet-800",
+    purple = "bg-purple-100 text-purple-800",
+    fuchsia = "bg-fuchsia-100 text-fuchsia-800",
+    pink = "bg-pink-100 text-pink-800",
+    rose = "bg-rose-100 text-rose-800",
+  }
+
+  const tagToColorMap: Record<Tags, string> = {
+    [Tags.privacy]: colors.red,
+    [Tags.zk]: colors.orange,
+    [Tags.mpc]: colors.amber,
+    [Tags.stark]: colors.yellow,
+    [Tags.education]: colors.lime,
+    [Tags.webassembly]: colors.green,
+    [Tags.noir]: colors.emerald,
+    [Tags.taceo]: colors.teal,
+    [Tags.co_snarks]: colors.cyan,
+    [Tags.security]: colors.sky,
+    [Tags.testing]: colors.blue,
+    [Tags.research]: colors.indigo,
+    [Tags.mock_prover]: colors.violet,
+    [Tags.halo2]: colors.purple,
+    [Tags.rust]: colors.fuchsia,
+    [Tags.python]: colors.pink,
+    [Tags.solidity]: colors.rose,
+    [Tags.yul]: colors.red,
+    [Tags.assembly]: colors.orange,
+    [Tags.wasm]: colors.amber,
+    [Tags.zk_tls]: colors.yellow,
+    [Tags.auditing]: colors.lime,
+    [Tags.evm]: colors.green,
+  };
+
+  return tagToColorMap[tag] || colors.red;
 };
 
 export default function ProjectCard({ title, description, href, tags, badge, details }: ProjectCardProps) {
@@ -35,7 +74,7 @@ export default function ProjectCard({ title, description, href, tags, badge, det
         </h3>
         <div className="flex gap-1 flex-wrap justify-end">
           {tags.map((tag) => (
-            <span key={tag} className={`${randomColor()} px-2 py-1 rounded text-xs`}>
+            <span key={tag} className={`${tagColor(tag)} px-2 py-1 rounded text-xs`}>
               {tag}
             </span>
           ))}

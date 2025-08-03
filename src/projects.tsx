@@ -1,15 +1,47 @@
+export enum Tags {
+  privacy = "privacy",
+  zk = "zero-knowledge",
+  mpc = "mpc",
+  stark = "stark",
+  education = "education",
+  webassembly = "webassembly",
+  noir = "noir",
+  taceo = "taceo",
+  co_snarks = "co-snarks",
+  security = "security",
+  testing = "testing",
+  research = "research",
+  mock_prover = "mock prover",
+  halo2 = "halo2",
+  rust = "rust",
+  python = "python",
+  solidity = "solidity",
+  yul = "yul",
+  assembly = "assembly",
+  wasm = "wasm",
+  zk_tls = "zk-tls",
+  auditing = "auditing",
+  evm = "evm",
+}
+
 export const projects = [
   {
     title: "zk-tenant",
     description: "Privacy-preserving housing application using 2D-Doc",
     href: "https://github.com/teddav/zk-tenant",
-    tags: ["Privacy", "Housing", "Noir"],
+    tags: [Tags.privacy, Tags.zk, Tags.noir],
   },
   {
     title: "co-match",
     description: "Secure MPC matching via TACEO's co-snarks",
     href: "https://github.com/teddav/co-match.noir",
-    tags: ["MPC", "Co-snarks", "TACEO"],
+    tags: [Tags.mpc, Tags.co_snarks, Tags.taceo],
+  },
+  {
+    title: "stark_by_hand",
+    description: "Implementing STARKs from scratch to understand the protocol deeply",
+    href: "https://github.com/teddav/stark_by_hand",
+    tags: [Tags.stark, Tags.zk, Tags.education, Tags.python],
   },
   {
     title: "Noir WebProof SDK proposal",
@@ -20,8 +52,28 @@ export const projects = [
       </b>
     ),
     href: "https://github.com/orgs/noir-lang/discussions/8595",
-    tags: ["WebAssembly", "Noir", "zk-tls"],
+    tags: [Tags.webassembly, Tags.noir, Tags.zk_tls],
     badge: "Grant",
+  },
+];
+
+export const zkAuditing = [
+  {
+    title: "halo2 soundness bug",
+    description: "Found a soundness bug in PSE's Halo2 proving system",
+    href: "https://github.com/privacy-scaling-explorations/halo2/issues/335",
+    tags: [Tags.halo2, Tags.security, Tags.auditing],
+    details: (
+      <b>
+        <a href="https://github.com/teddav/poc-underconstrained-halo2/tree/main">PoC for the bug</a>
+      </b>
+    ),
+  },
+  {
+    title: "Summa (PSE)",
+    description: "Audited Summa, a proof of solvency protocol for centralized exchanges",
+    href: "https://pse.dev/projects/summa",
+    tags: [Tags.halo2, Tags.security, Tags.auditing, Tags.rust],
   },
 ];
 
@@ -30,18 +82,18 @@ export const otherWork = [
     title: "halo2-starter",
     description: "Battle-tested testing patterns for Halo2 development",
     href: "https://github.com/teddav/halo2-starter",
-    tags: ["Halo2", "Testing", "Patterns"],
+    tags: [Tags.halo2, Tags.testing],
   },
   {
     title: "halo2-soundness-bugs",
     description: "Exploring edge cases and exploits in Halo2 implementations",
     href: "https://github.com/teddav/halo2-soundness-bugs",
-    tags: ["Halo2", "Security", "Research"],
+    tags: [Tags.halo2, Tags.security, Tags.research],
   },
   {
-    title: "PR #352",
+    title: "Halo2 cheating feature",
     description: "Emulating malicious provers by modifying cell values in the Mock Prover",
     href: "https://github.com/privacy-scaling-explorations/halo2/pull/352",
-    tags: ["Halo2", "Mock Prover", "Security"],
+    tags: [Tags.halo2, Tags.mock_prover, Tags.security],
   },
 ];
