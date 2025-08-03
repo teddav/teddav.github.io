@@ -1,0 +1,29 @@
+import { getContentList, ContentType } from "@/lib/content";
+import ListContentItem from "@/app/components/ListContentItem";
+
+export default function ContentPage() {
+  const contentList = getContentList(ContentType.other);
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Content</h1>
+        <p className="text-xl text-gray-600">Various writings, reports, and other content.</p>
+      </div>
+
+      {contentList.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-gray-500 text-lg">
+            No content files found. Add markdown files to the <code className="bg-gray-100 px-2 py-1 rounded">content/</code> directory.
+          </p>
+        </div>
+      ) : (
+        <div className="grid gap-6">
+          {contentList.map((item) => (
+            <ListContentItem key={item.slug} item={item} path="content" />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

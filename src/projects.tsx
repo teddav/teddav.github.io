@@ -72,8 +72,22 @@ export const zkAuditing = [
   {
     title: "Summa (PSE)",
     description: "Audited Summa, a proof of solvency protocol for centralized exchanges",
-    href: "https://pse.dev/projects/summa",
-    tags: [Tags.halo2, Tags.security, Tags.auditing, Tags.rust],
+    href: "https://github.com/electisec/summa-audit-report",
+    tags: [Tags.halo2, Tags.security, Tags.auditing, Tags.rust, Tags.evm, Tags.zk],
+    details: (
+      <b>
+        <a href="https://pse.dev/projects/summa">Summa</a>
+        I also wrote a detailed code walkthrough of the solidity contracts, and the ZK circuits:
+        <br />
+        <a href="https://teddav.github.io/blog/summa-code-walkthrough">here</a>
+      </b>
+    ),
+  },
+  {
+    title: "Electisec zblock2",
+    description: "zBlock2 top fellow",
+    href: "https://electisec.com/zBlock2",
+    tags: [Tags.zk, Tags.security, Tags.auditing, Tags.research],
   },
 ];
 
@@ -95,5 +109,30 @@ export const otherWork = [
     description: "Emulating malicious provers by modifying cell values in the Mock Prover",
     href: "https://github.com/privacy-scaling-explorations/halo2/pull/352",
     tags: [Tags.halo2, Tags.mock_prover, Tags.security],
+  },
+  {
+    title: "Contributing to Foundry",
+    description: "Contributing to Foundry, a tool for building and testing smart contracts",
+    href: "https://github.com/foundry-rs/foundry",
+    tags: [Tags.evm, Tags.rust, Tags.testing],
+    details: (
+      <>
+        broadcastRawTransaction cheatcode: <a href="https://github.com/foundry-rs/foundry/pull/4931">PR</a>
+        <br />
+        getMemory cheatcode: <a href="https://github.com/foundry-rs/foundry/pull/4664">PR</a>
+        <br />
+        chisel improvement: <a href="https://github.com/foundry-rs/foundry/pull/5584">PR</a>
+        <br />
+        <b>
+          see more details in my blog post <a href="https://teddav.github.io/blog/foundry1">here</a>
+        </b>
+      </>
+    ),
+  },
+  {
+    title: "halo2 tornado cash",
+    description: "Implementing tornado cash in Halo2",
+    href: "https://teddav.github.io/blog/tornado-halo2",
+    tags: [Tags.halo2, Tags.security, Tags.privacy],
   },
 ];
