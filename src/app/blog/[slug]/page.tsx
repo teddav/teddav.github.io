@@ -1,13 +1,20 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-import { getContent, ContentType } from "@/lib/content";
+import { getContent, ContentType, getContentList } from "@/lib/content";
 import MdContent from "@/lib/components/MdContent";
 
 interface ArticlePageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateStaticParams() {
+  const content = getContentList(ContentType.article);
+  return content.map((c) => ({
+    slug: c.slug,
+  }));
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
