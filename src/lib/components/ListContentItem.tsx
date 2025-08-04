@@ -9,8 +9,11 @@ interface ListContentItemProps {
 
 export default function ListContentItem({ item, path }: ListContentItemProps) {
   return (
-    <article key={item.slug} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-      <Link href={`/${path}/${item.slug}`} className="block">
+    <Link href={`/${path}/${item.slug}`} className="block">
+      <article
+        key={item.slug}
+        className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-all duration-150 active:scale-99 cursor-pointer"
+      >
         <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">{item.title}</h2>
         {item.subtitle && <p className="text-gray-600 mb-3">{item.subtitle}</p>}
         <div className="flex items-center justify-between text-sm text-gray-500">
@@ -31,7 +34,7 @@ export default function ListContentItem({ item, path }: ListContentItemProps) {
             </div>
           )}
         </div>
-      </Link>
-    </article>
+      </article>
+    </Link>
   );
 }
