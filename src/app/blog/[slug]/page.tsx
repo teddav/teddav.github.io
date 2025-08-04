@@ -20,7 +20,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <article className="lg:ml-80">
+      <article className="lg:ml-64 lg:pl-4">
         <div className="mb-6">
           <Link href="/blog" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

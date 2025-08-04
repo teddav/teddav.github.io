@@ -7,14 +7,11 @@ import workList from "@/projects";
 
 export default function HomePage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-16">
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Hey! I&apos;m David, a senior developer, and a (beginner 👶) cryptographer and zero-knowledge researcher.
+          Hey! I&apos;m David, a senior developer, and a (beginner 👶) cryptography engineer and zero-knowledge explorer 🧪
           <br />
-          I&apos;m currently exploring the fascinating world of zero-knowledge proofs, cryptography, and privacy-preserving technologies.
-          <br />
-          Currently building, breaking, and writing about ZK and MPC.
         </p>
       </div>
 
@@ -44,55 +41,23 @@ export default function HomePage() {
       </div>
 
       <section className="mb-16">
-        <p className="text-gray-700 mb-4">
-          These days, I&apos;m deep into cryptography: zero-knowledge proofs, MPC, FHE. Interested in building privacy-preserving
-          applications.
-          <br />
-          My work focuses on exploring the boundaries of what&apos;s possible with modern cryptographic techniques.
-          <br />
-          I used to do DevSecOps for Big Tech, now I&apos;m more excited about low-level stuff like assembly and wasm.
-          <br />
-          I also worked on smart contract security and the EVM, having fun with solidity and yul.
-          <br />I work at the intersection of zero-knowledge, smart contract security, and cryptographic engineering.
-        </p>
+        <Section title="Writings">
+          <p className="text-gray-600">Explore my latest deep dives on cryptography, algebra, zero-knowledge proofs and MPC.</p>
+          <div className="mt-4">
+            <Link href="/blog" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              Read Articles
+            </Link>
+          </div>
+        </Section>
 
-        <div className="bg-gray-50 rounded-lg p-6 mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">Achievements</h3>
-          <ul className="space-y-2 text-gray-700">
-            <li className="flex items-start gap-2">
-              <span>🥇</span>
-              <span>
-                First place in <strong>Secureum Epoch 0</strong> (smart contract security bootcamp)
-              </span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span>🧪</span>
-              <span>
-                ZK Security Fellow @ <strong>Electi</strong> (formerly yAcademy)
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <Section title="Writings">
-            <p className="text-gray-600">Explore my latest deep dives on cryptography, algebra, zero-knowledge proofs and MPC.</p>
-            <div className="mt-4">
-              <Link href="/blog" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                Read Articles
-              </Link>
-            </div>
-          </Section>
-
-          <Section title="Featured Zero-Knowledge Work">
-            <p className="text-gray-600 mb-6">My most recent and impactful work in zero-knowledge proofs and cryptographic engineering.</p>
-            <div className="space-y-6">
-              {workList.featured.map((project) => (
-                <ProjectCard key={project.title} {...project} />
-              ))}
-            </div>
-          </Section>
-        </div>
+        <Section title="Latest Work">
+          <p className="text-gray-600 mb-6">My most recent and impactful work</p>
+          <div className="space-y-6">
+            {workList.featured.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
+        </Section>
       </section>
     </div>
   );

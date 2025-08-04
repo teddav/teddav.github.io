@@ -65,7 +65,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
 
   return (
     <>
-      {/* Mobile TOC Button */}
+      {/* Mobile */}
       <div className="lg:hidden mb-6">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -82,7 +82,6 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
           </svg>
         </button>
 
-        {/* Mobile TOC Dropdown */}
         {isOpen && (
           <div className="mt-4 p-4 bg-gray-50 rounded-lg border">
             <div className="toc-mobile prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
@@ -90,12 +89,37 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
         )}
       </div>
 
-      {/* Desktop TOC Sidebar */}
-      <div className="hidden lg:block lg:fixed lg:top-24 lg:left-8 lg:w-64 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
-        <div className="bg-gray-50 rounded-lg p-4 border sticky top-24">
-          <h3 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Table of Contents</h3>
-          <div ref={desktopTocRef} className="toc-desktop prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
-        </div>
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block lg:fixed lg:top-24 lg:left-8 lg:w-64">
+        {isOpen ? (
+          <div className="bg-gray-50 rounded-lg p-4 border sticky top-24">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Table of Contents</h3>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+                title="Hide table of contents"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div ref={desktopTocRef} className="toc-desktop prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
+          </div>
+        ) : (
+          <>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="bg-gray-50 hover:bg-gray-100 border rounded-lg p-2 transition-colors"
+              title="Show table of contents"
+            >
+              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
     </>
   );
