@@ -157,14 +157,6 @@ const work: Record<string, TProject[]> = {
       startDate: new Date("2023-03-01"),
       endDate: new Date("2024-06-01"),
     },
-    {
-      title: "Angle: EURO stablecoin",
-      description: "Angle: EURO stablecoin",
-      href: "https://www.angle.money/",
-      tags: [Tags.evm, Tags.solidity],
-      startDate: new Date("2021-06-30"),
-      endDate: new Date("2023-01-01"),
-    },
   ],
 
   other: [
@@ -180,6 +172,14 @@ const work: Record<string, TProject[]> = {
         </>
       ),
       startDate: new Date("2024-01-01"),
+    },
+    {
+      title: "Angle: EURO stablecoin",
+      description: "Angle: EURO stablecoin",
+      href: "https://www.angle.money/",
+      tags: [Tags.evm, Tags.solidity],
+      startDate: new Date("2021-06-30"),
+      endDate: new Date("2023-01-01"),
     },
   ],
 };

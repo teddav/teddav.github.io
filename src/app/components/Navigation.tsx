@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navigation() {
   return (
@@ -8,8 +9,11 @@ export default function Navigation() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-semibold text-gray-900 hover:text-gray-700">
-              teddav
+            <Link href="/" className="flex items-center gap-3 text-xl font-semibold text-gray-900 hover:text-gray-700">
+              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
+                <Image src="/img/logo.png" alt="teddav" width={32} height={32} className="rounded-full" />
+              </div>
+              <span className="text-xl font-semibold text-gray-900 hover:text-gray-700">teddav</span>
             </Link>
           </div>
           <div className="flex items-center space-x-8">
