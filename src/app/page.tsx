@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Section from "./components/Section";
-import ProjectCard from "./components/ProjectCard";
+import Section from "@/lib/components/Section";
+import ProjectCard from "@/lib/components/ProjectCard";
 import workList from "@/projects";
 
 export default function HomePage() {
@@ -73,43 +73,27 @@ export default function HomePage() {
             </li>
           </ul>
         </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <Section title="Writings">
+            <p className="text-gray-600">Explore my latest deep dives on cryptography, algebra, zero-knowledge proofs and MPC.</p>
+            <div className="mt-4">
+              <Link href="/blog" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                Read Articles
+              </Link>
+            </div>
+          </Section>
+
+          <Section title="Featured Zero-Knowledge Work">
+            <p className="text-gray-600 mb-6">My most recent and impactful work in zero-knowledge proofs and cryptographic engineering.</p>
+            <div className="space-y-6">
+              {workList.featured.map((project) => (
+                <ProjectCard key={project.title} {...project} />
+              ))}
+            </div>
+          </Section>
+        </div>
       </section>
-
-      {/* Latest Articles */}
-      <Section title="Writings">
-        <p className="text-gray-600">Explore my latest deep dives on cryptography, algebra, zero-knowledge proofs and MPC.</p>
-        <div className="mt-4">
-          <Link href="/blog" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
-            Read Articles
-          </Link>
-        </div>
-      </Section>
-
-      {/* Projects & Tooling */}
-      <Section title="Zero-Knowledge">
-        <div className="space-y-6">
-          {workList.zk.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Open Source">
-        <div className="space-y-6">
-          {workList.open_source.map((audit) => (
-            <ProjectCard key={audit.title} {...audit} />
-          ))}
-        </div>
-      </Section>
-
-      {/* Other Work */}
-      <Section title="Other Work">
-        <div className="space-y-6">
-          {workList.other.map((work) => (
-            <ProjectCard key={work.title} {...work} />
-          ))}
-        </div>
-      </Section>
     </div>
   );
 }

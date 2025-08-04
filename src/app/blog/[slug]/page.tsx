@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import { getContent, ContentType } from "@/lib/content";
-import MdContent from "@/app/components/MdContent";
+import MdContent from "@/lib/components/MdContent";
 
 interface ArticlePageProps {
   params: Promise<{

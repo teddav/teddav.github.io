@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import TagFilter from "@/app/components/TagFilter";
-import ListContentItem from "@/app/components/ListContentItem";
+import TagFilter from "@/lib/components/TagFilter";
+import ListContentItem from "@/lib/components/ListContentItem";
 
 interface Article {
   slug: string;

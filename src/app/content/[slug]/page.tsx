@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getContent, ContentType } from "@/lib/content";
-import MdContent from "@/app/components/MdContent";
+import MdContent from "@/lib/components/MdContent";
 
 interface ContentPageProps {
   params: Promise<{

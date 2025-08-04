@@ -36,7 +36,7 @@ export type TProject = {
 };
 
 const work: Record<string, TProject[]> = {
-  zk: [
+  featured: [
     {
       title: "zk-tenant",
       description: "Privacy-preserving housing application using 2D-Doc",
@@ -51,12 +51,15 @@ const work: Record<string, TProject[]> = {
       tags: [Tags.mpc, Tags.co_snarks, Tags.taceo],
       startDate: new Date("2025-05-05"),
     },
+  ],
+
+  zk: [
     {
-      title: "stark_by_hand",
-      description: "Implementing STARKs from scratch to understand the protocol deeply",
-      href: "https://github.com/teddav/stark_by_hand",
-      tags: [Tags.stark, Tags.zk, Tags.education, Tags.python],
-      startDate: new Date("2025-03-15"),
+      title: "noir recursive proofs",
+      description: "Implementing recursive proofs in Noir",
+      href: "https://github.com/teddav/noir-recursive",
+      tags: [Tags.noir, Tags.zk],
+      startDate: new Date("2025-04-20"),
     },
     {
       title: "Noir WebProof SDK proposal",
@@ -69,6 +72,13 @@ const work: Record<string, TProject[]> = {
       href: "https://github.com/orgs/noir-lang/discussions/8595",
       tags: [Tags.webassembly, Tags.noir, Tags.zk_tls],
       startDate: new Date("2025-07-01"),
+    },
+    {
+      title: "stark_by_hand",
+      description: "Implementing STARKs from scratch to understand the protocol deeply",
+      href: "https://github.com/teddav/stark_by_hand",
+      tags: [Tags.stark, Tags.zk, Tags.education, Tags.python],
+      startDate: new Date("2025-03-15"),
     },
     {
       title: "halo2 soundness bug",

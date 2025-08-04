@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "./components/Navigation";
+import Navigation from "@/lib/components/Navigation";
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/github.css";
 import { GoogleAnalytics } from "@next/third-parties/google";

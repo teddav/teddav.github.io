@@ -17,10 +17,22 @@ export default function Navigation() {
             </Link>
           </div>
           <div className="flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/"
+              className="text-gray-700 hover:text-gray-900 hover:underline px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
               Home
             </Link>
-            <Link href="/blog" className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+            <Link
+              href="/portfolio"
+              className="text-gray-700 hover:text-gray-900 hover:underline px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Portfolio
+            </Link>
+            <Link
+              href="/blog"
+              className="text-gray-700 hover:text-gray-900 hover:underline px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
               Blog
             </Link>
           </div>

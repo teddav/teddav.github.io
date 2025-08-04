@@ -1,5 +1,5 @@
 import { getContentList, ContentType } from "@/lib/content";
-import ListContentItem from "@/app/components/ListContentItem";
+import ListContentItem from "@/lib/components/ListContentItem";
 
 export default function ContentPage() {
   const contentList = getContentList(ContentType.other);
