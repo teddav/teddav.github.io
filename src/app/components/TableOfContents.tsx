@@ -27,15 +27,12 @@ function useActiveHeading() {
     const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
     headings.forEach((heading) => observer.observe(heading));
 
-    return () => {
-      headings.forEach((heading) => observer.unobserve(heading));
-    };
+    return () => observer.disconnect();
   }, []);
 
   return activeId;
 }
 
-// Hook to update active class in TOC
 function useTocActiveClass(activeId: string) {
   const updateActiveClass = (element: HTMLElement | null) => {
     if (!element) return;

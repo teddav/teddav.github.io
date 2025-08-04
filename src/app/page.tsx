@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Section from "./components/Section";
 import ProjectCard from "./components/ProjectCard";
-import { projects, otherWork, zkAuditing } from "@/projects";
+import workList from "@/projects";
 
 export default function HomePage() {
   return (
@@ -89,17 +89,17 @@ export default function HomePage() {
       </Section>
 
       {/* Projects & Tooling */}
-      <Section title="Projects & Tooling">
+      <Section title="Zero-Knowledge">
         <div className="space-y-6">
-          {projects.map((project) => (
+          {workList.zk.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
       </Section>
 
-      <Section title="ZK Auditing">
+      <Section title="Open Source">
         <div className="space-y-6">
-          {zkAuditing.map((audit) => (
+          {workList.open_source.map((audit) => (
             <ProjectCard key={audit.title} {...audit} />
           ))}
         </div>
@@ -108,7 +108,7 @@ export default function HomePage() {
       {/* Other Work */}
       <Section title="Other Work">
         <div className="space-y-6">
-          {otherWork.map((work) => (
+          {workList.other.map((work) => (
             <ProjectCard key={work.title} {...work} />
           ))}
         </div>

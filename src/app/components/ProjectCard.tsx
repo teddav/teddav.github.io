@@ -1,15 +1,6 @@
 "use client";
 
-import { Tags } from "@/projects";
-
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  href: string;
-  tags: Tags[];
-  badge?: string;
-  details?: React.ReactNode;
-}
+import { Tags, TProject } from "@/projects";
 
 const tagColor = (tag: Tags) => {
   // https://tailwindcss.com/docs/colors
@@ -62,16 +53,33 @@ const tagColor = (tag: Tags) => {
   return tagToColorMap[tag] || colors.red;
 };
 
-export default function ProjectCard({ title, description, href, tags, badge, details }: ProjectCardProps) {
+export default function ProjectCard({ title, description, href, tags, badge, details, startDate, endDate }: TProject) {
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+    });
+  };
+
+  const dateText = endDate ? `${formatDate(startDate)} - ${formatDate(endDate)}` : formatDate(startDate);
+
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6">
       <div className="flex items-start justify-between mb-2">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">
-          <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
+        <div className="flex-1">
+          <h3 className="text-xl font-semibold text-blue-600 hover:text-blue-700 mb-1">
             {title}
-          </a>
-          {badge && <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-xs">{badge}</span>}
-        </h3>
+            {badge && <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-xs">{badge}</span>}
+          </h3>
+          <p className="text-xs text-gray-500 mb-1">{dateText}</p>
+          {href && (
+            <p className="text-sm text-gray-500 mb-2">
+              <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">
+                {href}
+              </a>
+            </p>
+          )}
+        </div>
         <div className="flex gap-1 flex-wrap justify-end">
           {tags.map((tag) => (
             <span key={tag} className={`${tagColor(tag)} px-2 py-1 rounded text-xs`}>
