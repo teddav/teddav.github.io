@@ -19,8 +19,8 @@ export default function HomePage() {
 
         <div className="max-w-3xl mx-auto">
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            I&apos;m obsessed with <span className="font-semibold text-orange-600">security</span> and modern{" "}
-            <span className="font-semibold text-green-600">cryptography</span> (ZK, MPC, FHE).
+            I&apos;m obsessed with <span className="font-semibold text-orange-600">security</span> and{" "}
+            <span className="font-semibold text-green-600">modern cryptography</span> (ZK, MPC, FHE).
           </p>
           <p className="text-lg text-gray-700 leading-relaxed">
             I love tinkering with <span className="font-semibold text-red-600">low-level internals</span> and breaking things to understand
