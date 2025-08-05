@@ -2,12 +2,15 @@
 
 import { useEffect } from "react";
 import mermaid from "mermaid";
+import { useColorSchemeContext } from "@/lib/contexts/ColorSchemeContext";
 
 export default function MermaidRenderer() {
+  const { isDarkMode } = useColorSchemeContext();
+
   useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,
-      theme: "default",
+      theme: isDarkMode ? "dark" : "default",
       securityLevel: "loose",
       fontFamily: "Arial, sans-serif",
     });
@@ -30,7 +33,7 @@ export default function MermaidRenderer() {
     };
 
     renderMermaid();
-  }, []);
+  }, [isDarkMode]);
 
   return null;
 }
