@@ -61,35 +61,69 @@ export default function ProjectCard({ title, description, href, tags, badge, det
     });
   };
 
-  const dateText = endDate ? `${formatDate(startDate)} - ${formatDate(endDate)}` : formatDate(startDate);
+  let dateText = formatDate(startDate);
+  if (endDate) {
+    if (endDate === "present") {
+      dateText = `since ${formatDate(startDate)}`;
+    } else {
+      dateText = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+    }
+  }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
-      <div className="flex items-start justify-between mb-2">
-        <div className="flex-1">
-          <h3 className="text-xl font-semibold text-blue-600 hover:text-blue-700 mb-1">
-            {title}
-            {badge && <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-xs">{badge}</span>}
-          </h3>
-          <p className="text-xs text-gray-500 mb-1">{dateText}</p>
+    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-200 group">
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex-2">
+          <div className="flex items-center gap-2 mb-2">
+            <h3 className="text-xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors">{title}</h3>
+            {badge && (
+              <span className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium border border-green-200">
+                {badge}
+              </span>
+            )}
+          </div>
+          <p className="text-xs text-gray-500 mb-2 font-medium">{dateText}</p>
           {href && (
-            <p className="text-sm text-gray-500 mb-2">
-              <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-gray-700">
-                {href}
+            <p className="text-sm text-gray-500 mb-3">
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-start gap-1 hover:text-blue-600 transition-colors break-words group/link"
+              >
+                <span className="break-normal">{href}</span>
+                <svg
+                  className="w-3.5 h-3.5 text-gray-400 group-hover/link:text-blue-600 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
               </a>
             </p>
           )}
         </div>
-        <div className="flex gap-1 flex-wrap justify-end">
+        <div className="flex gap-1 flex-wrap justify-end ml-4 min-w-0">
           {tags.map((tag) => (
-            <span key={tag} className={`${tagColor(tag)} px-2 py-1 rounded text-xs`}>
+            <span
+              key={tag}
+              className={`${tagColor(
+                tag
+              )} px-2.5 py-1.5 rounded text-xs font-medium border border-opacity-50 hover:scale-105 transition-transform flex-shrink-0`}
+            >
               {tag}
             </span>
           ))}
         </div>
       </div>
-      <p className="text-gray-700 mb-3">{description}</p>
-      {details && <p className="text-gray-700 mb-3">{details}</p>}
+      <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
+      {details && <div className="text-gray-700 mb-0 leading-relaxed">{details}</div>}
     </div>
   );
 }

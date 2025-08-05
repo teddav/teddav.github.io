@@ -189,7 +189,6 @@ body {
 
 /* Style external links with an icon */
 .prose a[href^="http"]:not([href*="teddav.github.io"])::after {
-  content: "↗";
   margin-left: 4px;
   font-size: 0.8em;
   opacity: 0.7;

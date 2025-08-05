@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export enum Tags {
   privacy = "privacy",
   zk = "zero-knowledge",
@@ -32,11 +34,19 @@ export type TProject = {
   badge?: string;
   details?: React.ReactNode;
   startDate: Date;
-  endDate?: Date;
+  endDate?: Date | "present";
+};
+
+const ExternalLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 hover:underline">
+      {children}
+    </a>
+  );
 };
 
 const work: Record<string, TProject[]> = {
-  featured: [
+  "Latest projects": [
     {
       title: "zk-tenant",
       description: "Privacy-preserving housing application using 2D-Doc",
@@ -51,27 +61,42 @@ const work: Record<string, TProject[]> = {
       tags: [Tags.mpc, Tags.co_snarks, Tags.taceo],
       startDate: new Date("2025-05-05"),
     },
+    {
+      title: "Security",
+      description: "Learning low-level security",
+      badge: "☠️",
+      tags: [Tags.security, Tags.education, Tags.assembly],
+      details: (
+        <>
+          I&apos;m passionate about security, especially low-level (like reverse engineering, assembly, and binary exploitation) but I also
+          enjoy web and network hacking.
+          <br />
+          Entirely self-taught, mostly through <ExternalLink href="https://app.hackthebox.com/profile/225326">
+            HackTheBox
+          </ExternalLink> and <ExternalLink href="https://www.root-me.org/teddav">Root-Me</ExternalLink>
+          <br />
+          From &quot;simple&quot; binary exploitation to kernel exploits and more.
+        </>
+      ),
+      startDate: new Date("2024-01-01"),
+      endDate: "present",
+    },
   ],
 
-  zk: [
+  "Zero-Knowledge": [
+    {
+      title: "Noir WebProof SDK proposal",
+      description: "Helping bring zk proofs to the browser with a WebAssembly-friendly Noir SDK",
+      href: "https://github.com/orgs/noir-lang/discussions/8595",
+      tags: [Tags.mpc, Tags.zk, Tags.webassembly, Tags.noir, Tags.zk_tls],
+      startDate: new Date("2025-07-01"),
+    },
     {
       title: "noir recursive proofs",
       description: "Implementing recursive proofs in Noir",
       href: "https://github.com/teddav/noir-recursive",
       tags: [Tags.noir, Tags.zk],
       startDate: new Date("2025-04-20"),
-    },
-    {
-      title: "Noir WebProof SDK proposal",
-      description: "Helping bring zk proofs to the browser with a WebAssembly-friendly Noir SDK",
-      details: (
-        <b>
-          Test <a href="https://github.com/orgs/noir-lang/discussions/8595">link</a>
-        </b>
-      ),
-      href: "https://github.com/orgs/noir-lang/discussions/8595",
-      tags: [Tags.webassembly, Tags.noir, Tags.zk_tls],
-      startDate: new Date("2025-07-01"),
     },
     {
       title: "mpz-play",
@@ -116,10 +141,10 @@ const work: Record<string, TProject[]> = {
       startDate: new Date("2024-04-20"),
     },
     {
-      title: "Electisec zblock2",
-      description: "zBlock2 top fellow",
+      title: "Electisec zblock2 (formerly yAcademy)",
+      description: "Top fellow in ZK security fellowship",
       href: "https://electisec.com/zBlock2",
-      tags: [Tags.zk, Tags.security, Tags.auditing, Tags.research],
+      tags: [Tags.zk, Tags.security, Tags.auditing, Tags.research, Tags.education],
       startDate: new Date("2024-02-01"),
       endDate: new Date("2024-04-30"),
     },
@@ -153,7 +178,7 @@ const work: Record<string, TProject[]> = {
     },
   ],
 
-  open_source: [
+  "Other work": [
     {
       title: "Contributing to Foundry",
       description: "Contributing to Foundry, a tool for building and testing smart contracts",
@@ -161,39 +186,48 @@ const work: Record<string, TProject[]> = {
       tags: [Tags.evm, Tags.rust, Tags.testing],
       details: (
         <>
-          broadcastRawTransaction cheatcode: <a href="https://github.com/foundry-rs/foundry/pull/4931">PR</a>
-          <br />
-          getMemory cheatcode: <a href="https://github.com/foundry-rs/foundry/pull/4664">PR</a>
-          <br />
-          chisel improvement: <a href="https://github.com/foundry-rs/foundry/pull/5584">PR</a>
-          <br />
-          <b>
-            see more details in my blog post <a href="https://teddav.github.io/blog/foundry1">here</a>
-          </b>
+          <div className="space-y-2">
+            I merged multiple PRs, based on my needs developing smart contracts:
+            <ul className="list-disc flex-col items-center gap-2 ml-4">
+              <li>
+                <ExternalLink href="https://github.com/foundry-rs/foundry/pull/4931">broadcastRawTransaction cheatcode</ExternalLink>
+              </li>
+              <li>
+                <ExternalLink href="https://github.com/foundry-rs/foundry/pull/4664">getMemory cheatcode</ExternalLink>
+              </li>
+              <li>
+                <ExternalLink href="https://github.com/foundry-rs/foundry/pull/5584">chisel improvement</ExternalLink>
+              </li>
+            </ul>
+            <div>
+              See more details in my blog post{" "}
+              <Link href="/blog/foundry1" className="text-blue-600 hover:text-blue-700">
+                here
+              </Link>
+            </div>
+          </div>
         </>
       ),
       startDate: new Date("2023-03-01"),
       endDate: new Date("2024-06-01"),
     },
-  ],
-
-  other: [
     {
-      title: "Security",
-      description: "Learning low-level security",
-      tags: [Tags.security],
+      title: "Secureum Epoch 0",
+      description: "Smart contract security bootcamp",
+      href: "https://www.secureum.xyz/",
+      tags: [Tags.security, Tags.evm, Tags.solidity, Tags.zk],
+      startDate: new Date("2021-10-01"),
+      endDate: new Date("2021-12-30"),
       details: (
         <>
-          I&apos;m passionate about security, especially the low-level stuff (like reverse engineering, assembly, and binary exploitation)
-          but I also enjoy web and network hacking. I&apos;m self-taught, mostly through{" "}
-          <a href="https://app.hackthebox.com/profile/225326">HackTheBox</a> and <a href="https://www.root-me.org/teddav">Root-Me</a>
+          <p>I was awarded the first place in the first cohort of Secureum Epoch 0, a smart contract security bootcamp.</p>
+          See the <ExternalLink href="https://github.com/x676f64/secureum-mind_map">bootcamp content</ExternalLink>
         </>
       ),
-      startDate: new Date("2024-01-01"),
     },
     {
       title: "Angle: EURO stablecoin",
-      description: "Angle: EURO stablecoin",
+      description: "Main decentralized EURO stablecoin",
       href: "https://www.angle.money/",
       tags: [Tags.evm, Tags.solidity],
       startDate: new Date("2021-06-30"),

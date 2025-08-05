@@ -24,12 +24,6 @@ export default function Navigation() {
               Home
             </Link>
             <Link
-              href="/about"
-              className="text-gray-700 hover:text-gray-900 hover:underline px-3 py-2 rounded-md text-base font-medium transition-all duration-150 active:scale-95"
-            >
-              About
-            </Link>
-            <Link
               href="/portfolio"
               className="text-gray-700 hover:text-gray-900 hover:underline px-3 py-2 rounded-md text-base font-medium transition-all duration-150 active:scale-95"
             >
