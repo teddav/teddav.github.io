@@ -65,7 +65,7 @@ export default function TagFilter({ articles, onFilteredArticles }: TagFilterPro
           <button
             key={tag}
             onClick={() => toggleTag(tag)}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-3 py-1 rounded text-sm font-medium transition-all duration-200 ${
               selectedTags.includes(tag) ? "bg-blue-600 text-white shadow-md" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >

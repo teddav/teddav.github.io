@@ -24,7 +24,7 @@ export default function MdContent({ content }: { content: ContentProps }) {
         {content.tags && content.tags.length > 0 && (
           <div className="flex gap-2 mt-4">
             {content.tags.map((tag: string) => (
-              <span key={tag} className="bg-gray-100 px-3 py-1 rounded-full text-sm">
+              <span key={tag} className="bg-gray-100 px-3 py-1 rounded text-sm">
                 {tag}
               </span>
             ))}
