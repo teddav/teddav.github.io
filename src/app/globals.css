@@ -17,6 +17,156 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+  body {
+    background: #0a0a0a;
+    color: #ededed;
+  }
+
+  /* Navigation dark mode */
+  nav {
+    background: #1a1a1a !important;
+    border-color: #333 !important;
+  }
+
+  /* Card backgrounds */
+  .bg-white {
+    background-color: #1a1a1a !important;
+  }
+
+  .border-gray-200 {
+    border-color: #333 !important;
+  }
+
+  /* Text colors */
+  .text-gray-900 {
+    color: #f3f4f6 !important;
+  }
+
+  .text-gray-700 {
+    color: #d1d5db !important;
+  }
+
+  .text-gray-600 {
+    color: #9ca3af !important;
+  }
+
+  .text-gray-500 {
+    color: #6b7280 !important;
+  }
+
+  .text-gray-400 {
+    color: #9ca3af !important;
+  }
+
+  /* Hover states */
+  .hover\:text-gray-900:hover {
+    color: #f3f4f6 !important;
+  }
+
+  .hover\:text-gray-700:hover {
+    color: #d1d5db !important;
+  }
+
+  /* Tag backgrounds */
+  .bg-gray-100 {
+    background-color: #374151 !important;
+  }
+
+  .bg-gray-50 {
+    background-color: #1f2937 !important;
+  }
+
+  /* Prose content */
+  .prose {
+    color: #d1d5db !important;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    color: #f3f4f6 !important;
+  }
+
+  .prose p {
+    color: #d1d5db !important;
+  }
+
+  .prose a {
+    color: #60a5fa !important;
+  }
+
+  .prose a:hover {
+    color: #3b82f6 !important;
+  }
+
+  .prose code {
+    background-color: #374151 !important;
+    color: #e5e7eb !important;
+  }
+
+  .prose pre {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+  }
+
+  .prose pre code {
+    color: #e5e7eb !important;
+  }
+
+  .prose blockquote {
+    border-color: #4b5563 !important;
+    color: #9ca3af !important;
+  }
+
+  /* Table of contents */
+  .toc-desktop, .toc-mobile {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+  }
+
+  .toc-desktop a, .toc-mobile a {
+    color: #60a5fa !important;
+  }
+
+  .toc-desktop a:hover, .toc-mobile a:hover {
+    background-color: #374151 !important;
+  }
+
+  .toc-desktop a.active, .toc-mobile a.active {
+    background-color: #1e40af !important;
+    color: #dbeafe !important;
+  }
+
+  /* Links */
+  .text-blue-600 {
+    color: #60a5fa !important;
+  }
+
+  .hover\:text-blue-700:hover {
+    color: #3b82f6 !important;
+  }
+
+  /* Buttons */
+  .bg-blue-600 {
+    background-color: #2563eb !important;
+  }
+
+  .hover\:bg-blue-700:hover {
+    background-color: #1d4ed8 !important;
+  }
+
+  /* Shadow adjustments */
+  .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .hover\:shadow-md:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+    background: linear-gradient(to right, #1e3a8a, #3730a3) !important;
+  }
 }
 
 body {
