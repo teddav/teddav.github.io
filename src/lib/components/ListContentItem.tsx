@@ -4,7 +4,7 @@ import { ContentMetadata } from "@/lib/content";
 
 interface ListContentItemProps {
   item: ContentMetadata;
-  path: "blog" | "content";
+  path: "blog" | "notes";
 }
 
 export default function ListContentItem({ item, path }: ListContentItemProps) {

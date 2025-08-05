@@ -1,6 +1,11 @@
 import Section from "@/lib/components/Section";
 import ProjectCard from "@/lib/components/ProjectCard";
 import workList from "@/projects";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+};
 
 export default function Portfolio() {
   const sections = Object.keys(workList);

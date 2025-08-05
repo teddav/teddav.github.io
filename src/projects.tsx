@@ -135,7 +135,7 @@ const work: Record<string, TProject[]> = {
           <a href="https://pse.dev/projects/summa">Summa</a>
           I also wrote a detailed code walkthrough of the solidity contracts, and the ZK circuits:
           <br />
-          <a href="https://teddav.github.io/blog/summa-code-walkthrough">here</a>
+          <Link href="/notes/summa-contracts">here</Link>
         </b>
       ),
       startDate: new Date("2024-04-20"),

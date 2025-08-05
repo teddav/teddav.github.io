@@ -5,7 +5,7 @@ import matter from "gray-matter";
 
 export enum ContentType {
   article = "articles",
-  other = "other",
+  notes = "notes",
 }
 
 export interface ContentMetadata {
