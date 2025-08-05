@@ -90,7 +90,7 @@ Let:
         \end{aligned}
     $$
 
-        These are used as symmetric keys to encrypt messages
+    These are used as symmetric keys to encrypt messages
 
 4.  The Receiver computes a single key using his secret $b$:
 

@@ -376,7 +376,7 @@ In the primal form, we generate noisy linear combinations of a secret vector:
 - $\vec{s} \in \{0,1\}^n$, the secret vector we’re committing to
 - $\vec{e} \in \{0,1\}^m$, a sparse noise vector
 
-![lpn primal](/img/blog/vole-primal.png)
+![lpn primal](/img/blog/vole-lpn-primal.png)
 
 Then we get:
 
@@ -416,14 +416,14 @@ H \cdot \vec{r}
 \end{aligned}
 $$
 
-![lpn dual](/img/blog/vole-dual.png)
+![lpn dual](/img/blog/vole-lpn-dual.png)
 
 We now have:
 
 - $\vec{e} \in \{0,1\}^m$, a secret binary ($\mathbb{F}_2$) vector
 - $H \in \{0,1\}^{k \times m}$, a public binary matrix
 
-![lpn dual simplified](/img/blog/vole-dual-simple.png)
+![lpn dual simplified](/img/blog/vole-lpn-dual-simple.png)
 
 This new problem:
 
