@@ -74,6 +74,14 @@ const work: Record<string, TProject[]> = {
       startDate: new Date("2025-07-01"),
     },
     {
+      title: "mpz-play",
+      description:
+        "Updated mpz-play to the latest version of mpz. A comprehensive playground for learning and experimenting with the mpz framework. Great resource for understanding MPC concepts.",
+      href: "https://github.com/th4s/mpz-play",
+      tags: [Tags.mpc, Tags.education],
+      startDate: new Date("2025-06-01"),
+    },
+    {
       title: "stark_by_hand",
       description: "Implementing STARKs from scratch to understand the protocol deeply",
       href: "https://github.com/teddav/stark_by_hand",
@@ -126,7 +134,7 @@ const work: Record<string, TProject[]> = {
       title: "halo2-soundness-bugs",
       description: "Exploring edge cases and exploits in Halo2 implementations",
       href: "https://github.com/teddav/halo2-soundness-bugs",
-      tags: [Tags.halo2, Tags.security, Tags.research],
+      tags: [Tags.halo2, Tags.security, Tags.research, Tags.education],
       startDate: new Date("2025-02-20"),
     },
     {
