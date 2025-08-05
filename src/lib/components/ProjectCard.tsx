@@ -71,7 +71,7 @@ export default function ProjectCard({ title, description, href, tags, badge, det
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-200 group">
+    <div className="bg-white border border-gray-200 rounded-lg p-6 group">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-2">
           <div className="flex items-center gap-2 mb-2">
