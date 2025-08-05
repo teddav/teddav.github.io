@@ -18,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "teddav's Blog",
-  description: "Thoughts on cryptography, algebra, and technology",
+  description: "Thoughts on security and cryptography",
+  icons: "/logo.png",
 };
 
 export default function RootLayout({
