@@ -286,6 +286,13 @@ const work: Record<string, TProject[]> = {
       tags: [Tags.evm, Tags.solidity],
       startDate: new Date("2021-06-30"),
       endDate: new Date("2023-01-01"),
+      details: (
+        <>
+          I was a core contributor to Angle, the main decentralized EURO stablecoin.
+          <br />
+          Reached €200M TVL while I was there
+        </>
+      ),
     },
   ],
 };
