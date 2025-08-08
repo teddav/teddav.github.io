@@ -110,7 +110,7 @@ export default function ProjectCard({ title, description, href, tags, badge, det
           )}
         </div>
         <div className="flex gap-1 flex-wrap justify-end ml-4 min-w-0">
-          {tags.map((tag) => (
+          {tags?.map((tag) => (
             <span
               key={tag}
               className={`${tagColor(

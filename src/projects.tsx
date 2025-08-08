@@ -30,7 +30,7 @@ export type TProject = {
   title: string;
   description: string;
   href?: string;
-  tags: Tags[];
+  tags?: Tags[];
   badge?: string;
   details?: React.ReactNode;
   startDate: Date;
@@ -291,6 +291,24 @@ const work: Record<string, TProject[]> = {
           I was a core contributor to Angle, the main decentralized EURO stablecoin.
           <br />
           Reached €200M TVL while I was there
+        </>
+      ),
+    },
+    {
+      title: "10 years of building",
+      badge: "🛠️",
+      description: "Full-stack journey from mobile, to infrastructure, to cryptography",
+      startDate: new Date("2015-07-01"),
+      endDate: "present",
+      // href: "https://www.malt.fr/profile/dav",
+      details: (
+        <>
+          Over the past decade, I&apos;ve worked across the stack.
+          <br />
+          From crafting iOS mobile apps, to building backend-heavy web applications with Node.js, to running infrastructure as a DevOps
+          engineer on AWS and GCP.
+          <br />
+          This foundation now fuels my work in cryptography and security.
         </>
       ),
     },
