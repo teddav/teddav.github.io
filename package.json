@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@next/third-parties": "^15.4.5",
-    "@tailwindcss/typography": "^0.5.16",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^9.0.5",
     "highlight.js": "^11.11.1",
@@ -34,6 +33,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/postcss": "^4",
     "@types/mdast": "^4.0.4",
     "@types/node": "^20",
