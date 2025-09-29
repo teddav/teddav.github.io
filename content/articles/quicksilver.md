@@ -455,10 +455,14 @@ If the original values satisfied the equation, the masked values will too. And t
 
 This simple trick gives us **zero-knowledge for free** from the VOLE functionality.
 
-## Code example
+## Show me the code!
 
-TODO: add some explanation?
-
-https://github.com/teddav/mpc-for-newbies/blob/master/quicksilver.sage
+You’ll find a full example, with comments, on how the procotol is run on the mpc-by-hand repo: https://github.com/teddav/mpc-by-hand/blob/master/quicksilver.sage
 
 ## Sources
+
+https://eprint.iacr.org/2021/076.pdf
+
+https://blog.chain.link/vole-based-zk/
+
+https://www.youtube.com/watch?v=U30lzH0k5f8

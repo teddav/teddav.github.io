@@ -14,13 +14,13 @@ Oblivious transfer (OT) is a basic two-party cryptographic protocol between a 
 - 1-out-of-m OT, where the sender has $m$ $$messages and the receiver picks one;
 - n-out-of-m OT, where the receiver picks any $n$ of the sender’s $m$ messages.
 
-The choice of `1`, `n` and `m` depends entirely on the application’s needs.
+The choice of `n` and `m` depends entirely on the application’s needs.
 
 For example, imagine the sender has answers to 10 multiple-choice questions, and the receiver only wants the answer to question 3. OT lets them get that one answer, without the sender knowing which question they asked about, and without learning anything about the other 9 answers.
 
 ### OT variants
 
-The simplest type of OT is 1-out-of-2 OT, where the sender has two messages, and the receiver picks one of them. There are several useful variations of this basic form:
+The simplest type of OT is 1-out-of-2, where the sender has two messages, and the receiver picks one of them. There are several useful variations of this basic form:
 
 - Standard OT (Chosen-message OT): The sender chooses both messages, $m_0$ and $m_1$, and the receiver selects one ($m_b$ for some bit $b \in \{0,1\}$) without revealing their choice.
   ![ot](/img/blog/ot-ot.png)
@@ -50,7 +50,7 @@ A widely used protocol for base OT is the [Chou-Orlandi protocol (2015)](https:
 
 ### Chou-Orlandi
 
-The Chou-Orlandi protocol is an efficient implementation of 1-out-of-2 chosen-message Oblivious Transfer (OT) based on elliptic curve cryptography. It is designed to be fast and easy to batch, which makes it widely used in practice. A batched version of this protocol is implemented in the MPZ library.
+The Chou-Orlandi protocol is an efficient implementation of 1-out-of-2 chosen-message Oblivious Transfer (OT) based on elliptic curve cryptography. It is designed to be fast and easy to batch, which makes it widely used in practice. A batched version of this protocol is implemented in the [MPZ library](https://github.com/privacy-ethereum/mpz/tree/8a57d9891e1941405c31f1b53266e96181b31b26/crates/ot-core/src).
 
 In this protocol, the Sender holds two messages and wants to send exactly one of them to the Receiver, depending on the Receiver’s choice bit, without learning which message was chosen. To achieve this, the protocol derives two shared secret keys through an Elliptic Curve Diffie-Hellman (ECDH) style exchange: one key corresponds to each message.
 
@@ -81,13 +81,14 @@ Let:
       B = A + b⋅g
       $$
 3.  The Sender computes both keys:
+
     Using their private key $a$ and the received public key $B$, the sender computes:
 
     $$
-        \begin{aligned}
-        &k_0 = hash(a ⋅ B) \\
-        &k_1 = hash( a ⋅ (B - A))
-        \end{aligned}
+    \begin{aligned}
+    &k_0 = hash(a ⋅ B) \\
+    &k_1 = hash( a ⋅ (B - A))
+    \end{aligned}
     $$
 
     These are used as symmetric keys to encrypt messages
@@ -132,7 +133,7 @@ Let’s see what values the sender computes, and why only one matches the receiv
 
 In both cases, only one key matches, depending on the receiver's choice $c$ and the sender cannot tell which one.
 
-A full implementation can be found in https://github.com/teddav/mpc-for-newbies
+A full implementation can be found in [MPC by hand](https://github.com/teddav/mpc-by-hand)
 
 ## OT extensions
 
@@ -279,7 +280,7 @@ This works because the key values align depending on Bob's bit $r_j$:
 
 So Bob always gets exactly one key matching his choice, and Alice can’t tell which one he used.
 
-A full implementation can be found in https://github.com/teddav/mpc-for-newbies.
+A full implementation can be found in [MPC by hand](https://github.com/teddav/mpc-by-hand).
 
 ### KOS
 
@@ -363,4 +364,4 @@ We will focus on the MPZ implementation of KOS15 which omits the final randomiza
 
 If random OT is desired (for use in correlated or random protocols), an additional randomization phase is required. The MPZ version skips this step.
 
-An example of MPZ implementation is available https://github.com/teddav/mpc-for-newbies
+An example of MPZ implementation is available [MPC by hand](https://github.com/teddav/mpc-by-hand)
