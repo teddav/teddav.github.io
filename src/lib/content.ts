@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { parseMarkdown } from "./markdown";
+import { FlattenedNode, parseMarkdown } from "./markdown";
 import matter from "gray-matter";
 
 export enum ContentType {
@@ -26,6 +26,7 @@ export interface ContentProps {
   authors?: string;
   content: string;
   toc: string;
+  tree: FlattenedNode[];
 }
 
 const basePath = path.join(process.cwd(), "content");
@@ -74,6 +75,7 @@ export async function getContent(slug: string, contentType: ContentType): Promis
       authors: data.authors,
       content: contentHtml,
       toc: processedContent.data.toc as string,
+      tree: processedContent.data.tree as FlattenedNode[],
     };
   } catch (error) {
     console.error(error);

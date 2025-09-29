@@ -35,10 +35,41 @@ function remarkTocPlugin() {
   };
 }
 
+export type FlattenedNode = {
+  type: string;
+  position: { start: any; end: any };
+  value: string;
+};
+
+function flatten(nodes: any): FlattenedNode[] {
+  const flattened = [];
+  for (const node of nodes) {
+    if (node.children) {
+      flattened.push(...flatten(node.children));
+    } else {
+      flattened.push({
+        type: node.type,
+        position: node.position,
+        value: node.value,
+      });
+    }
+  }
+  return flattened;
+}
+
+function retrieveTree() {
+  return (tree: Root, file: VFile) => {
+    const hast = toHast(tree);
+    const flat = flatten(hast.children);
+    file.data.tree = flat;
+  };
+}
+
 export async function parseMarkdown(content: string) {
   return unified()
     .use(remarkParse)
     .use(remarkTocPlugin)
+    .use(retrieveTree)
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })

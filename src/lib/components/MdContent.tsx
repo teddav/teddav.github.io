@@ -1,11 +1,18 @@
 "use client";
 
+import Fuse from "fuse.js";
+
 import { ContentProps } from "@/lib/content";
 import MermaidRenderer from "./MermaidRenderer";
 import TableOfContents from "./TableOfContents";
 import { TwitterIcon } from "@/lib/components/Icons";
 
 export default function MdContent({ content }: { content: ContentProps }) {
+  const fuse = new Fuse(content.tree, {
+    keys: ["value"],
+  });
+  console.log(fuse.search("triple", { limit: 8 }));
+
   return (
     <>
       <header className="mb-8">
