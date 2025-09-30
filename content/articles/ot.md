@@ -11,7 +11,7 @@ date: 2025-06-20
 Oblivious transfer (OT) is a basic two-party cryptographic protocol between a sender, who holds a collection of messages, and a receiver, who wants to obtain some of them. In an OT, the receiver picks exactly which messages to learn but learns nothing about the others and the sender learns nothing about the receiver’s choice. Common flavors are:
 
 - 1-out-of-2 OT, where the sender has two messages and the receiver picks one;
-- 1-out-of-m OT, where the sender has $m$ $$messages and the receiver picks one;
+- 1-out-of-m OT, where the sender has $m$ messages and the receiver picks one;
 - n-out-of-m OT, where the receiver picks any $n$ of the sender’s $m$ messages.
 
 The choice of `n` and `m` depends entirely on the application’s needs.
@@ -288,14 +288,14 @@ KOS15 is a security-hardened improvement of the IKNP protocol, designed to defe
 
 Specifically, a malicious receiver (Bob) can exploit the base OT phase, where the roles are reversed (i.e., Bob acts as the sender). Here's how the attack works:
 
-Bob wants to learn Alice’s secret correlation vector \*\*\*\*$s \in \mathbb{F}_2^k$, which she uses to compute the OT masking keys. If Bob learns $s$ he can decrypt both messages in future OTs, completely breaking OT security.
+Bob wants to learn Alice’s secret correlation vector $s \in \mathbb{F}_2^k$, which she uses to compute the OT masking keys. If Bob learns $s$ he can decrypt both messages in future OTs, completely breaking OT security.
 
 In the base OT phase of IKNP, for each column $i$ of the matrix $T$, Bob is supposed to send a pair of messages: $(t^i, t^i \oplus r)$ where:
 
 - $t^i \in \mathbb{F}_2^m$ is a random vector
 - $r \in \{0,1\}^m$ is Bob’s choice vector, used _consistently across all columns_
 
-However, if Bob is malicious, he can cheat by using a different \*\*\*\*$r$ per column:
+However, if Bob is malicious, he can cheat by using a different $r$ per column:
 
 Suppose Bob wants to learn $s_1$ (the first bit of Alice's secret vector $s$). He can:
 

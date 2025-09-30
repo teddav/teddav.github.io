@@ -681,7 +681,7 @@ In a standard VOLE, the shares are defined over a single field $\mathbb{F}_p$
   - $\Delta \in \mathbb{F}_p$ (global secret)
   - $\vec{k} \in \mathbb{F}_p^N$ (the evaluations)
 
-Now, in **subfield VOLE**, the idea is to work in different \*\*\*\*fields.
+Now, in **subfield VOLE**, the idea is to work in different fields.
 
 Many times we’ll want to work in binary fields (for committed values $\vec{w}$), but for security we can’t have $\Delta$ in such a small field. So we work in an extension field.
 
