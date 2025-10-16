@@ -56,6 +56,8 @@ Before diving into the details, here’s a high-level overview of how FRI works:
 
 Don’t worry if this seems abstract for now, each step will be explained in detail in the next sections!
 
+If you need a refresher on Reed-Solomon, go read [my previous article on that topic](https://teddav.github.io/blog/reed-solomon/)!
+
 ## What’s this “low degree” thing?
 
 At its core, **FRI is all about proving that the initial polynomial has a bounded degree.** However, we don’t want to reveal the polynomial itself, so we need a special way to commit to it that convinces the verifier **without leaking the entire polynomial and without having to evaluate it entirely.**
@@ -169,15 +171,19 @@ $$
 Splitting it into even and odd indexed terms:
 
 $$
-f_{0/even}(x)=7x^4+11x^2+2 \\
-f_{0/odd}(x)=8x^3+5x
+\begin{aligned}
+f_{0/even}(x) &= 7x^4+11x^2+2 \\
+f_{0/odd}(x) &= 8x^3+5x
+\end{aligned}
 $$
 
 Rewriting using $x^2$:
 
 $$
-f_{0/even}(x^2)=7x^2+11x+2 \\
-x*f_{0/odd}(x^2)=8x+5
+\begin{aligned}
+f_{0/even}(x^2) &= 7x^2+11x+2 \\
+x*f_{0/odd}(x^2) &= 8x+5
+\end{aligned}
 $$
 
 ### Folding with a random scalar alpha
@@ -249,8 +255,10 @@ Now that the prover has committed to the polynomial in multiple rounds, the veri
 If you recall how $f_i(x)$ was computed in the previous step, you’ll notice the following identities hold:
 
 $$
-f_i(z)=f_{i-1/even}(z^2) + z * f_{i-1/odd}(z^2) \\
-f_i(-z)=f_{i-1/even}(z^2) - z * f_{i-1/odd}(z^2)
+\begin{aligned}
+f_i(z) &= f_{i-1/even}(z^2) + z * f_{i-1/odd}(z^2) \\
+f_i(-z) &= f_{i-1/even}(z^2) - z * f_{i-1/odd}(z^2)
+\end{aligned}
 $$
 
 This is easy to verify with code:
@@ -307,8 +315,12 @@ $$
 Now applying the formulas:
 
 $$
-f(x)+f(-x)= 2*(7x^4+11x^2+2) \\
-f(x)-f(-x)= 2*(8x^3+5x)=2x*(8x^2+5)
+\begin{aligned}
+f(x)+f(-x) &= 2*(7x^4+11x^2+2) \\
+\\
+f(x)-f(-x) &= 2*(8x^3+5x) \\
+&=2x*(8x^2+5)
+\end{aligned}
 $$
 
 Thus, the formulas correctly extract the even and odd parts.
