@@ -1,5 +1,6 @@
 ---
-title: "Unfolding the Bulletproofs Magic: A SageMath Deep Dive"
+title: "Unfolding the Bulletproofs Magic"
+subtitle: "A SageMath Deep Dive"
 tags: [zero-knowledge, cryptography, algebra, bulletproof]
 authors: teddav
 date: 2025-10-20
@@ -688,3 +689,9 @@ assert H_final == H_prime3[0]
 ```
 
 This way, the verifier skips $\log N$ rounds of folding and replaces them with a single multiscalar multiplication, which most libraries can evaluate very efficiently. A massive win in verification cost.
+
+And that’s it! 🥳 You’ve just built a full inner product argument from the ground up!
+
+We started with plain vectors, learned how folding reduces them round after round, then added commitments to make everything sound and verifiable. Finally, we made the verifier’s life easier with some neat optimizations.
+
+Stay tuned for the next part, we’ll look into a practical use case of Bulletproofs: **range proofs** 🤯
