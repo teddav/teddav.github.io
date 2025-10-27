@@ -1,9 +1,11 @@
 ---
-title: "Unfolding the Bulletproofs Magic"
+title: "Unfolding the Bulletproofs Magic: A SageMath Deep Dive"
 subtitle: "A SageMath Deep Dive"
 tags: [zero-knowledge, cryptography, algebra, bulletproof]
 authors: teddav
-date: 2025-10-20
+date: 2025-10-27
+summary: In this post, we dive deep into the Inner Product Argument (IPA), the mathematical core of Bulletproofs.
+  Starting from simple vector folding, we build up to a full zero-knowledge proof with Pedersen commitments, explore how the mysterious `L` and `R` terms appear, and finish with smart verifier optimizations. All illustrated with clear, runnable SageMath code.
 ---
 
 ![bp cover](/img/blog/bulletproof-cover.png)
@@ -14,7 +16,7 @@ The secret is in the **Inner Product Argument (IPA)**, the mathematical engine b
 
 In this post, we’ll peel it apart step by step and see how it really works, complete with runnable SageMath code you can play with yourself, because nothing beats code for building intuition.
 
-This is part two of a small series on the IPA/Bulletproof protocol. If you missed part 1, start there for the big picture: [High-level intuitions for the Bulletproofs/IPA protocol](https://cryptologie.net/posts/high-level-intuitions-for-the-bulletproofsipa-protocol/).
+This is part two of a small series on the IPA/Bulletproof protocol. If you missed part 1, start there for the big picture: [High-level intuitions for the Bulletproofs/IPA protocol](https://blog.zksecurity.xyz/posts/bulletproofs-intuitions/).
 
 Here, we’ll zoom in on the core of the protocol and uncover the mysterious `L` and `R` “cross terms” that make it all click.
 
