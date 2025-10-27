@@ -15,6 +15,8 @@ export interface ContentMetadata {
   date: string;
   tags?: string[];
   authors?: string;
+  summary?: string;
+  thumbnail?: string;
 }
 
 export interface ContentProps {
@@ -48,6 +50,8 @@ export function getContentList(contentType: ContentType): ContentMetadata[] {
         date: data.date,
         tags: data.tags || [],
         authors: data.authors,
+        summary: data.summary,
+        thumbnail: data.thumbnail,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

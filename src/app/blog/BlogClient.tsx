@@ -5,22 +5,14 @@ import { useState } from "react";
 import TagFilter from "@/lib/components/TagFilter";
 import ListContentItem from "@/lib/components/ListContentItem";
 import { TwitterIcon } from "@/lib/components/Icons";
-
-interface Article {
-  slug: string;
-  title: string;
-  subtitle?: string;
-  date: string;
-  tags?: string[];
-  authors?: string;
-}
+import { ContentMetadata } from "@/lib/content";
 
 interface BlogClientProps {
-  articles: Article[];
+  articles: ContentMetadata[];
 }
 
 export default function BlogClient({ articles }: BlogClientProps) {
-  const [filteredArticles, setFilteredArticles] = useState<Article[]>(articles);
+  const [filteredArticles, setFilteredArticles] = useState<ContentMetadata[]>(articles);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

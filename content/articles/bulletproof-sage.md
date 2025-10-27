@@ -6,6 +6,7 @@ authors: teddav
 date: 2025-10-27
 summary: In this post, we dive deep into the Inner Product Argument (IPA), the mathematical core of Bulletproofs.
   Starting from simple vector folding, we build up to a full zero-knowledge proof with Pedersen commitments, explore how the mysterious `L` and `R` terms appear, and finish with smart verifier optimizations. All illustrated with clear, runnable SageMath code.
+thumbnail: "blog/bulletproof-cover.png"
 ---
 
 ![bp cover](/img/blog/bulletproof-cover.png)

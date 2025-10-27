@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ContentMetadata } from "@/lib/content";
+import Image from "next/image";
 
 interface ListContentItemProps {
   item: ContentMetadata;
@@ -16,6 +17,11 @@ export default function ListContentItem({ item, path }: ListContentItemProps) {
       >
         <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">{item.title}</h2>
         {item.subtitle && <p className="text-gray-600 mb-3">{item.subtitle}</p>}
+
+        <div className="flex items-center gap-2 mb-3">
+          {item.summary && <p className="text-gray-500 mb-3">{item.summary}</p>}
+          {item.thumbnail && <Image src={`/img/${item.thumbnail}`} alt={item.title} width={200} height={100} className="rounded-md" />}
+        </div>
         <div className="mt-3 mb-2">
           <span className="text-sm text-gray-500">
             {new Date(item.date).toLocaleDateString(undefined, {
