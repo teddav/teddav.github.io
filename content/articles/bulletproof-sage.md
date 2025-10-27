@@ -1,5 +1,5 @@
 ---
-title: "Unfolding the Bulletproofs Magic: A SageMath Deep Dive"
+title: "Unfolding the Bulletproofs Magic"
 subtitle: "A SageMath Deep Dive"
 tags: [zero-knowledge, cryptography, algebra, bulletproof]
 authors: teddav
