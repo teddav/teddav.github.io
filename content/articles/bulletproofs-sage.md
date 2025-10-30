@@ -1,15 +1,15 @@
 ---
 title: "Unfolding the Bulletproofs Magic"
 subtitle: "A SageMath Deep Dive"
-tags: [zero-knowledge, cryptography, algebra, bulletproof]
+tags: [zero-knowledge, cryptography, algebra, bulletproofs]
 authors: teddav
 date: 2025-10-27
 summary: In this post, we dive deep into the Inner Product Argument (IPA), the mathematical core of Bulletproofs.
   Starting from simple vector folding, we build up to a full zero-knowledge proof with Pedersen commitments, explore how the mysterious `L` and `R` terms appear, and finish with smart verifier optimizations. All illustrated with clear, runnable SageMath code.
-thumbnail: "blog/bulletproof-cover.png"
+thumbnail: "blog/bulletproofs-cover.png"
 ---
 
-![bp cover](/img/blog/bulletproof-cover.png)
+![bp cover](/img/blog/bulletproofs-cover.png)
 
 Zero-knowledge proofs are famous for packing incredible security into tiny proofs, but how do they actually pull that off?
 
@@ -17,11 +17,11 @@ The secret is in the **Inner Product Argument (IPA)**, the mathematical engine b
 
 In this post, we’ll peel it apart step by step and see how it really works, complete with runnable SageMath code you can play with yourself, because nothing beats code for building intuition.
 
-This is part two of a small series on the IPA/Bulletproof protocol. If you missed part 1, start there for the big picture: [High-level intuitions for the Bulletproofs/IPA protocol](https://blog.zksecurity.xyz/posts/bulletproofs-intuitions/).
+This is part two of a small series on the IPA/Bulletproofs protocol. If you missed part 1, start there for the big picture: [High-level intuitions for the Bulletproofs/IPA protocol](https://blog.zksecurity.xyz/posts/bulletproofs-intuitions/).
 
 Here, we’ll zoom in on the core of the protocol and uncover the mysterious `L` and `R` “cross terms” that make it all click.
 
-If you’re curious, the scripts are up [on GitHub](https://github.com/teddav/bulletproof-ipa).
+If you’re curious, the scripts are up [on GitHub](https://github.com/teddav/bulletproofs-ipa).
 
 But let’s warm up first. We’ll start with the bare essentials: no commitments, no elliptic curves, no zero-knowledge magic. Just vectors and inner products. Once that picture is clear, adding the crypto magic (Pedersen commitments) will feel much more natural.
 
@@ -298,7 +298,7 @@ assert c == a_prime3 * b_prime3 \
 print("Verification successful!")
 ```
 
-You can find the entire script here: https://github.com/teddav/bulletproof-ipa/blob/main/ipa-simple.sage
+You can find the entire script here: [ipa-simple.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/ipa-simple.sage)
 
 Running this makes the folding process tangible: you see how each round adds cross terms, how challenges enter, and how the verifier ties it all back to the original claim.
 
@@ -316,7 +316,7 @@ $$
 
 and the verifier would have no way of knowing which pair is the correct one, since nothing ties the proof back to the original vectors.
 
-I wrote a quick example of that: https://github.com/teddav/bulletproof-ipa/blob/main/ipa-cheat.sage
+I wrote a quick example of that: [ipa-cheat.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/ipa-cheat.sage)
 
 ## Lock It In: Commitments!
 
@@ -518,7 +518,7 @@ print("Round 3 successful")
 print("Verifier receives a_prime3, b_prime3, L3, R3\n")
 ```
 
-Find the full script here: https://github.com/teddav/bulletproof-ipa/blob/main/ipa-with-commitment.sage
+Find the full script here: [ipa-with-commitment.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/ipa-with-commitment.sage)
 
 ### Verifier’s Final Check
 
