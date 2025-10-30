@@ -4,7 +4,6 @@ tags: [zero-knowledge, cryptography, algebra, bulletproofs]
 authors: teddav
 date: 2025-11-01
 summary: Range proofs
-thumbnail: "blog/bulletproofs-cover.png"
 ---
 
 <!-- ![bp cover](/img/blog/bulletproofs-cover.png) -->
@@ -52,14 +51,13 @@ As you probably guessed, we’ll reuse our vector machinery and the Inner Produc
 
 Whenever I use **bold**, it means I’m talking about a vector.
 
-| Symbol                                              | Definition                                                      | Example                     |
-| --------------------------------------------------- | --------------------------------------------------------------- | --------------------------- |
-| $\mathbf{2}^n$                                      | vector of length `n` of successive powers of 2                  | $(2^0,2^1,2^2,...,2^{n-1})$ |
-| $\mathbf{0}^n$                                      | vector of `n` zeros                                             | $(0,0,...,0)$               |
-| $\mathbf{1}^n$                                      | vector of `n` ones                                              | $(1,1,...,1)$               |
-| $\mathbf{y}^n$                                      | vector of length `n` of successive powers of a random value `y` | $(y^0,y^1,y^2,...,y^{n-1})$ |
-| $z\mathbf{1}^n$                                     | vector of length `n` of only `z`                                |
-| it’s the vector of `n` 1s, multiplied by scalar $z$ | $(z,z,...,z)$                                                   |
+| Symbol          | Definition                                                           | Example                     |
+| --------------- | -------------------------------------------------------------------- | --------------------------- |
+| $\mathbf{2}^n$  | vector of length `n` of successive powers of 2                       | $(2^0,2^1,2^2,...,2^{n-1})$ |
+| $\mathbf{0}^n$  | vector of `n` zeros                                                  | $(0,0,...,0)$               |
+| $\mathbf{1}^n$  | vector of `n` ones                                                   | $(1,1,...,1)$               |
+| $\mathbf{y}^n$  | vector of length `n` of successive powers of a random value `y`      | $(y^0,y^1,y^2,...,y^{n-1})$ |
+| $z\mathbf{1}^n$ | vector `n` elements, all equal to `z` ($\mathbf{1}^n$ scaled by $z$) | $(z,z,...,z)$               |
 
 ## **Breaking our secret number into bits**
 
