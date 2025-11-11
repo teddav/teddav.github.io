@@ -67,7 +67,7 @@ Whenever I use **bold**, it means I’m talking about a vector.
 | $\mathbf{y}^n$  | vector of length `n` of successive powers of a random value `y`      | $(y^0,y^1,y^2,...,y^{n-1})$ |
 | $z\mathbf{1}^n$ | vector `n` elements, all equal to `z` ($\mathbf{1}^n$ scaled by $z$) | $(z,z,...,z)$               |
 
-## **Breaking our secret number into bits**
+## Breaking our secret number into bits
 
 The key trick in Bulletproofs range proofs is bit decomposition, breaking a secret number into its individual bits.
 
@@ -116,7 +116,7 @@ Our range proof will revolve around convincing the verifier that:
 
 That’s important because the verifier will only ever see a **commitment** to $\mathbf{a}_L$, not the vector itself. So without this check, the prover could hide arbitrary values inside the commitment and still make the equations balance.
 
-### **Convincing the verifier our bits are real 0s and 1s**
+### Convincing the verifier our bits are real 0s and 1s
 
 We can’t just tell the verifier our bits, that would reveal $v$.
 
@@ -196,8 +196,6 @@ Here, we actually have **several equations** (one per vector element) that we wa
 
 $$
 a_i \cdot b_i = 0 \quad \forall i
-
-
 $$
 
 If this isn’t the case, the terms could cancel each other out.
@@ -360,7 +358,74 @@ The random challenge $z$ ties them together so that the prover can’t selective
 
 This equation is the exact form we’ll use in the next step, when we blind and commit to the vectors.
 
-## The Core Proof (without Zero-Knowledge)
+## SageMath setup
+
+Before going further, let’s add a bit of code.
+
+From now on, I’ll use short SageMath snippets to illustrate each step of the proof.
+
+We’ll work over a tiny toy field to keep computations simple (real systems use large 256-bit fields).
+
+Specifically, we’ll use:
+
+- the prime field $\mathbb{F}_{929}$,
+- the elliptic curve over that field: $y^2=x^3+5x+15$, which has a prime order 919
+
+```python
+p = 929
+Fp = GF(p)
+E = EllipticCurve(Fp, [5, 15])
+Fr = GF(E.gens()[0].order())
+```
+
+The goal is to check that $v$ is 8 bits
+
+$$
+v \in [0,2^8)
+$$
+
+We define the vectors:
+
+- $\mathbf{1}^n$
+- $\mathbf{2}^n$
+
+and then decompose $v$ into bits to form $\mathbf{a}_L$, and $\mathbf{a}_R$
+
+```python
+n = 8  # number of bits
+print(f"We will be proving that v is between 0 and {pow(2, n)}\n")
+
+# (2^0, 2^1, 2^2, ..., 2^(n-1))
+vec_2n = vector([Fr(2 ^ i) for i in range(n)])
+# (1, 1, 1, ..., 1)
+vec_1n = vector([Fr(1)] * n)
+
+v = Fr(random.randint(0, pow(2, n)))
+print("v =", v)
+
+v_bin = bin(v)[2:].zfill(n)[::-1][:n]
+print("v_bin = ", v_bin)
+
+aL = vector([Fr(int(bit)) for bit in v_bin])
+assert v == sum([aL[i] * 2 ^ i for i in range(n)])
+
+assert v == inner_product(aL, vec_2n)
+
+# Define aR
+aR = aL - vec_1n
+assert inner_product(aL, aR) == 0
+
+print("aL = ", aL)
+print("aR = ", aR)
+```
+
+This matches our earlier equation:
+
+$$
+v = \langle \mathbf{a}_L , \mathbf{2}^n \rangle
+$$
+
+## The Core Proof (without zero-knowledge)
 
 If we stopped here, we could already run an **Inner Product Argument (IPA)** on our combined inner product and get a valid proof, just like in the previous article 😊.
 
@@ -406,6 +471,51 @@ Here:
 - $G,H$ are single generators, for scalar commitments
 - $\alpha,\gamma$ are random scalars used for hiding (blinding factors)
 
+```python
+# Define generators
+G = E.random_point()
+H = E.random_point()
+
+Gs = [E.random_point() for _ in range(n)]
+Hs = [E.random_point() for _ in range(n)]
+
+# Commit to v
+print("\nWe can commit to v from the start")
+blinding_gamma = Fr.random_element()
+V = v * G + blinding_gamma * H
+print(f"v commitment (V): {V}\n")
+
+blinding_alpha = Fr.random_element()
+A = inner_product(aL, Gs) + inner_product(aR, Hs) + blinding_alpha * H
+print("A = ", A)
+print("\nProver sends A, V to Verifier")
+```
+
+Then the verifier sends the challenges $y,z$
+
+```python
+print("Verifier sends random challenges y and z\n")
+y = Fr.random_element()
+vec_y_n = vector([y ^ i for i in range(n)])
+
+z = Fr.random_element()
+vec_z_1n = vector([z] * n)
+```
+
+So we can now define our main relation $\langle \mathbf{l},\mathbf{r} \rangle = z^2 \cdot v + \delta(y,z)$
+
+```python
+l = aL - vec_z_1n
+r = aR.pairwise_product(vec_y_n) + vec_y_n * z + z ^ 2 * vec_2n
+main_inner_product = inner_product(l, r)
+
+delta_y_z = (z - z ^ 2) * inner_product(vec_1n, vec_y_n) - z ^ 3 * inner_product(vec_1n, vec_2n)
+t = z ^ 2 * v + delta_y_z
+
+assert main_inner_product == t
+print("Combined inner product = z ^ 2 * v + delta_y_z.\nWe can continue...\n")
+```
+
 ### Rescaling the generators: $\mathbf{H'}$
 
 The previous commitments are computed at the very start of the protocol, before receiving any challenge from the verifier.
@@ -428,6 +538,11 @@ $$
 
 In other words, we can freely “move” the $y^i$ weights from the vector side to the generator side without changing the commitment.
 
+```python
+vec_y_n_inv = vec_y_n.apply_map(lambda x: 1/x)
+H_y_minus1 = [vec_y_n_inv[i] * Hs[i] for i in range(n)]
+```
+
 ### Build the point $P$
 
 With this, the prover constructs a single elliptic curve point:
@@ -440,8 +555,6 @@ Using public information, the verifier can express $P$ in terms of the earlier c
 
 $$
 P \stackrel{?}{=} A - \langle z\mathbf{1}^n, \mathbf{G} \rangle + \langle z \cdot \mathbf{y}^n + z^2 \cdot \mathbf{2}^n, \mathbf{H'} \rangle - \alpha \cdot H
-
-
 $$
 
 Let me show you this equality explicitly:
@@ -458,6 +571,11 @@ P &= A - \langle z\mathbf{1}^n, \mathbf{G} \rangle + \langle z \cdot \mathbf{y}^
 $$
 
 Perfect! Both representations of $P$ match.
+
+```python
+P = A - inner_product(vec_z_1n, Gs) + inner_product(z * vec_y_n + z ^ 2 * vec_2n, H_y_minus1) - blinding_alpha * H
+assert P == inner_product(l, Gs) + inner_product(r, H_y_minus1)
+```
 
 ### Inner Product Argument
 
@@ -485,11 +603,25 @@ The verifier:
 
 And that’s it! A **fully sound but non–zero-knowledge** range proof.
 
+```python
+print("\nFinally we run the IPA with: P + t * Q")
+Q = E.random_point()
+
+ipa_proof = ipa(l, r, Gs, H_y_minus1, t, Q, Fr)
+P_full = P + t * Q
+verify(Gs, H_y_minus1, P_full, ipa_proof[0], ipa_proof[1], ipa_proof[2], ipa_proof[3], ipa_proof[4], Q, n, Fr)
+print("IPA proof ✅")
+```
+
+To check the code for the `ipa()` function, see here: [ipa.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/ipa.sage)
+
+And for the full script of our simplified protocol: [range-proof-simple.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/range-proof-simple.sage)
+
 The real Bulletproof adds the missing blinding polynomials to make it private. But structurally, this is already the core of the protocol.
 
 From now on, everything is about privacy… 🙈
 
-## **Blinding for Zero-Knowledge: vectors to polynomials**
+## Blinding for Zero-Knowledge: vectors to polynomials
 
 Up to now, we’ve combined our three inner products into one equation, and saw a non-zero-knowledge version of the protocol.
 
@@ -502,7 +634,7 @@ The trick is twofold:
 
 Let’s see how the prover builds these blinding polynomials and commits to them using Pedersen commitments, hiding all the secrets while keeping every equation verifiable.
 
-### **Hiding our vectors with blinding terms**
+### Hiding our vectors with blinding terms
 
 The prover introduces two new random vectors: $\mathbf{s}_L,\mathbf{s}_R$.
 
@@ -539,7 +671,7 @@ This is the **core equation** we ultimately want to prove.
 
 By turning the vectors into polynomials, the prover can now safely reveal $\mathbf{l}(X),\mathbf{r}(X)$ at one random point (chosen by the verifier) instead of revealing the full secret vectors.
 
-### **Taking their inner product**
+### Taking their inner product
 
 What happens when we take the inner product of two polynomial vectors?
 
@@ -585,7 +717,7 @@ So from now on, our goals are:
   - $\mathbf{l}(X)$ and $\mathbf{r}(X)$ are constructed correctly
   - $t(X) = \langle \mathbf{l}(X),\mathbf{r}(X) \rangle$
 
-## **Committing to everything**
+## Committing to everything
 
 Before the verifier can check anything, the prover must **commit** to all the relevant values. In a way that’s binding (he can’t change them later) but still hiding (the verifier learns nothing).
 
@@ -619,9 +751,36 @@ where:
 - $\mathbf{G}$ and $\mathbf{H}$ are vectors of elliptic curve generators (one per bit of $\mathbf{a}_L$)
 - and $\alpha,\rho$ are blinding scalars
 
+```python
+blinding_alpha = Fr.random_element()
+A = inner_product(aL, Gs) + inner_product(aR, Hs) + blinding_alpha * H
+print("A = ", A)
+
+# blinding terms for left and right polys
+sL = vector([Fr.random_element() for i in range(n)])
+sR = vector([Fr.random_element() for i in range(n)])
+
+blinding_beta = Fr.random_element()
+S = inner_product(sL, Gs) + inner_product(sR, Hs) + blinding_beta * H
+print("S = ", S)
+print("\nProver sends A, S, V to Verifier")
+```
+
 Once $A$ and $S$ are committed, the verifier (or the Fiat-Shamir heuristic) can produce challenges $y$ and $z$.
 
 These are then used to define $\mathbf{l}(X),\mathbf{r}(X)$ and $t(X)$.
+
+```python
+R.<X> = Fr[]
+
+lX = aL - vec_z_1n + sL * X
+print("lX = ", lX)
+rX = vec_y_n.pairwise_product(aR + vec_z_1n) + z ^ 2 * vec_2n + vec_y_n.pairwise_product(sR * X)
+print("rX = ", rX)
+
+tX = inner_product(lX, rX)
+print(f"tX = {tX}\n")
+```
 
 ### Step 3: commit to $t(X)$
 
@@ -635,6 +794,20 @@ T_2 &= t_2 \cdot G + \tau_2 \cdot H
 $$
 
 These commitments make sure the prover can’t later tweak $t(X)$ to make the equation magically work.
+
+```python
+[t0, t1, t2] = tX.coefficients(sparse=False)
+
+print("Notice that t0 is the inner product we're trying to prove\n")
+assert t0 == main_inner_product
+
+blinding_tau1 = Fr(123)
+blinding_tau2 = Fr(456)
+T1 = t1 * G + blinding_tau1 * H
+T2 = t2 * G + blinding_tau2 * H
+print("T1 = ", T1)
+print("T2 = ", T2)
+```
 
 ## Putting it all together: verification
 
@@ -665,6 +838,25 @@ Here:
 - $\hat{t}$ is the evaluation of $t(X)$ at $x$, equal to the inner product of $\mathbf{l}$ and $\mathbf{r}$
 - $\tau_x$ combines all the blinding factors for $t(x)$
 - $\mu$ combines the blinding factors for $A$ and $S$
+
+```python
+print("\nVerifier sends challenge x\n")
+x = Fr.random_element()
+print("x = ", x)
+
+# evaluate left and right polys at u
+lx = lX(x)
+rx = rX(x)
+tx = tX(x)
+print("lx = ", lx)
+print("rx = ", rx)
+print("tx = ", tx)
+assert tx == lx * rx
+
+print("\nProver sends proof_blindings_mu and proof_blindings_tau to Verifier")
+proof_blindings_mu = blinding_alpha + blinding_beta * x
+proof_blindings_tau = z ^ 2 * blinding_gamma + blinding_tau1 * x + blinding_tau2 * x ^ 2
+```
 
 ### Verifier check #1: the polynomial $t(x)$
 
@@ -699,6 +891,13 @@ t(x) \cdot G + \tau_x \cdot H &= z^2 \cdot V + \delta(y,z) \cdot G + T_1x + T_2 
 \end{aligned}
 $$
 
+```python
+check1_lhs = tx * G + proof_blindings_tau * H
+check1_rhs = V * z ^ 2 + delta_y_z * G + T1 * x + T2 * x ^ 2
+assert check1_lhs == check1_rhs
+print("Check 1 ✅")
+```
+
 ### Verifier check #2: vectors $\mathbf{l}$ and $\mathbf{r}$
 
 Next, the verifier checks that the revealed vectors $\mathbf{l}$ and $\mathbf{r}$ are consistent with all previous commitments.
@@ -722,6 +921,13 @@ P \stackrel{?}{=} \langle \mathbf{l},\mathbf{G} \rangle + \langle \mathbf{r},\ma
 $$
 
 If this equality holds, it means that the prover’s $l(x)$ and $r(x)$ were built correctly.
+
+```python
+P = - proof_blindings_mu * H + A + S*x + inner_product(-vec_z_1n, Gs) + inner_product(z * vec_y_n + z ^ 2 * vec_2n, H_y_minus1)
+print("P = ", P)
+assert P == inner_product(lx, Gs) + inner_product(rx, H_y_minus1)
+print("Check 2 ✅")
+```
 
 ### The Inner Product Argument: the final step
 
@@ -750,6 +956,15 @@ This is the input to the IPA: the prover produces a short recursive proof that $
 
 In case you forgot, you can find our previous articles here: [Breaking Down Bulletproofs (part 1)](https://blog.zksecurity.xyz/posts/bulletproofs-intuitions/) and [Unfolding the Bulletproofs Magic (part 2)](https://blog.zksecurity.xyz/posts/bulletproofs-sage/).
 
+```python
+Q = E.random_point()
+print("Remember that tx = <lx,rx>")
+ipa_proof = ipa(lx, rx, Gs, H_y_minus1, tx, Q, Fr)
+P_full = P + tx * Q
+verify(Gs, H_y_minus1, P_full, ipa_proof[0], ipa_proof[1], ipa_proof[2], ipa_proof[3], ipa_proof[4], Q, n, Fr)
+print("IPA proof ✅")
+```
+
 ## What the final proof looks like
 
 The complete range proof includes:
@@ -776,7 +991,7 @@ All of that comes together so that a verifier can be convinced that: “the prov
 
 This foundation powers **confidential transfers**, **private balances**, and many other privacy-preserving systems, like the one we sketched at the start of this article.
 
-To help you a bit, I implemented the entire process (minus the IPA part) as a Sagemath script: [range_proof.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/range_proof.sage)
+You can find the entire Sagemath script here: [range-proof.sage](https://github.com/teddav/bulletproofs-ipa/blob/main/range-proof.sage)
 
 ## Further readings
 
