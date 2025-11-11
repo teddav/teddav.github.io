@@ -3,10 +3,11 @@ title: "Stay in Range: Deeper Into Bulletproofs"
 tags: [zero-knowledge, cryptography, algebra, bulletproofs]
 authors: teddav
 date: 2025-11-12
-summary: Range proofs
+summary: "This article breaks down how Bulletproofs enable range proofs: proofs that a hidden value lies within a range without revealing it.
+Starting from bit decomposition, it shows how to express and combine constraints into a single inner product, then make the proof zero-knowledge with blinding polynomials and commitments.
+By the end, you’ll understand how systems like Monero’s confidential transactions prove valid amounts while keeping values private."
+thumbnail: "blog/bulletproofs-rp-dalek.png"
 ---
-
-<!-- ![bp cover](/img/blog/bulletproofs-range-cover.png) -->
 
 We previously saw how the Bulletproofs Inner Product Argument (IPA) works: it lets us prove that we know a secret vector without revealing it.
 
@@ -18,7 +19,7 @@ Bulletproofs are the backbone of modern range proofs: they allow us to prove tha
 
 Don’t worry if you haven’t read the previous IPA articles, you can think of the IPA as a black box that proves an inner product relation without exposing the vectors. Though… if you do want to understand it, go read [Breaking Down Bulletproofs (part 1)](https://blog.zksecurity.xyz/posts/bulletproofs-intuitions/) and [Unfolding the Bulletproofs Magic (part 2)](https://blog.zksecurity.xyz/posts/bulletproofs-sage/).
 
-![range proofs](/img/blog/bulletproofs-rangeproof.png)
+![range proofs](/img/blog/bulletproofs-rp-dalek.png)
 
 Nooo! 🥲 Don’t stop here! I promise that by the end of this article, this weird picture will make perfect sense.
 
