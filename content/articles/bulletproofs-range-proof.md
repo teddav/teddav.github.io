@@ -6,7 +6,7 @@ date: 2025-11-12
 summary: "This article breaks down how Bulletproofs enable range proofs: proofs that a hidden value lies within a range without revealing it.
 Starting from bit decomposition, it shows how to express and combine constraints into a single inner product, then make the proof zero-knowledge with blinding polynomials and commitments.
 By the end, you’ll understand how systems like Monero’s confidential transactions prove valid amounts while keeping values private."
-thumbnail: "blog/bulletproofs-rp-dalek.png"
+thumbnail: "blog/bulletproofs-rp-cover.png"
 ---
 
 We previously saw how the Bulletproofs Inner Product Argument (IPA) works: it lets us prove that we know a secret vector without revealing it.
@@ -425,7 +425,7 @@ $$
 v = \langle \mathbf{a}_L , \mathbf{2}^n \rangle
 $$
 
-## The Core Proof (without zero-knowledge)
+## The core proof (without zero-knowledge)
 
 If we stopped here, we could already run an **Inner Product Argument (IPA)** on our combined inner product and get a valid proof, just like in the previous article 😊.
 
@@ -621,7 +621,7 @@ The real Bulletproof adds the missing blinding polynomials to make it private. B
 
 From now on, everything is about privacy… 🙈
 
-## Blinding for Zero-Knowledge: vectors to polynomials
+## Blinding for zero-knowledge: vectors to polynomials
 
 Up to now, we’ve combined our three inner products into one equation, and saw a non-zero-knowledge version of the protocol.
 
