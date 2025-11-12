@@ -19,9 +19,13 @@ Bulletproofs are the backbone of modern range proofs: they allow us to prove tha
 
 Don’t worry if you haven’t read the previous IPA articles, you can think of the IPA as a black box that proves an inner product relation without exposing the vectors. Though… if you do want to understand it, go read [Breaking Down Bulletproofs (part 1)](https://blog.zksecurity.xyz/posts/bulletproofs-intuitions/) and [Unfolding the Bulletproofs Magic (part 2)](https://blog.zksecurity.xyz/posts/bulletproofs-sage/).
 
+Here’s a quick overview of what we’ll go through today 😅
+
 ![range proofs](/img/blog/bulletproofs-rp-dalek.png)
 
-Nooo! 🥲 Don’t stop here! I promise that by the end of this article, this weird picture will make perfect sense.
+_(this diagram comes from the excellent [Dalek Bulletproofs documentation](https://doc-internal.dalek.rs/bulletproofs/index.html))_
+
+Nooo! 🥲 Don’t stop here! I promise that by the end of this article, this strange-looking graph will make perfect sense.
 
 ## A motivating example
 
@@ -59,13 +63,25 @@ As you probably guessed, we’ll reuse our vector machinery and the Inner Produc
 
 Whenever I use **bold**, it means I’m talking about a vector.
 
-| Symbol          | Definition                                                           | Example                     |
-| --------------- | -------------------------------------------------------------------- | --------------------------- |
-| $\mathbf{2}^n$  | vector of length `n` of successive powers of 2                       | $(2^0,2^1,2^2,...,2^{n-1})$ |
-| $\mathbf{0}^n$  | vector of `n` zeros                                                  | $(0,0,...,0)$               |
-| $\mathbf{1}^n$  | vector of `n` ones                                                   | $(1,1,...,1)$               |
-| $\mathbf{y}^n$  | vector of length `n` of successive powers of a random value `y`      | $(y^0,y^1,y^2,...,y^{n-1})$ |
-| $z\mathbf{1}^n$ | vector `n` elements, all equal to `z` ($\mathbf{1}^n$ scaled by $z$) | $(z,z,...,z)$               |
+- $\mathbf{2}^n = (2^0,2^1,2^2,...,2^{n-1})$
+
+vector of length `n` of successive powers of 2
+
+- $\mathbf{0}^n = (0,0,...,0)$
+
+vector of `n` zeros
+
+- $\mathbf{1}^n = (1,1,...,1)$
+
+vector of `n` ones
+
+- $\mathbf{y}^n = (y^0,y^1,y^2,...,y^{n-1})$
+
+vector of length `n` of successive powers of a random value `y`
+
+- $z\mathbf{1}^n = (z,z,...,z)$
+
+vector `n` elements, all equal to `z` ($\mathbf{1}^n$ scaled by $z$)
 
 ## Breaking our secret number into bits
 
