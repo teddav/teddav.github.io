@@ -33,7 +33,8 @@ export default function MdContent({ content }: { content: ContentProps }) {
         )}
 
         <div className="mt-6 text-base text-gray-600">
-          Enjoyed this article?{" "}
+          Enjoyed this article?
+          <br />
           <button
             onClick={() => {
               const url = encodeURIComponent(window.location.href);

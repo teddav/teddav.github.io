@@ -13,7 +13,7 @@ export default function Portfolio() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <p className="mb-6">
-        Not really a &quot;portfolio&quot; or a CV, more of a list of most things I&apos;ve been working on the past few months.
+        Not really a &quot;portfolio&quot; or a CV, more of a list of things I&apos;ve been working on lately...
         <br />
         Enjoy 😊
       </p>

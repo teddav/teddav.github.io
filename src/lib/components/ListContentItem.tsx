@@ -18,9 +18,19 @@ export default function ListContentItem({ item, path }: ListContentItemProps) {
         <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">{item.title}</h2>
         {item.subtitle && <p className="text-gray-600 mb-3">{item.subtitle}</p>}
 
-        <div className="flex items-center gap-2 mb-3">
-          {item.summary && <p className="text-gray-500 mb-3">{item.summary}</p>}
-          {item.thumbnail && <Image src={`/img/${item.thumbnail}`} alt={item.title} width={200} height={100} className="rounded-md" />}
+        <div className="flex flex-col gap-4 mb-3 sm:flex-row sm:items-center">
+          {item.summary && <p className="text-gray-500 sm:flex-1">{item.summary}</p>}
+          {item.thumbnail && (
+            <div className="w-full overflow-hidden rounded-md sm:w-48 sm:flex-shrink-0">
+              <Image
+                src={`/img/${item.thumbnail}`}
+                alt={item.title}
+                width={200}
+                height={120}
+                className="h-40 w-full object-cover"
+              />
+            </div>
+          )}
         </div>
         <div className="mt-3 mb-2">
           <span className="text-sm text-gray-500">

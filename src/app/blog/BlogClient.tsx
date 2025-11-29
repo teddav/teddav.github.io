@@ -20,20 +20,19 @@ export default function BlogClient({ articles }: BlogClientProps) {
         <h1 className="text-3xl font-bold text-gray-900 mb-4">Articles</h1>
         <p className="text-gray-600">Exploring cryptography, algebra, and the fascinating world of zero-knowledge proofs.</p>
 
-        <div className="mt-6 flex items-center gap-3">
-          <p className="text-gray-600">If you enjoy the content of my blog, please don&apos;t be selfish!</p>
+        <div className="text-gray-600 mt-6 flex-row gap-3 items-center">
+          <p>If you enjoy the content of my blog, please don&apos;t be selfish! 😁</p>
           <button
             onClick={() => {
               const url = encodeURIComponent(window.location.href);
               const text = encodeURIComponent(`Learning about cryptography? @0xteddav's blog is a goldmine! 🧠\n`);
               window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, "_blank");
             }}
-            className="inline-flex items-baseline gap-1 text-blue-600 hover:text-blue-700 hover:underline font-medium transition-colors duration-200 cursor-pointer"
+            className="inline-flex w-full items-baseline gap-1 text-blue-600 hover:text-blue-700 hover:underline font-medium transition-colors duration-200 cursor-pointer sm:w-auto sm:justify-start"
           >
             <TwitterIcon className="w-3.5 h-3.5" />
             Let others know about it!
           </button>
-          😁
         </div>
       </div>
 

@@ -48,6 +48,24 @@ const ExternalLink = ({ href, children }: { href: string; children: React.ReactN
 const work: Record<string, TProject[]> = {
   "Latest projects": [
     {
+      title: "co-match",
+      description: "Secure MPC matching via TACEO's co-snarks",
+      href: "https://github.com/teddav/co-match.noir",
+      tags: [Tags.mpc, Tags.co_snarks, Tags.taceo],
+      startDate: new Date("2025-05-05"),
+      details: (
+        <>
+          I built a Private dating app 🌶️ using TACEO&apos;s co-noir (experimental) tech.
+          <br />
+          It was a fun project to see what&apos;s possible with{" "}
+          <ExternalLink href="https://core.taceo.io/articles/private-shared-state/">private shared state</ExternalLink>
+          <br />
+          App is probably down, but just in case if you want to take a look:{" "}
+          <ExternalLink href="https://co-match.vercel.app/">co-match.vercel.app</ExternalLink>
+        </>
+      ),
+    },
+    {
       title: "zk-tenant",
       description: "Privacy-preserving housing application using 2D-Doc",
       href: "https://github.com/teddav/zk-tenant",
@@ -67,44 +85,6 @@ const work: Record<string, TProject[]> = {
           If you&apos;re lucky, maybe the app <ExternalLink href="https://zk-tenant.vercel.app/">is still live...</ExternalLink>
         </>
       ),
-    },
-    {
-      title: "co-match",
-      description: "Secure MPC matching via TACEO's co-snarks",
-      href: "https://github.com/teddav/co-match.noir",
-      tags: [Tags.mpc, Tags.co_snarks, Tags.taceo],
-      startDate: new Date("2025-05-05"),
-      details: (
-        <>
-          I built a Private dating app 🌶️ using TACEO&apos;s co-noir (experimental) tech.
-          <br />
-          It was a fun project to see what&apos;s possible with{" "}
-          <ExternalLink href="https://core.taceo.io/articles/private-shared-state/">private shared state</ExternalLink>
-          <br />
-          App is probably down, but just in case if you want to take a look:{" "}
-          <ExternalLink href="https://co-match.vercel.app/">co-match.vercel.app</ExternalLink>
-        </>
-      ),
-    },
-    {
-      title: "Security",
-      description: "Learning low-level security: from 'simple' binary exploitation to kernel exploits and more",
-      badge: "☠️",
-      tags: [Tags.security, Tags.education, Tags.assembly],
-      details: (
-        <>
-          I&apos;m passionate about security, especially low-level (like reverse engineering, assembly, and binary exploitation) but I also
-          enjoy web and network hacking.
-          <br />
-          Entirely self-taught, mostly through <ExternalLink href="https://app.hackthebox.com/profile/225326">
-            HackTheBox
-          </ExternalLink> and <ExternalLink href="https://www.root-me.org/teddav">Root-Me</ExternalLink>
-          <br />
-          From &quot;simple&quot; binary exploitation to kernel exploits and more.
-        </>
-      ),
-      startDate: new Date("2024-01-01"),
-      endDate: "present",
     },
   ],
 
@@ -232,7 +212,27 @@ const work: Record<string, TProject[]> = {
     },
   ],
 
-  "Other work": [
+  "Other...": [
+    {
+      title: "Security",
+      description: "Learning low-level security: from 'simple' binary exploitation to kernel exploits and more",
+      badge: "☠️",
+      tags: [Tags.security, Tags.education, Tags.assembly],
+      details: (
+        <>
+          I&apos;m passionate about security, especially low-level (like reverse engineering, assembly, and binary exploitation) but I also
+          enjoy web and network hacking.
+          <br />
+          Entirely self-taught, mostly through <ExternalLink href="https://app.hackthebox.com/profile/225326">
+            HackTheBox
+          </ExternalLink> and <ExternalLink href="https://www.root-me.org/teddav">Root-Me</ExternalLink>
+          <br />
+          From &quot;simple&quot; binary exploitation to kernel exploits and more.
+        </>
+      ),
+      startDate: new Date("2024-01-01"),
+      endDate: "present",
+    },
     {
       title: "Contributing to Foundry",
       description: "Contributing to Foundry, a tool for building and testing smart contracts",
