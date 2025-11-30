@@ -136,18 +136,12 @@ function Audit({ audit }: { audit: TAudit }) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-  const projectUrl = audit.projectUrl
-    ? audit.projectUrl.length > 25
-      ? audit.projectUrl.slice(0, 25) + "..."
-      : audit.projectUrl
-    : undefined;
-
   return (
     <article id={anchorId} className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col group">
       <div className="flex items-start justify-between gap-3 mb-4">
         <div className="flex-1">
           <h3 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
-            {audit.project}
+            <ExternalLink href={audit.projectUrl ?? "#"}>{audit.project}</ExternalLink>
             <a
               href={`#${anchorId}`}
               className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-gray-600 ml-1.5 align-middle inline"
@@ -164,15 +158,7 @@ function Audit({ audit }: { audit: TAudit }) {
             </a>
           </h3>
 
-          <p className="text-sm text-gray-600 mb-2">
-            {audit.type}
-            {projectUrl && (
-              <p>
-                {" "}
-                <ExternalLink href={audit.projectUrl ?? "#"}>{projectUrl}</ExternalLink>
-              </p>
-            )}
-          </p>
+          <p className="text-sm text-gray-600 mb-2">{audit.type}</p>
         </div>
         <span className="text-xs text-gray-500 font-medium whitespace-nowrap">{audit.date}</span>
       </div>
