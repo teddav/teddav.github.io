@@ -2,6 +2,7 @@ import Section from "@/lib/components/Section";
 import ProjectCard from "@/lib/components/ProjectCard";
 import workList from "@/projects";
 import type { Metadata } from "next";
+import Audits from "./audits";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -17,6 +18,8 @@ export default function Portfolio() {
         <br />
         Enjoy 😊
       </p>
+
+      <Audits />
 
       {sections.length > 0 &&
         sections.map((section) => (

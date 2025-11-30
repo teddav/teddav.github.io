@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "@/lib/components/ExternalLink";
 
 export enum Tags {
   privacy = "privacy",
@@ -35,14 +36,6 @@ export type TProject = {
   details?: React.ReactNode;
   startDate: Date;
   endDate?: Date | "present";
-};
-
-const ExternalLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 hover:underline">
-      {children}
-    </a>
-  );
 };
 
 const work: Record<string, TProject[]> = {
@@ -131,30 +124,6 @@ const work: Record<string, TProject[]> = {
         </>
       ),
       startDate: new Date("2024-05-17"),
-    },
-    {
-      title: "Summa (PSE)",
-      description: "Audited Summa, a proof of solvency protocol for centralized exchanges",
-      href: "https://github.com/electisec/summa-audit-report",
-      tags: [Tags.halo2, Tags.security, Tags.auditing, Tags.rust, Tags.evm, Tags.zk],
-      details: (
-        <>
-          <div>
-            More details on <ExternalLink href="https://pse.dev/projects/summa">Summa</ExternalLink>
-          </div>
-          <div>
-            I also wrote a detailed code walkthrough of the{" "}
-            <Link href="/notes/summa-contracts" className="text-blue-600 hover:text-blue-700 hover:underline">
-              solidity contracts
-            </Link>{" "}
-            and{" "}
-            <Link href="/notes/summa-circuits" className="text-blue-600 hover:text-blue-700 hover:underline">
-              the ZK circuits
-            </Link>
-          </div>
-        </>
-      ),
-      startDate: new Date("2024-04-20"),
     },
     {
       title: "Electisec zblock2 (formerly yAcademy)",

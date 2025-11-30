@@ -1,6 +1,7 @@
 "use client";
 
 import { Tags, TProject } from "@/projects";
+import TagsComponent from "./Tags";
 
 const tagColor = (tag: Tags) => {
   // https://tailwindcss.com/docs/colors
@@ -109,18 +110,7 @@ export default function ProjectCard({ title, description, href, tags, badge, det
             </p>
           )}
         </div>
-        <div className="flex gap-1 flex-wrap justify-end ml-4 min-w-0">
-          {tags?.map((tag) => (
-            <span
-              key={tag}
-              className={`${tagColor(
-                tag
-              )} px-2.5 py-1.5 rounded text-xs font-medium border border-opacity-50 hover:scale-105 transition-transform flex-shrink-0`}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        <div className="flex gap-1 flex-wrap justify-end ml-4 min-w-0">{tags && <TagsComponent tags={tags} />}</div>
       </div>
       <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
       {details && <div className="text-gray-700 mb-0 leading-relaxed">{details}</div>}
