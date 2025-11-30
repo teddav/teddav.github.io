@@ -1,58 +1,7 @@
 "use client";
 
-import { Tags, TProject } from "@/projects";
+import { TProject } from "@/projects";
 import TagsComponent from "./Tags";
-
-const tagColor = (tag: Tags) => {
-  // https://tailwindcss.com/docs/colors
-  enum colors {
-    red = "bg-red-100 text-red-800",
-    orange = "bg-orange-100 text-orange-800",
-    amber = "bg-amber-100 text-amber-800",
-    yellow = "bg-yellow-100 text-yellow-800",
-    lime = "bg-lime-100 text-lime-800",
-    green = "bg-green-100 text-green-800",
-    emerald = "bg-emerald-100 text-emerald-800",
-    teal = "bg-teal-100 text-teal-800",
-    cyan = "bg-cyan-100 text-cyan-800",
-    sky = "bg-sky-100 text-sky-800",
-    blue = "bg-blue-100 text-blue-800",
-    indigo = "bg-indigo-100 text-indigo-800",
-    violet = "bg-violet-100 text-violet-800",
-    purple = "bg-purple-100 text-purple-800",
-    fuchsia = "bg-fuchsia-100 text-fuchsia-800",
-    pink = "bg-pink-100 text-pink-800",
-    rose = "bg-rose-100 text-rose-800",
-  }
-
-  const tagToColorMap: Record<Tags, string> = {
-    [Tags.privacy]: colors.red,
-    [Tags.zk]: colors.orange,
-    [Tags.mpc]: colors.amber,
-    [Tags.stark]: colors.yellow,
-    [Tags.education]: colors.lime,
-    [Tags.webassembly]: colors.green,
-    [Tags.noir]: colors.emerald,
-    [Tags.taceo]: colors.teal,
-    [Tags.co_snarks]: colors.cyan,
-    [Tags.security]: colors.sky,
-    [Tags.testing]: colors.blue,
-    [Tags.research]: colors.indigo,
-    [Tags.mock_prover]: colors.violet,
-    [Tags.halo2]: colors.purple,
-    [Tags.rust]: colors.fuchsia,
-    [Tags.python]: colors.pink,
-    [Tags.solidity]: colors.rose,
-    [Tags.yul]: colors.red,
-    [Tags.assembly]: colors.orange,
-    [Tags.wasm]: colors.amber,
-    [Tags.zk_tls]: colors.yellow,
-    [Tags.auditing]: colors.lime,
-    [Tags.evm]: colors.green,
-  };
-
-  return tagToColorMap[tag] || colors.red;
-};
 
 export default function ProjectCard({ title, description, href, tags, badge, details, startDate, endDate }: TProject) {
   const formatDate = (date: Date) => {
@@ -71,12 +20,32 @@ export default function ProjectCard({ title, description, href, tags, badge, det
     }
   }
 
+  // Generate a slug from the title for the anchor
+  const anchorId = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 group">
+    <div id={anchorId} className="bg-white border border-gray-200 rounded-lg p-6 group scroll-mt-4">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-2">
           <div className="flex items-center gap-2 mb-2">
             <h3 className="text-xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors">{title}</h3>
+            <a
+              href={`#${anchorId}`}
+              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-gray-600 ml-1"
+              aria-label="Copy link to this project"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                />
+              </svg>
+            </a>
             {badge && (
               <span className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium border border-green-200">
                 {badge}

@@ -130,14 +130,49 @@ const audits: TAudit[] = [
 function Audit({ audit }: { audit: TAudit }) {
   const scopeItems = audit.scope.filter(Boolean);
 
+  const anchorId = audit.project
+    .concat("-", audit.date)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+  const projectUrl = audit.projectUrl
+    ? audit.projectUrl.length > 25
+      ? audit.projectUrl.slice(0, 25) + "..."
+      : audit.projectUrl
+    : undefined;
+
   return (
-    <article className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col">
-      <div className="flex items-start justify-between gap-4 mb-4">
+    <article id={anchorId} className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col group">
+      <div className="flex items-start justify-between gap-3 mb-4">
         <div className="flex-1">
-          <ExternalLink href={audit.projectUrl ?? "#"}>
-            <h3 className="text-xl font-bold text-gray-900 mb-1 hover:text-blue-600 transition-colors">{audit.project}</h3>
-          </ExternalLink>
-          <p className="text-sm text-gray-600 mb-2">{audit.type}</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+            {audit.project}
+            <a
+              href={`#${anchorId}`}
+              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-gray-600 ml-1.5 align-middle inline"
+              aria-label="Copy link to this audit"
+            >
+              <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                />
+              </svg>
+            </a>
+          </h3>
+
+          <p className="text-sm text-gray-600 mb-2">
+            {audit.type}
+            {projectUrl && (
+              <p>
+                {" "}
+                <ExternalLink href={audit.projectUrl ?? "#"}>{projectUrl}</ExternalLink>
+              </p>
+            )}
+          </p>
         </div>
         <span className="text-xs text-gray-500 font-medium whitespace-nowrap">{audit.date}</span>
       </div>
