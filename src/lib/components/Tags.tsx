@@ -57,9 +57,11 @@ const tagColor = (tag: Tags | AuditTags) => {
     [AuditTags.solana]: colors.green,
     [AuditTags.go]: colors.cyan,
     [AuditTags.das]: colors.violet,
+    [AuditTags.post_quantum]: colors.amber,
+    [AuditTags.hyperliquid]: colors.cyan,
   };
 
-  return tagToColorMap[tag] || colors.red;
+  return tagToColorMap[tag] ?? colors.red;
 };
 
 export default function TagsComponent({ tags }: { tags: (Tags | AuditTags)[] }) {

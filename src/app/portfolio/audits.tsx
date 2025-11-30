@@ -14,6 +14,7 @@ export enum AuditTags {
   solana = "solana",
   das = "data-availability sampling",
   post_quantum = "pqc",
+  hyperliquid = "Hyperliquid",
 }
 
 type TAudit = {
@@ -29,6 +30,26 @@ type TAudit = {
 };
 
 const audits: TAudit[] = [
+  // {
+  //   project: "Silhouette",
+  //   projectUrl: "https://silhouette.exchange/",
+  //   date: "December 2025",
+  //   type: "Private trading protocol",
+  //   summary: "Review of the Silhouette protocol, private trading protocol on Hyperliquid/HyperEVM.",
+  //   scope: [],
+  //   reportUrl: "#",
+  //   tags: [AuditTags.rust, AuditTags.tee, AuditTags.hyperliquid],
+  // },
+  // {
+  //   project: "Self",
+  //   projectUrl: "https://self.xyz/",
+  //   date: "December 2025",
+  //   type: "Digital identity protocol",
+  //   summary: "Review of the Self protocol implementation.",
+  //   scope: [],
+  //   reportUrl: "#",
+  //   tags: [AuditTags.circom, AuditTags.tee],
+  // },
   {
     project: "Hyperlane",
     projectUrl: "https://www.hyperlane.xyz/",
