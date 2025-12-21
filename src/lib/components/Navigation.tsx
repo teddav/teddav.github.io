@@ -17,7 +17,7 @@ export default function Navigation() {
   const { isDarkMode, toggleDarkMode } = useColorSchemeContext();
 
   return (
-    <nav className="bg-white shadow-sm border-b">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">

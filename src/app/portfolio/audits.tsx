@@ -1,21 +1,9 @@
+"use client";
+
 import { ExternalLink } from "@/lib/components/ExternalLink";
-import TagsComponent from "@/lib/components/Tags";
+import TagsComponent, { AuditTags } from "@/lib/components/Tags";
 import Link from "next/link";
 import { ReactNode } from "react";
-
-export enum AuditTags {
-  circom = "circom",
-  halo2 = "halo2",
-  rust = "rust",
-  aleo = "aleo",
-  go = "go",
-  tee = "TEE",
-  solidity = "solidity",
-  solana = "solana",
-  das = "data-availability sampling",
-  post_quantum = "pqc",
-  hyperliquid = "Hyperliquid",
-}
 
 type TAudit = {
   project: string;
@@ -30,33 +18,44 @@ type TAudit = {
 };
 
 const audits: TAudit[] = [
-  // {
-  //   project: "Silhouette",
-  //   projectUrl: "https://silhouette.exchange/",
-  //   date: "December 2025",
-  //   type: "Private trading protocol",
-  //   summary: "Review of the Silhouette protocol, private trading protocol on Hyperliquid/HyperEVM.",
-  //   scope: [],
-  //   reportUrl: "#",
-  //   tags: [AuditTags.rust, AuditTags.tee, AuditTags.hyperliquid],
-  // },
-  // {
-  //   project: "Self",
-  //   projectUrl: "https://self.xyz/",
-  //   date: "December 2025",
-  //   type: "Digital identity protocol",
-  //   summary: "Review of the Self protocol implementation.",
-  //   scope: [],
-  //   reportUrl: "#",
-  //   tags: [AuditTags.circom, AuditTags.tee],
-  // },
+  {
+    project: "Silhouette",
+    projectUrl: "https://silhouette.exchange/",
+    date: "December 2025",
+    type: "Private trading protocol",
+    summary:
+      "Review of the Silhouette protocol, private trading protocol on top of HyperEVM (Hyperliquid), using TEEs (AWS Nitro Enclave).",
+    scope: [],
+    reportUrl: "#",
+    tags: [AuditTags.rust, AuditTags.tee, AuditTags.hyperliquid],
+  },
+  {
+    project: "Self",
+    projectUrl: "https://self.xyz/",
+    date: "December 2025",
+    type: "Digital identity protocol",
+    summary: "Review of the Self protocol implementation.",
+    scope: [],
+    reportUrl: "#",
+    tags: [AuditTags.circom, AuditTags.tee, AuditTags.rust, AuditTags.identity],
+  },
   {
     project: "Hyperlane",
     projectUrl: "https://www.hyperlane.xyz/",
     date: "November 2025",
     type: "Cross-chain messaging protocol",
     summary: "Review of the Hyperlane bridge implementation on Aleo chain.",
-    scope: ["Leo programs", "Token application implementations"],
+    details: (
+      <ExternalLink href="https://github.com/hyperlane-xyz/hyperlane-aleo/tree/8a57aacba2a9fdae038f21db68611665398e6f07">
+        Github repo
+      </ExternalLink>
+    ),
+    scope: [
+      "Aleo implementation of the protocol",
+      "Hyperlane native token implementation (Leo)",
+      "Hyperlane collateral token implementation (Leo)",
+      "Hyperlane synthetic token implementation (Leo)",
+    ],
     reportUrl: "#",
     tags: [AuditTags.aleo],
   },
@@ -90,8 +89,8 @@ const audits: TAudit[] = [
     summary: 'Review of the implementation of the Confidential Transfers extension for the "Token Extensions Program" (Token 2022)',
 
     scope: ["ZK El Gamal proof program and SDK", "Token 2022 confidential transfers extension"],
-    reportUrl: "#",
-    tags: [AuditTags.solana, AuditTags.rust],
+    reportUrl: "https://reports.zksecurity.xyz/reports/anza-solana-token2022/",
+    tags: [AuditTags.solana, AuditTags.rust, AuditTags.sigma, AuditTags.bulletproofs],
   },
   {
     project: "Summa (PSE)",

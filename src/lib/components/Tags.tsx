@@ -1,7 +1,23 @@
 "use client";
 
 import { Tags } from "@/projects";
-import { AuditTags } from "@/app/portfolio/audits";
+
+export enum AuditTags {
+  circom = "circom",
+  halo2 = "halo2",
+  rust = "rust",
+  aleo = "aleo",
+  go = "go",
+  tee = "TEE",
+  solidity = "solidity",
+  solana = "solana",
+  das = "data-availability sampling",
+  post_quantum = "pqc",
+  hyperliquid = "Hyperliquid",
+  sigma = "sigma",
+  bulletproofs = "bulletproofs",
+  identity = "identity",
+}
 
 const tagColor = (tag: Tags | AuditTags) => {
   // https://tailwindcss.com/docs/colors
@@ -59,6 +75,9 @@ const tagColor = (tag: Tags | AuditTags) => {
     [AuditTags.das]: colors.violet,
     [AuditTags.post_quantum]: colors.amber,
     [AuditTags.hyperliquid]: colors.cyan,
+    [AuditTags.sigma]: colors.yellow,
+    [AuditTags.bulletproofs]: colors.purple,
+    [AuditTags.identity]: colors.pink,
   };
 
   return tagToColorMap[tag] ?? colors.red;

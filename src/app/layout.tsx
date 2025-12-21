@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
         <ColorSchemeProvider>
           <Navigation />
-          <main className="min-h-screen overflow-x-hidden">{children}</main>
+          <main className="min-h-screen overflow-x-hidden pt-16">{children}</main>
         </ColorSchemeProvider>
       </body>
       <GoogleAnalytics gaId="G-46SDB0ZKXC" />
