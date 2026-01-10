@@ -244,7 +244,7 @@ F1 = Fe + alpha*Fo
 
 If the base field we’re using is small, challenge $\alpha$ needs to be sampled from a **field extension**. This prevents the prover from exploiting the small field structure to cheat.
 
-If you need a refresher on field extensions, check out my previous [article on extension fields](https://teddav.github.io/binius-1-extension-fields/).
+If you need a refresher on field extensions, check out my previous [article on extension fields](https://teddav.github.io/field-extensions/).
 
 We'll first introduce the rest of the FRI process using only the **base field**. This will help build intuition about how degree reduction and verification work. Later, I'll revisit how the process changes when alpha **is sampled from a field extension**, and why this is necessary for security when working over small fields.
 
@@ -472,7 +472,7 @@ STARKs use FRI because it provides a **succinct and efficient way** to verify th
 
 ### Stark by Hand
 
-If you want to dive deeper into STARKs, I highly recommend the [STARK by Hand tutorial by Risc0](https://dev.risczero.com/proof-system/stark-by-hand), it’s a fantastic resource! And, of course, to make things even easier to understand and experiment with, I made a Sage script again 😊: https://github.com/teddav/stark_by_hand/blob/main/stark_by_hand.sage
+If you want to dive deeper into STARKs, I highly recommend the [STARK by Hand tutorial by Risc0](https://dev.risczero.com/proof-system/stark-by-hand), it’s a fantastic resource! And, of course, to make things even easier to understand and experiment with, I made a Sage script again 😊: [stark_by_hand](https://github.com/teddav/stark_by_hand/blob/main/stark_by_hand.sage)
 
 ## Bonus 2: implementing with Plonky3
 

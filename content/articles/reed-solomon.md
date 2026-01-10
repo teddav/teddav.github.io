@@ -139,7 +139,7 @@ Without additional constraints, there’s no way to determine which one is corre
 ### A note on Sagemath
 
 A quick tip for using SageMath: I find it easiest to run their official Docker image, `sagemath/sagemath`.  
-See this article for help: [https://teddav.github.io/sagemath](https://teddav.github.io/sagemath)
+See this article for help: [https://teddav.github.io/blog/sagemath](https://teddav.github.io/blog/sagemath)
 
 ### Polynomial interpolation
 
