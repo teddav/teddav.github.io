@@ -18,13 +18,34 @@ type TAudit = {
 };
 
 const audits: TAudit[] = [
+  // {
+  //   project: "Zcash",
+  //   projectUrl: "https://z.cash/",
+  //   date: "January 2026",
+  //   type: "Privacy-preserving cryptocurrency",
+  //   summary:
+  //     "Review of Ragu, a new PCD (proof-carrying data) toolkit for Zcash's Orchard shielded protocol. Ragu enables recursive proofs with the Pasta curve cycle, using a simpler R1CS-like arithmetization designed for non-uniform circuits.",
+  //   scope: [],
+  //   reportUrl: "#",
+  //   tags: [AuditTags.rust, AuditTags.bulletproofs],
+  //   details: (
+  //     <>
+  //       <p className="text-sm text-gray-600 mb-2">Part of Project Tachyon, Zcash&apos;s scaling initiative.</p>
+  //       <div className="flex flex-wrap gap-x-4">
+  //         <ExternalLink href="https://seanbowe.com/blog/ragu-for-orchard-part1/">Ragu blog post</ExternalLink>
+  //         <ExternalLink href="https://seanbowe.com/blog/tachyon-scaling-zcash-oblivious-synchronization">Tachyon overview</ExternalLink>
+  //         <ExternalLink href="https://eprint.iacr.org/2025/2031">ePrint paper</ExternalLink>
+  //       </div>
+  //     </>
+  //   ),
+  // },
   {
     project: "Silhouette",
     projectUrl: "https://silhouette.exchange/",
     date: "December 2025",
     type: "Private trading protocol",
-    summary:
-      "Review of the Silhouette protocol, private trading protocol on top of HyperEVM (Hyperliquid), using TEEs (AWS Nitro Enclave).",
+    summary: "Review of Silhouette, a private trading protocol built on HyperEVM (Hyperliquid) using TEEs (AWS Nitro Enclave).",
+    // "Review of Silhouette, a private trading protocol built on HyperEVM (Hyperliquid) using TEEs (AWS Nitro Enclave). Found a critical vulnerability in the AES-GCM implementation.",
     scope: [],
     reportUrl: "#",
     tags: [AuditTags.rust, AuditTags.tee, AuditTags.hyperliquid],
@@ -34,8 +55,9 @@ const audits: TAudit[] = [
     projectUrl: "https://self.xyz/",
     date: "December 2025",
     type: "Digital identity protocol",
-    summary: "Review of the Self protocol implementation.",
-    scope: [],
+    summary:
+      "Review of Self, a privacy-preserving identity protocol that allows users to prove their identity through their passport while selectively disclosing only chosen fields.",
+    scope: ["Circom circuits JWT verification from GCP TEE attestations", "TEE server implementation"],
     reportUrl: "#",
     tags: [AuditTags.circom, AuditTags.tee, AuditTags.rust, AuditTags.identity],
   },
@@ -44,7 +66,8 @@ const audits: TAudit[] = [
     projectUrl: "https://www.hyperlane.xyz/",
     date: "November 2025",
     type: "Cross-chain messaging protocol",
-    summary: "Review of the Hyperlane bridge implementation on Aleo chain.",
+    summary:
+      "Review of Hyperlane's Aleo implementation, the main interoperability bridge on Aleo. Hyperlane is a universal cross-chain messaging protocol deployed across many chains.",
     details: (
       <ExternalLink href="https://github.com/hyperlane-xyz/hyperlane-aleo/tree/8a57aacba2a9fdae038f21db68611665398e6f07">
         Github repo
@@ -63,7 +86,8 @@ const audits: TAudit[] = [
     project: "(confidential)",
     date: "November 2025",
     type: "Post-quantum proof system",
-    summary: "Review of an implementation of LaBRADOR, a post-quantum proof system based on lattices",
+    summary:
+      "Review of a LaBRADOR implementation, a cutting-edge post-quantum proof system based on lattice assumptions, offering an alternative to pairing-based SNARKs.",
     details: <ExternalLink href="https://eprint.iacr.org/2022/1341">LaBRADOR paper</ExternalLink>,
     scope: [],
     reportUrl: "#",
@@ -74,8 +98,15 @@ const audits: TAudit[] = [
     projectUrl: "https://celestia.org/",
     date: "October 2025",
     type: "Data availability sampling protocol",
-    summary: "Review of the Celestia implementation of ZODA for data availability sampling.",
-    details: <ExternalLink href="https://eprint.iacr.org/2025/034">ZODA paper</ExternalLink>,
+    summary:
+      "Review of Celestia's ZODA implementation, a new data availability encoding protocol that is significantly more efficient than KZG-based approaches, powering Celestia's Fibre Blockspace upgrade.",
+    details: (
+      <>
+        <ExternalLink href="https://eprint.iacr.org/2025/034">ZODA paper</ExternalLink>
+        <br />
+        <ExternalLink href="https://blog.celestia.org/introducing-fibre-1tb-s-of-blockspace/">Fibre Blockspace announcement</ExternalLink>
+      </>
+    ),
     scope: [],
     reportUrl: "#",
     tags: [AuditTags.go, AuditTags.das],
@@ -111,13 +142,13 @@ const audits: TAudit[] = [
           <li className="flex items-start">
             <span className="text-gray-400 mr-2">•</span>
             <Link href="/notes/summa-contracts" className="text-blue-600 hover:text-blue-700 hover:underline">
-              the solidity contracts
+              solidity contracts
             </Link>
           </li>
           <li className="flex items-start">
             <span className="text-gray-400 mr-2">•</span>
             <Link href="/notes/summa-circuits" className="text-blue-600 hover:text-blue-700 hover:underline">
-              the ZK circuits
+              ZK circuits
             </Link>
           </li>
         </ul>

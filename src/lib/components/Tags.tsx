@@ -13,7 +13,7 @@ export enum AuditTags {
   solana = "solana",
   das = "data-availability sampling",
   post_quantum = "pqc",
-  hyperliquid = "Hyperliquid",
+  hyperliquid = "hyperliquid",
   sigma = "sigma",
   bulletproofs = "bulletproofs",
   identity = "identity",
