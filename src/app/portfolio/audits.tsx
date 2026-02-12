@@ -18,27 +18,28 @@ type TAudit = {
 };
 
 const audits: TAudit[] = [
-  // {
-  //   project: "Zcash",
-  //   projectUrl: "https://z.cash/",
-  //   date: "January 2026",
-  //   type: "Privacy-preserving cryptocurrency",
-  //   summary:
-  //     "Review of Ragu, a new PCD (proof-carrying data) toolkit for Zcash's Orchard shielded protocol. Ragu enables recursive proofs with the Pasta curve cycle, using a simpler R1CS-like arithmetization designed for non-uniform circuits.",
-  //   scope: [],
-  //   reportUrl: "#",
-  //   tags: [AuditTags.rust, AuditTags.bulletproofs],
-  //   details: (
-  //     <>
-  //       <p className="text-sm text-gray-600 mb-2">Part of Project Tachyon, Zcash&apos;s scaling initiative.</p>
-  //       <div className="flex flex-wrap gap-x-4">
-  //         <ExternalLink href="https://seanbowe.com/blog/ragu-for-orchard-part1/">Ragu blog post</ExternalLink>
-  //         <ExternalLink href="https://seanbowe.com/blog/tachyon-scaling-zcash-oblivious-synchronization">Tachyon overview</ExternalLink>
-  //         <ExternalLink href="https://eprint.iacr.org/2025/2031">ePrint paper</ExternalLink>
-  //       </div>
-  //     </>
-  //   ),
-  // },
+  {
+    project: "Zcash Tachyon",
+    projectUrl: "https://github.com/tachyon-zcash/ragu/",
+    date: "January 2026",
+    type: "Proof-carrying data (PCD) framework",
+    summary:
+      "Review of Ragu, a new PCD (proof-carrying data) toolkit for the new Zcash's Tachyon shielded protocol. Ragu enables recursive proving with the Pasta curve cycle.",
+    scope: [],
+    reportUrl: "#",
+    tags: [AuditTags.rust, AuditTags.bulletproofs, AuditTags.folding, AuditTags.pcd],
+    details: (
+      <>
+        <p className="text-sm text-gray-600 mb-2">Part of Project Tachyon, Zcash&apos;s scaling initiative.</p>
+        <div className="flex flex-wrap gap-x-4">
+          <ExternalLink href="https://seanbowe.com/blog/ragu-for-orchard-part1/">Ragu blog post</ExternalLink>
+          <ExternalLink href="https://seanbowe.com/blog/tachyon-scaling-zcash-oblivious-synchronization">Tachyon overview</ExternalLink>
+          <ExternalLink href="https://eprint.iacr.org/2025/2031">ePrint paper</ExternalLink>
+          <ExternalLink href="https://tachyon.z.cash/ragu/">Ragu book</ExternalLink>
+        </div>
+      </>
+    ),
+  },
   {
     project: "Silhouette",
     projectUrl: "https://silhouette.exchange/",

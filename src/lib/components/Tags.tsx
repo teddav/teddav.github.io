@@ -17,6 +17,8 @@ export enum AuditTags {
   sigma = "sigma",
   bulletproofs = "bulletproofs",
   identity = "identity",
+  folding = "folding",
+  pcd = "proof-carrying data"
 }
 
 const tagColor = (tag: Tags | AuditTags) => {
@@ -78,6 +80,8 @@ const tagColor = (tag: Tags | AuditTags) => {
     [AuditTags.sigma]: colors.yellow,
     [AuditTags.bulletproofs]: colors.purple,
     [AuditTags.identity]: colors.pink,
+    [AuditTags.folding]: colors.amber,
+    [AuditTags.pcd]: colors.green,
   };
 
   return tagToColorMap[tag] ?? colors.red;
