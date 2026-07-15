@@ -19,9 +19,7 @@ export enum Tags {
   rust = "rust",
   python = "python",
   solidity = "solidity",
-  yul = "yul",
   assembly = "assembly",
-  wasm = "wasm",
   zk_tls = "zk-tls",
   auditing = "auditing",
   evm = "evm",
@@ -44,7 +42,7 @@ const work: Record<string, TProject[]> = {
       title: "co-match",
       description: "Secure MPC matching via TACEO's co-snarks",
       href: "https://github.com/teddav/co-match.noir",
-      tags: [Tags.mpc, Tags.co_snarks, Tags.taceo],
+      tags: [Tags.mpc, Tags.co_snarks, Tags.taceo, Tags.privacy],
       startDate: new Date("2025-05-05"),
       details: (
         <>
@@ -86,7 +84,7 @@ const work: Record<string, TProject[]> = {
       title: "Noir WebProof SDK proposal",
       description: "Helping bring zk proofs to the browser with a WebAssembly-friendly Noir SDK",
       href: "https://github.com/orgs/noir-lang/discussions/8595",
-      tags: [Tags.mpc, Tags.zk, Tags.webassembly, Tags.noir, Tags.zk_tls],
+      tags: [Tags.zk, Tags.webassembly, Tags.noir, Tags.zk_tls],
       startDate: new Date("2025-07-01"),
       endDate: "present",
     },
@@ -100,7 +98,7 @@ const work: Record<string, TProject[]> = {
     {
       title: "mpz-play",
       description:
-        "Updated mpz-play to the latest version of mpz. A comprehensive playground for learning and experimenting with the mpz framework. Great resource for understanding MPC concepts.",
+        "A hands-on playground for learning and experimenting with the mpz MPC framework, updated to the latest version of mpz. A great resource for understanding MPC concepts.",
       href: "https://github.com/th4s/mpz-play",
       tags: [Tags.mpc, Tags.education],
       startDate: new Date("2025-06-01"),
@@ -167,7 +165,7 @@ const work: Record<string, TProject[]> = {
       title: "Tornado Cash with Halo2",
       description: "Implementing Tornado Cash in Halo2",
       href: "https://teddav.github.io/blog/tornado-halo2",
-      tags: [Tags.halo2, Tags.security, Tags.privacy],
+      tags: [Tags.halo2, Tags.zk, Tags.security, Tags.privacy],
       startDate: new Date("2024-02-01"),
       details: (
         <>
@@ -238,7 +236,7 @@ const work: Record<string, TProject[]> = {
       title: "Secureum Epoch 0",
       description: "Smart contract security bootcamp",
       href: "https://www.secureum.xyz/",
-      tags: [Tags.security, Tags.evm, Tags.solidity, Tags.zk],
+      tags: [Tags.security, Tags.evm, Tags.solidity, Tags.education],
       startDate: new Date("2021-10-01"),
       endDate: new Date("2021-12-30"),
       details: (

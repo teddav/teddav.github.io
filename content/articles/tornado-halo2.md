@@ -192,8 +192,7 @@ In reality, strings don’t exist in circuits. Everything is a number.
 
 Next we need a chip to compute/constrain our merkle tree. This chip is going to be a bit more complicated.
 
-| advice1 | advice2 | advice3
-(swap bit) | swap selector | bool selector |
+| advice1 | advice2 | advice3 (swap bit) | swap selector | bool selector |
 | --- | --- | --- | --- | --- |
 | leaf | neighbor | 1 | 1 | 1 |
 | left | right | hash | 0 | 0 |

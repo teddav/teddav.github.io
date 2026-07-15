@@ -213,7 +213,7 @@ function Audit({ audit }: { audit: TAudit }) {
         )}
       </div>
 
-      <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-100">
+      <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
         {audit.reportUrl && audit.reportUrl !== "#" ? (
           <ExternalLink
             href={audit.reportUrl}
@@ -245,12 +245,12 @@ function Audit({ audit }: { audit: TAudit }) {
 
 export default function Audits() {
   return (
-    <section className="mb-10 rounded-2xl border border-blue-100 bg-blue-50/80 px-6 py-6 shadow-sm">
+    <section className="mb-10 rounded-2xl border border-blue-100 bg-blue-50/80 px-6 py-6 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">Auditing</p>
-          <h2 className="text-2xl font-semibold text-blue-950">Recent cryptography &amp; ZK audits</h2>
-          <p className="text-blue-900">Deep reviews of protocols I&apos;ve been helping secure lately.</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Auditing</p>
+          <h2 className="text-2xl font-semibold text-blue-950 dark:text-blue-100">Recent cryptography &amp; ZK audits</h2>
+          <p className="text-blue-900 dark:text-blue-200">Deep reviews of protocols I&apos;ve been helping secure lately.</p>
         </div>
       </div>
       <div className="mt-5 grid gap-4 md:grid-cols-2">

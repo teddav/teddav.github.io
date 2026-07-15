@@ -92,8 +92,8 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
       {/* Desktop Sidebar */}
       <div className="hidden lg:block lg:fixed lg:top-24 lg:left-8 lg:w-64">
         {isOpen ? (
-          <div className="bg-gray-50 rounded-lg p-4 border sticky top-24">
-            <div className="flex items-center justify-between mb-3">
+          <div className="bg-gray-50 rounded-lg p-4 border sticky top-24 flex flex-col max-h-[calc(100vh-7rem)]">
+            <div className="flex items-center justify-between mb-3 flex-shrink-0">
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Table of Contents</h3>
               <button
                 onClick={() => setIsOpen(false)}
@@ -105,7 +105,11 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
                 </svg>
               </button>
             </div>
-            <div ref={desktopTocRef} className="toc-desktop prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
+            <div
+              ref={desktopTocRef}
+              className="toc-desktop prose prose-sm max-w-none overflow-y-auto flex-1 min-h-0 -mr-2 pr-2"
+              dangerouslySetInnerHTML={{ __html: toc }}
+            />
           </div>
         ) : (
           <>
