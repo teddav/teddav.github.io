@@ -17,10 +17,10 @@ export default function BlogClient({ articles }: BlogClientProps) {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Articles</h1>
-        <p className="text-gray-600">Exploring cryptography, algebra, and the fascinating world of zero-knowledge proofs.</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">Articles</h1>
+        <p className="text-gray-600 dark:text-gray-400">Exploring cryptography, algebra, and the fascinating world of zero-knowledge proofs.</p>
 
-        <div className="text-gray-600 mt-6 flex-row gap-3 items-center">
+        <div className="text-gray-600 dark:text-gray-400 mt-6 flex-row gap-3 items-center">
           <p>If you enjoy the content of my blog, please don&apos;t be selfish! 😁</p>
           <button
             onClick={() => {
@@ -28,7 +28,7 @@ export default function BlogClient({ articles }: BlogClientProps) {
               const text = encodeURIComponent(`Learning about cryptography? @0xteddav's blog is a goldmine! 🧠\n`);
               window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, "_blank");
             }}
-            className="inline-flex w-full items-baseline gap-1 text-blue-600 hover:text-blue-700 hover:underline font-medium transition-colors duration-200 cursor-pointer sm:w-auto sm:justify-start"
+            className="inline-flex w-full items-baseline gap-1 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline font-medium transition-colors duration-200 cursor-pointer sm:w-auto sm:justify-start"
           >
             <TwitterIcon className="w-3.5 h-3.5" />
             Let others know about it!

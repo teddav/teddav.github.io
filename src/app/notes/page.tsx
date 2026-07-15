@@ -13,14 +13,14 @@ export default function ContentPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Content</h1>
-        <p className="text-xl text-gray-600">Various writings, reports, and other content.</p>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Content</h1>
+        <p className="text-xl text-gray-600 dark:text-gray-400">Various writings, reports, and other content.</p>
       </div>
 
       {contentList.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">
-            No notes found. Add markdown files to the <code className="bg-gray-100 px-2 py-1 rounded">notes/</code> directory.
+          <p className="text-gray-500 dark:text-gray-500 text-lg">
+            No notes found. Add markdown files to the <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">notes/</code> directory.
           </p>
         </div>
       ) : (

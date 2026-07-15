@@ -30,7 +30,7 @@ const audits: TAudit[] = [
     tags: [AuditTags.rust, AuditTags.bulletproofs, AuditTags.folding, AuditTags.pcd],
     details: (
       <>
-        <p className="text-sm text-gray-600 mb-2">Part of Project Tachyon, Zcash&apos;s scaling initiative.</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Part of Project Tachyon, Zcash&apos;s scaling initiative.</p>
         <div className="flex flex-wrap gap-x-4">
           <ExternalLink href="https://seanbowe.com/blog/ragu-for-orchard-part1/">Ragu blog post</ExternalLink>
           <ExternalLink href="https://seanbowe.com/blog/tachyon-scaling-zcash-oblivious-synchronization">Tachyon overview</ExternalLink>
@@ -141,14 +141,14 @@ const audits: TAudit[] = [
         <p className="mb-2">I also wrote a detailed code walkthrough of:</p>
         <ul className="space-y-1.5 ml-4">
           <li className="flex items-start">
-            <span className="text-gray-400 mr-2">•</span>
-            <Link href="/notes/summa-contracts" className="text-blue-600 hover:text-blue-700 hover:underline">
+            <span className="text-gray-400 dark:text-gray-400 mr-2">•</span>
+            <Link href="/notes/summa-contracts" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline">
               solidity contracts
             </Link>
           </li>
           <li className="flex items-start">
-            <span className="text-gray-400 mr-2">•</span>
-            <Link href="/notes/summa-circuits" className="text-blue-600 hover:text-blue-700 hover:underline">
+            <span className="text-gray-400 dark:text-gray-400 mr-2">•</span>
+            <Link href="/notes/summa-circuits" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline">
               ZK circuits
             </Link>
           </li>
@@ -168,14 +168,14 @@ function Audit({ audit }: { audit: TAudit }) {
     .replace(/(^-|-$)/g, "");
 
   return (
-    <article id={anchorId} className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col group">
+    <article id={anchorId} className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333] rounded-lg p-6 flex flex-col group">
       <div className="flex items-start justify-between gap-3 mb-4">
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             <ExternalLink href={audit.projectUrl ?? "#"}>{audit.project}</ExternalLink>
             <a
               href={`#${anchorId}`}
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-gray-600 ml-1.5 align-middle inline"
+              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 ml-1.5 align-middle inline"
               aria-label="Copy link to this audit"
             >
               <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,22 +189,22 @@ function Audit({ audit }: { audit: TAudit }) {
             </a>
           </h3>
 
-          <p className="text-sm text-gray-600 mb-2">{audit.type}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{audit.type}</p>
         </div>
-        <span className="text-xs text-gray-500 font-medium whitespace-nowrap">{audit.date}</span>
+        <span className="text-xs text-gray-500 dark:text-gray-500 font-medium whitespace-nowrap">{audit.date}</span>
       </div>
 
-      <div className="text-gray-700 mb-4 leading-relaxed flex-1">
+      <div className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed flex-1">
         <p>{audit.summary}</p>
         {audit.details && <div className="mt-4 leading-relaxed">{audit.details}</div>}
 
         {scopeItems.length > 0 && (
           <div className="mt-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">Scope</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-500 mb-2">Scope</p>
             <ul className="space-y-1.5">
               {scopeItems.map((item) => (
-                <li key={item} className="text-sm text-gray-600 flex items-start">
-                  <span className="text-gray-400 mr-2">•</span>
+                <li key={item} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                  <span className="text-gray-400 dark:text-gray-400 mr-2">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -217,7 +217,7 @@ function Audit({ audit }: { audit: TAudit }) {
         {audit.reportUrl && audit.reportUrl !== "#" ? (
           <ExternalLink
             href={audit.reportUrl}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline transition-colors"
           >
             View report
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,7 +230,7 @@ function Audit({ audit }: { audit: TAudit }) {
             </svg>
           </ExternalLink>
         ) : (
-          <span className="text-sm text-gray-400">Report coming soon</span>
+          <span className="text-sm text-gray-400 dark:text-gray-400">Report coming soon</span>
         )}
 
         {audit.tags && audit.tags.length > 0 && (

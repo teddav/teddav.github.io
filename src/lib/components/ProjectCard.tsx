@@ -27,14 +27,14 @@ export default function ProjectCard({ title, description, href, tags, badge, det
     .replace(/(^-|-$)/g, "");
 
   return (
-    <div id={anchorId} className="bg-white border border-gray-200 rounded-lg p-6 group scroll-mt-4">
+    <div id={anchorId} className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333] rounded-lg p-6 group scroll-mt-4">
       <div className="flex items-start justify-between mb-4">
         <div className="flex-2">
           <div className="flex items-center gap-2 mb-2">
-            <h3 className="text-xl font-bold text-gray-900 group-hover:text-orange-500 transition-colors">{title}</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-orange-500 transition-colors">{title}</h3>
             <a
               href={`#${anchorId}`}
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-gray-600 ml-1"
+              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 ml-1"
               aria-label="Copy link to this project"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,18 +52,18 @@ export default function ProjectCard({ title, description, href, tags, badge, det
               </span>
             )}
           </div>
-          <p className="text-xs text-gray-500 mb-2 font-medium">{dateText}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-500 mb-2 font-medium">{dateText}</p>
           {href && (
-            <p className="text-sm text-gray-500 mb-3">
+            <p className="text-sm text-gray-500 dark:text-gray-500 mb-3">
               <a
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-start gap-1 hover:text-blue-600 transition-colors break-words group/link"
+                className="inline-flex items-start gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors break-words group/link"
               >
                 <span className="break-normal">{href}</span>
                 <svg
-                  className="w-3.5 h-3.5 text-gray-400 group-hover/link:text-blue-600 flex-shrink-0"
+                  className="w-3.5 h-3.5 text-gray-400 dark:text-gray-400 group-hover/link:text-blue-600 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -81,8 +81,8 @@ export default function ProjectCard({ title, description, href, tags, badge, det
         </div>
         <div className="flex gap-1 flex-wrap justify-end ml-4 min-w-0">{tags && <TagsComponent tags={tags} />}</div>
       </div>
-      <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
-      {details && <div className="text-gray-700 mb-0 leading-relaxed">{details}</div>}
+      <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{description}</p>
+      {details && <div className="text-gray-700 dark:text-gray-300 mb-0 leading-relaxed">{details}</div>}
     </div>
   );
 }

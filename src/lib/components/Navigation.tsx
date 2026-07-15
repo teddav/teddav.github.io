@@ -17,15 +17,15 @@ export default function Navigation() {
   const { isDarkMode, toggleDarkMode } = useColorSchemeContext();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#1a1a1a] shadow-sm border-b dark:border-[#333]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-3 text-xl font-semibold text-gray-900 hover:text-gray-700">
-              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
+            <Link href="/" className="flex items-center gap-3 text-xl font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300">
+              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600 dark:text-gray-400">
                 <Image src="/img/logo.png" alt="teddav" width={32} height={32} className="rounded-full" />
               </div>
-              <span className="text-xl font-semibold text-gray-900 hover:text-gray-700">teddav</span>
+              <span className="text-xl font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300">teddav</span>
             </Link>
           </div>
 
@@ -35,7 +35,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-gray-900 hover:underline px-3 py-2 rounded-md text-base font-medium transition-all duration-150 active:scale-95"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:underline px-3 py-2 rounded-md text-base font-medium transition-all duration-150 active:scale-95"
               >
                 {link.label}
               </Link>
@@ -44,7 +44,7 @@ export default function Navigation() {
             {/* Dark Mode Toggle Button */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle dark mode"
               title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
@@ -56,7 +56,7 @@ export default function Navigation() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-gray-900 p-2 rounded-md transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 p-2 rounded-md transition-colors"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,13 +72,13 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="md:hidden border-t border-gray-200 dark:border-[#333] bg-white dark:bg-[#1a1a1a]">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -87,7 +87,7 @@ export default function Navigation() {
               {/* Mobile Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
-                className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 aria-label="Toggle dark mode"
               >
                 <span className="mr-2">{isDarkMode ? "Light Mode" : "Dark Mode"}</span>

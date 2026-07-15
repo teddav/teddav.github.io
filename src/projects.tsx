@@ -222,7 +222,7 @@ const work: Record<string, TProject[]> = {
             </ul>
             <div>
               See more details in my blog post{" "}
-              <Link href="/blog/foundry1" className="text-blue-600 hover:text-blue-700">
+              <Link href="/blog/foundry1" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500">
                 here
               </Link>
             </div>

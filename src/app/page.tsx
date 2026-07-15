@@ -41,7 +41,7 @@ export default function HomePage() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             Hey, I&apos;m David <span className="inline-block animate-wave">👋</span>
             <span className="block mt-4 bg-gradient-to-r from-blue-600 via-purple-600 to-rose-500 bg-clip-text text-transparent pb-2">
               Breaking &amp; building
@@ -50,7 +50,7 @@ export default function HomePage() {
           </h1>
 
           {/* Intro */}
-          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-gray-600 leading-relaxed mt-8">
+          <p className="mx-auto max-w-2xl text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed mt-8">
             Currently at{" "}
             <a
               href="https://www.zksecurity.xyz"
@@ -103,7 +103,7 @@ export default function HomePage() {
               href="https://github.com/teddav"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-all duration-200 hover:scale-105"
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105"
             >
               <GithubIcon className="w-6 h-6" />
               <span className="font-medium">@teddav</span>
@@ -112,7 +112,7 @@ export default function HomePage() {
               href="https://twitter.com/0xteddav"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-all duration-200 hover:scale-105"
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 hover:scale-105"
             >
               <TwitterIcon className="w-6 h-6" />
               <span className="font-medium">@0xteddav</span>

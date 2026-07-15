@@ -52,9 +52,9 @@ export default function TagFilter({ articles, onFilteredArticles }: TagFilterPro
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">Filter by tags</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Filter by tags</h2>
         {selectedTags.length > 0 && (
-          <button onClick={clearAllTags} className="text-sm text-gray-500 hover:text-gray-700 underline">
+          <button onClick={clearAllTags} className="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 underline">
             Clear all
           </button>
         )}
@@ -66,7 +66,7 @@ export default function TagFilter({ articles, onFilteredArticles }: TagFilterPro
             key={tag}
             onClick={() => toggleTag(tag)}
             className={`px-3 py-1 rounded text-sm font-medium transition-all duration-200 ${
-              selectedTags.includes(tag) ? "bg-blue-600 text-white shadow-md" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              selectedTags.includes(tag) ? "bg-blue-600 text-white shadow-md" : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
             {tag}
@@ -76,7 +76,7 @@ export default function TagFilter({ articles, onFilteredArticles }: TagFilterPro
       </div>
 
       {selectedTags.length > 0 && (
-        <div className="mt-3 text-sm text-gray-600">
+        <div className="mt-3 text-sm text-gray-600 dark:text-gray-400">
           Showing {filteredArticles.length} article{filteredArticles.length !== 1 ? "s" : ""}
           with {selectedTags.length > 1 ? "any of the selected" : "the"} tag{selectedTags.length > 1 ? "s" : ""}
         </div>

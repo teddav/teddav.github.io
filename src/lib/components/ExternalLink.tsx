@@ -6,7 +6,7 @@ export const ExternalLink = ({ href, children, className }: { href: string; chil
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={className ? className : "text-blue-600 hover:text-blue-700 hover:underline"}
+      className={className ? className : "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 hover:underline"}
     >
       {children}
     </a>

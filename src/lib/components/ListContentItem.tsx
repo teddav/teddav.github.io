@@ -13,13 +13,13 @@ export default function ListContentItem({ item, path }: ListContentItemProps) {
     <Link href={`/${path}/${item.slug}`} className="block">
       <article
         key={item.slug}
-        className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-all duration-150 active:scale-99 cursor-pointer"
+        className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333] rounded-lg p-6 hover:shadow-md transition-all duration-150 active:scale-99 cursor-pointer"
       >
-        <h2 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">{item.title}</h2>
-        {item.subtitle && <p className="text-gray-600 mb-3">{item.subtitle}</p>}
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 hover:text-blue-600 dark:hover:text-blue-400">{item.title}</h2>
+        {item.subtitle && <p className="text-gray-600 dark:text-gray-400 mb-3">{item.subtitle}</p>}
 
         <div className="flex flex-col gap-4 mb-3 sm:flex-row sm:items-center">
-          {item.summary && <p className="text-gray-500 sm:flex-1">{item.summary}</p>}
+          {item.summary && <p className="text-gray-500 dark:text-gray-500 sm:flex-1">{item.summary}</p>}
           {item.thumbnail && (
             <div className="w-full overflow-hidden rounded-md sm:w-48 sm:flex-shrink-0">
               <Image
@@ -33,7 +33,7 @@ export default function ListContentItem({ item, path }: ListContentItemProps) {
           )}
         </div>
         <div className="mt-3 mb-2">
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-500 dark:text-gray-500">
             {new Date(item.date).toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",
@@ -42,12 +42,12 @@ export default function ListContentItem({ item, path }: ListContentItemProps) {
           </span>
         </div>
 
-        <div className="flex items-start justify-between text-sm text-gray-500">
+        <div className="flex items-start justify-between text-sm text-gray-500 dark:text-gray-500">
           <div className="flex gap-1 flex-wrap min-w-0">
             {item.tags &&
               item.tags.length > 0 &&
               item.tags.map((tag) => (
-                <span key={tag} className="bg-gray-100 px-2 py-1 rounded text-xs flex-shrink-0 whitespace-nowrap">
+                <span key={tag} className="bg-gray-100 dark:bg-gray-700 dark:text-gray-200 px-2 py-1 rounded text-xs flex-shrink-0 whitespace-nowrap">
                   {tag}
                 </span>
               ))}

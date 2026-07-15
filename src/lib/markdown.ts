@@ -54,16 +54,12 @@ export async function parseMarkdown(content: string) {
     .use(rehypeKatex, katexOptions)
     .use(rehypeAutolinkHeadings, {
       behavior: "append",
-      content: (arg) => ({
-        type: "element",
-        tagName: "a",
-        properties: {
-          href: `#${String(arg.properties?.id)}`,
-          className: "anchor-link",
-          style: "margin-left: 4px; opacity: 0; transition: opacity 0.2s; text-decoration: none; color: #6b7280;",
-        },
-        children: [{ type: "text", value: "#" }],
-      }),
+      properties: {
+        className: "anchor-link",
+        ariaHidden: true,
+        tabIndex: -1,
+      },
+      content: { type: "text", value: "#" },
     })
     .use(rehypeHighlight, { languages: { ...common } })
     .use(rehypeStringify, { allowDangerousHtml: true })

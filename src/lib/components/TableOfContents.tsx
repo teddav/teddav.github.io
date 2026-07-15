@@ -69,7 +69,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
       <div className="lg:hidden mb-6">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
         >
           <span className="font-medium">Table of Contents</span>
           <svg
@@ -83,7 +83,7 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
         </button>
 
         {isOpen && (
-          <div className="mt-4 p-4 bg-gray-50 rounded-lg border">
+          <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border">
             <div className="toc-mobile prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: toc }} />
           </div>
         )}
@@ -92,12 +92,12 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
       {/* Desktop Sidebar */}
       <div className="hidden lg:block lg:fixed lg:top-24 lg:left-8 lg:w-64">
         {isOpen ? (
-          <div className="bg-gray-50 rounded-lg p-4 border sticky top-24 flex flex-col max-h-[calc(100vh-7rem)]">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border sticky top-24 flex flex-col max-h-[calc(100vh-7rem)]">
             <div className="flex items-center justify-between mb-3 flex-shrink-0">
-              <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Table of Contents</h3>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wide">Table of Contents</h3>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                 title="Hide table of contents"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,10 +115,10 @@ export default function TableOfContents({ toc }: TableOfContentsProps) {
           <>
             <button
               onClick={() => setIsOpen(true)}
-              className="bg-gray-50 hover:bg-gray-100 border rounded-lg p-2 transition-colors"
+              className="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border rounded-lg p-2 transition-colors"
               title="Show table of contents"
             >
-              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
