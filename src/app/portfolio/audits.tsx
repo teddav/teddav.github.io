@@ -24,7 +24,7 @@ const audits: TAudit[] = [
     date: "January 2026",
     type: "Proof-carrying data (PCD) framework",
     summary:
-      "Review of Ragu, a new PCD (proof-carrying data) toolkit for the new Zcash's Tachyon shielded protocol. Ragu enables recursive proving with the Pasta curve cycle.",
+      "Review of Ragu, a new PCD (proof-carrying data) toolkit for Zcash's new Tachyon shielded protocol. Ragu enables recursive proving with the Pasta curve cycle.",
     scope: [],
     reportUrl: "#",
     tags: [AuditTags.rust, AuditTags.bulletproofs, AuditTags.folding, AuditTags.pcd],

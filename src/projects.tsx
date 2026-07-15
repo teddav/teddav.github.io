@@ -14,7 +14,6 @@ export enum Tags {
   security = "security",
   testing = "testing",
   research = "research",
-  mock_prover = "mock prover",
   halo2 = "halo2",
   rust = "rust",
   python = "python",
@@ -40,7 +39,7 @@ const work: Record<string, TProject[]> = {
   "Latest projects": [
     {
       title: "co-match",
-      description: "Secure MPC matching via TACEO's co-snarks",
+      description: "A private dating app where matches are computed under MPC, so no one (not even the server) sees your preferences",
       href: "https://github.com/teddav/co-match.noir",
       tags: [Tags.mpc, Tags.co_snarks, Tags.taceo, Tags.privacy],
       startDate: new Date("2025-05-05"),
@@ -58,7 +57,7 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "zk-tenant",
-      description: "Privacy-preserving housing application using 2D-Doc",
+      description: "Prove your ID is valid and your income covers the rent, without handing your documents to a landlord",
       href: "https://github.com/teddav/zk-tenant",
       tags: [Tags.privacy, Tags.zk, Tags.noir],
       startDate: new Date("2025-03-20"),
@@ -82,7 +81,7 @@ const work: Record<string, TProject[]> = {
   "Zero-Knowledge": [
     {
       title: "Noir WebProof SDK proposal",
-      description: "Helping bring zk proofs to the browser with a WebAssembly-friendly Noir SDK",
+      description: "WebAssembly-friendly Noir SDK, to make in-browser zkTLS web proofs practical",
       href: "https://github.com/orgs/noir-lang/discussions/8595",
       tags: [Tags.zk, Tags.webassembly, Tags.noir, Tags.zk_tls],
       startDate: new Date("2025-07-01"),
@@ -90,29 +89,28 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Noir recursive proofs",
-      description: "Implementing recursive proofs in Noir",
+      description: "Recursive proving in Noir",
       href: "https://github.com/teddav/noir-recursive",
       tags: [Tags.noir, Tags.zk],
       startDate: new Date("2025-04-20"),
     },
     {
       title: "mpz-play",
-      description:
-        "A hands-on playground for learning and experimenting with the mpz MPC framework, updated to the latest version of mpz. A great resource for understanding MPC concepts.",
+      description: "A hands-on playground for learning the mpz MPC framework, ported to the latest version of mpz",
       href: "https://github.com/th4s/mpz-play",
       tags: [Tags.mpc, Tags.education],
       startDate: new Date("2025-06-01"),
     },
     {
       title: "stark_by_hand with Sage",
-      description: "Implementing STARKs from scratch to understand the protocol deeply",
+      description: "Building a STARK step by step in SageMath, to really understand how the protocol works",
       href: "https://github.com/teddav/stark_by_hand",
       tags: [Tags.stark, Tags.zk, Tags.education, Tags.python],
       startDate: new Date("2025-03-15"),
     },
     {
       title: "Halo2 lookup table soundness bug",
-      description: "Found a soundness bug in 'lookup_any' in PSE's Halo2 proving system",
+      description: "A soundness bug in PSE's Halo2 lookup_any: a malicious prover could satisfy a lookup that should fail",
       href: "https://github.com/privacy-scaling-explorations/halo2/issues/335",
       tags: [Tags.halo2, Tags.security, Tags.auditing],
       details: (
@@ -125,7 +123,7 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Electisec zblock2 (formerly yAcademy)",
-      description: "Top fellow in ZK security fellowship",
+      description: "Finished as a top fellow in Electisec's ZK security fellowship, auditing real ZK circuits",
       href: "https://electisec.com/zBlock2",
       tags: [Tags.zk, Tags.security, Tags.auditing, Tags.research, Tags.education],
       startDate: new Date("2024-02-01"),
@@ -133,7 +131,7 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "halo2-starter",
-      description: "Template to quickly start a Halo2 project",
+      description: "A ready-to-go Halo2 project template, with testing wired up from day one",
       href: "https://github.com/teddav/halo2-starter",
       tags: [Tags.halo2, Tags.testing],
       startDate: new Date("2024-06-01"),
@@ -141,7 +139,7 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Write secure Halo2 circuits",
-      description: "Exploring edge cases and exploits in Halo2 circuits",
+      description: "How Halo2 circuits go wrong: common soundness bugs, with circuits and tests that catch them",
       href: "https://github.com/teddav/halo2-soundness-bugs",
       tags: [Tags.halo2, Tags.security, Tags.research, Tags.education],
       startDate: new Date("2025-02-20"),
@@ -149,9 +147,9 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Halo2 cheating feature",
-      description: "Emulating malicious provers by modifying cell values in the Mock Prover",
+      description: "A Mock Prover feature that emulates a malicious prover by tampering with cell values",
       href: "https://github.com/privacy-scaling-explorations/halo2/pull/352",
-      tags: [Tags.halo2, Tags.mock_prover, Tags.security],
+      tags: [Tags.halo2, Tags.security],
       startDate: new Date("2024-06-10"),
       details: (
         <>
@@ -163,7 +161,7 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Tornado Cash with Halo2",
-      description: "Implementing Tornado Cash in Halo2",
+      description: "A from-scratch reimplementation of Tornado Cash in Halo2, with a detailed write-up of the circuits",
       href: "https://teddav.github.io/blog/tornado-halo2",
       tags: [Tags.halo2, Tags.zk, Tags.security, Tags.privacy],
       startDate: new Date("2024-02-01"),
@@ -182,7 +180,7 @@ const work: Record<string, TProject[]> = {
   "Other...": [
     {
       title: "Security",
-      description: "Learning low-level security: from 'simple' binary exploitation to kernel exploits and more",
+      description: "Low-level security, self-taught: from binary exploitation to kernel exploits",
       badge: "☠️",
       tags: [Tags.security, Tags.education, Tags.assembly],
       details: (
@@ -202,7 +200,7 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Contributing to Foundry",
-      description: "Contributing to Foundry, a tool for building and testing smart contracts",
+      description: "Contributed several cheatcodes and a Chisel improvement to Foundry",
       href: "https://github.com/foundry-rs/foundry",
       tags: [Tags.evm, Tags.rust, Tags.testing],
       details: (
@@ -234,37 +232,31 @@ const work: Record<string, TProject[]> = {
     },
     {
       title: "Secureum Epoch 0",
-      description: "Smart contract security bootcamp",
+      description: "Placed 1st in the first cohort of Secureum's smart-contract security bootcamp",
       href: "https://www.secureum.xyz/",
       tags: [Tags.security, Tags.evm, Tags.solidity, Tags.education],
       startDate: new Date("2021-10-01"),
       endDate: new Date("2021-12-30"),
       details: (
         <>
-          <p>I was awarded the first place in the first cohort of Secureum Epoch 0, a smart contract security bootcamp.</p>
+          <p>The very first cohort of what became one of the best-known smart-contract security bootcamps.</p>
           See the <ExternalLink href="https://github.com/x676f64/secureum-mind_map">bootcamp content</ExternalLink>
         </>
       ),
     },
     {
       title: "Angle: EURO stablecoin",
-      description: "Main decentralized EURO stablecoin",
+      description: "Core contributor to Angle, the leading decentralized euro stablecoin",
       href: "https://www.angle.money/",
       tags: [Tags.evm, Tags.solidity],
       startDate: new Date("2021-06-30"),
       endDate: new Date("2023-01-01"),
-      details: (
-        <>
-          I was a core contributor to Angle, the main decentralized EURO stablecoin.
-          <br />
-          Reached €200M TVL while I was there
-        </>
-      ),
+      details: <>Helped build and ship the protocol, which reached €200M TVL while I was there.</>,
     },
     {
       title: "10 years of building",
       badge: "🛠️",
-      description: "Full-stack journey from mobile, to infrastructure, to cryptography",
+      description: "A full-stack decade: from mobile apps to cloud infrastructure to cryptography",
       startDate: new Date("2015-07-01"),
       endDate: "present",
       // href: "https://www.malt.fr/profile/dav",

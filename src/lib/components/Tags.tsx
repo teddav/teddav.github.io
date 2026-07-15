@@ -57,7 +57,6 @@ const tagColor = (tag: Tags | AuditTags) => {
     [Tags.security]: colors.sky,
     [Tags.testing]: colors.blue,
     [Tags.research]: colors.indigo,
-    [Tags.mock_prover]: colors.violet,
     [Tags.halo2]: colors.yellow,
     [Tags.rust]: colors.orange,
     [Tags.python]: colors.pink,
