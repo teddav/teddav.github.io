@@ -71,18 +71,14 @@ What about code and codeword in RS?
 
 In Reed-Solomon codes, we use prime finite fields, meaning our data is represented as an array of numbers within the field.
 
-<aside>
-💡
-
-If you're unfamiliar with finite fields, it's worth looking them up before proceeding.
-
-Simply put, they involve the modulo operation: every number we use is reduced modulo a number `p`.
-
-If the field is "prime", that means `p` is a prime number.
-
-Easy!
-
-</aside>
+> [!NOTE]
+> If you're unfamiliar with finite fields, it's worth looking them up before proceeding.
+>
+> Simply put, they involve the modulo operation: every number we use is reduced modulo a number `p`.
+>
+> If the field is "prime", that means `p` is a prime number.
+>
+> Easy!
 
 The length of a codeword is pre-determined by both the sender and receiver so that both parties know what to expect. Later, we’ll see how RS codes encode both the message and redundancy.
 

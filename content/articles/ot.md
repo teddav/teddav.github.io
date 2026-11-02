@@ -170,7 +170,7 @@ sequenceDiagram
 participant Alice
 participant Bob
 
-rect rgb(240, 255, 245)
+rect rgba(34, 197, 94, 0.08)
 Note right of Alice: Base OT Phase
 Bob->>Alice: sends tᵢ, tᵢ ⊕ r
 Alice-->> Bob: choose one
@@ -178,7 +178,7 @@ end
 
 Note right of Alice: Role Reversal
 
-rect rgb(240, 240, 255)
+rect rgba(139, 92, 246, 0.08)
 Note right of Alice: Final OT Phase
 Alice->> Bob: sends encrypted messages (m0_i, m1_i)
 Bob-->> Alice: chooses one message to decrypt

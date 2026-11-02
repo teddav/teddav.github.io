@@ -39,11 +39,5 @@ export default async function ContentPage({ params }: ContentPageProps) {
     notFound();
   }
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <article className="lg:ml-64 lg:pl-4">
-        <MdContent content={content} />
-      </article>
-    </div>
-  );
+  return <MdContent content={content} permalink={`/notes/${slug}/`} />;
 }

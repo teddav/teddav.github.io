@@ -28,8 +28,8 @@ export default function ProjectCard({ title, description, href, tags, badge, det
 
   return (
     <div id={anchorId} className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333] rounded-lg p-6 group scroll-mt-4">
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex-2">
+      <div className="mb-4">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-orange-500 transition-colors">{title}</h3>
             <a
@@ -79,7 +79,9 @@ export default function ProjectCard({ title, description, href, tags, badge, det
             </p>
           )}
         </div>
-        <div className="flex gap-1 flex-wrap justify-end ml-4 min-w-0">{tags && <TagsComponent tags={tags} />}</div>
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-3"><TagsComponent tags={tags} /></div>
+        )}
       </div>
       <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{description}</p>
       {details && <div className="text-gray-700 dark:text-gray-300 mb-0 leading-relaxed">{details}</div>}

@@ -28,15 +28,11 @@ $$
 f(x,y)=3x^3y^4+2xy^2+5y+7
 $$
 
-<aside>
-💡
-
-A **multivariate polynomial** is typically written as: $f(\vec{x})$
-
-where $\vec{x}$ is a vector of variables, ex: $\vec{x} = (x_1, x_2, \dots, x_n)$.
-Its length corresponds to the number of input variables in the function.
-
-</aside>
+> [!NOTE]
+> A **multivariate polynomial** is typically written as: $f(\vec{x})$
+>
+> where $\vec{x}$ is a vector of variables, ex: $\vec{x} = (x_1, x_2, \dots, x_n)$.
+> Its length corresponds to the number of input variables in the function.
 
 Key things to note:
 

@@ -407,22 +407,19 @@ Here’s what our a succession of extensions (tower) looks like:
 - $\tau_0 = \mathbb{F}_2 , \{0,1\}$
 - $\tau_1 = \mathbb{F}[x_0]/({x_0}^2+x_0+1)$
 
-<aside>
-
-in $\tau_1$ we have 4 elements:
-
-- $0+0x_0$ → 00
-- $1+0x_0$ → 10
-- $0+1x_0$ → 01
-- $1+1x_0$ → 11
-
-we can easily put the elements of $\mathbb{F}_2$ in the extension:  
-0 over $\tau_0$ → 00 over $\tau_1$  
-1 over $\tau_0$ → 10 over $\tau_1$  
-If we have $a \in \tau_0 , b \in \tau_1$ → $a*b=a*b_0+a*b_1*x$
-We’re going to come back on bit representation
-
-</aside>
+> [!NOTE]
+> in $\tau_1$ we have 4 elements:
+>
+> - $0+0x_0$ → 00
+> - $1+0x_0$ → 10
+> - $0+1x_0$ → 01
+> - $1+1x_0$ → 11
+>
+> we can easily put the elements of $\mathbb{F}_2$ in the extension:\
+> 0 over $\tau_0$ → 00 over $\tau_1$\
+> 1 over $\tau_0$ → 10 over $\tau_1$\
+> If we have $a \in \tau_0 , b \in \tau_1$ → $a*b=a*b_0+a*b_1*x$
+> We’re going to come back on bit representation
 
 - $\tau_2 = \tau_1/({x_1}^2+x_0x_1+1)=\mathbb{F}_2[x_0,x_1]/({x_0}^2+x_0+1,{x_1}^2+x_0x_1+1)$
 - $\tau_k=\tau_{k-1}/({x_k}^2+x_{k-1}x_k+1)$

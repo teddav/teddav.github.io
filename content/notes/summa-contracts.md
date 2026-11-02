@@ -7,10 +7,8 @@ tags: ["audit", "security", "evm", "solidity"]
 slug: summa-contracts
 ---
 
-<aside>
-⚠️ All of this is written by me and has not been reviewed. So most of it is just my own interpretation and could be wrong. If you think something is wrong or you have doubts, please comment or message on Discord
-
-</aside>
+> [!WARNING]
+> All of this is written by me and has not been reviewed. So most of it is just my own interpretation and could be wrong. If you think something is wrong or you have doubts, please comment or message on Discord
 
 Let’s start by going into the `/contracts` directory and try to run the tests. I usually run everything in a Docker container where I have Rust installed and some extra things I usually need. Here’s what I was missing for Summa.
 

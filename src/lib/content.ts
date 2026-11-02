@@ -60,27 +60,26 @@ export function getContentList(contentType: ContentType): ContentMetadata[] {
 }
 
 export async function getContent(slug: string, contentType: ContentType): Promise<ContentProps | null> {
+  const directory = path.join(basePath, contentType);
+  const filePath = path.join(directory, `${slug}.md`);
+  let fileContents: string;
   try {
-    const directory = path.join(basePath, contentType);
-    const filePath = path.join(directory, `${slug}.md`);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(fileContents);
-
-    const processedContent = await parseMarkdown(content);
-    const contentHtml = processedContent.toString();
-
-    return {
-      slug,
-      title: data.title,
-      subtitle: data.subtitle,
-      date: data.date,
-      tags: data.tags || [],
-      authors: data.authors,
-      content: contentHtml,
-      toc: processedContent.data.toc as string,
-    };
+    fileContents = fs.readFileSync(filePath, "utf8");
   } catch (error) {
-    console.error(error);
-    return null;
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw error;
   }
+  const { data, content } = matter(fileContents);
+  const processedContent = await parseMarkdown(content);
+
+  return {
+    slug,
+    title: data.title,
+    subtitle: data.subtitle,
+    date: data.date,
+    tags: data.tags || [],
+    authors: data.authors,
+    content: processedContent.toString(),
+    toc: (processedContent.data.toc as string | undefined) ?? "",
+  };
 }

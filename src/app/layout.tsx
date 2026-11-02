@@ -32,9 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         {/* Apply the theme before first paint to avoid a flash of the wrong color scheme. */}
         <script
           dangerouslySetInnerHTML={{
@@ -42,10 +41,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ColorSchemeProvider>
           <Navigation />
-          <main className="min-h-screen overflow-x-hidden pt-16">{children}</main>
+          <main className="min-h-screen pt-16">{children}</main>
         </ColorSchemeProvider>
       </body>
       <GoogleAnalytics gaId="G-46SDB0ZKXC" />

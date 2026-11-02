@@ -488,7 +488,7 @@ graph TD
     B11 --> C110[Node C110]
     B11 --> C111[Node C111]
 
-style C010 fill:#a8324c,color:#000
+style C010 fill:#a8324c,color:#fff
 style A1 fill:#9f6,color:#000
 style B00 fill:#9f6,color:#000
 style C011 fill:#9f6,color:#000

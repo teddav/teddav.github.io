@@ -80,7 +80,7 @@ const audits: TAudit[] = [
       "Hyperlane collateral token implementation (Leo)",
       "Hyperlane synthetic token implementation (Leo)",
     ],
-    reportUrl: "#",
+    reportUrl: "https://reports.zksecurity.xyz/reports/hyperlane-aleo-1/",
     tags: [AuditTags.aleo],
   },
   {
@@ -109,7 +109,7 @@ const audits: TAudit[] = [
       </>
     ),
     scope: [],
-    reportUrl: "#",
+    reportUrl: "https://reports.zksecurity.xyz/reports/celestia-1/",
     tags: [AuditTags.go, AuditTags.das],
   },
   {
@@ -213,7 +213,7 @@ function Audit({ audit }: { audit: TAudit }) {
         )}
       </div>
 
-      <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
+      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
         {audit.reportUrl && audit.reportUrl !== "#" ? (
           <ExternalLink
             href={audit.reportUrl}
@@ -234,7 +234,7 @@ function Audit({ audit }: { audit: TAudit }) {
         )}
 
         {audit.tags && audit.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 ml-auto">
+          <div className="flex flex-wrap gap-2 mt-3">
             <TagsComponent tags={audit.tags} />
           </div>
         )}

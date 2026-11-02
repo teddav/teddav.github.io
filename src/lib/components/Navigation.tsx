@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useColorSchemeContext } from "@/lib/contexts/ColorSchemeContext";
 import { LightModeIcon, DarkModeIcon } from "@/lib/components/Icons";
 
@@ -14,10 +14,41 @@ const links = [
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigationRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const { isDarkMode, toggleDarkMode } = useColorSchemeContext();
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!navigationRef.current?.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#1a1a1a] shadow-sm border-b dark:border-[#333]">
+    <nav
+      ref={navigationRef}
+      onClick={(event) => {
+        if ((event.target as Element).closest("a")) setIsMenuOpen(false);
+      }}
+      className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#1a1a1a] shadow-sm border-b dark:border-[#333]"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -55,9 +86,12 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
+              ref={menuButtonRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 p-2 rounded-md transition-colors"
               aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -72,7 +106,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-[#333] bg-white dark:bg-[#1a1a1a]">
+          <div id="mobile-menu" className="md:hidden border-t border-gray-200 dark:border-[#333] bg-white dark:bg-[#1a1a1a]">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {links.map((link) => (
                 <Link
