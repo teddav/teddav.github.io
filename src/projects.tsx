@@ -36,7 +36,15 @@ export type TProject = {
 };
 
 const work: Record<string, TProject[]> = {
-  "Latest projects": [
+  "Featured projects": [
+    {
+      title: "MinaGuard",
+      description: "A multisig wallet for Mina, built with o1js, where owners propose, approve, and execute transactions",
+      href: "https://github.com/zksecurity/mina-guard",
+      tags: [Tags.zk, Tags.security],
+      startDate: new Date("2026-03-01"),
+      endDate: new Date("2026-04-30"),
+    },
     {
       title: "co-match",
       description: "A private dating app where matches are computed under MPC, so no one (not even the server) sees your preferences",
@@ -78,7 +86,7 @@ const work: Record<string, TProject[]> = {
     },
   ],
 
-  "Zero-Knowledge": [
+  "Cryptography & open source": [
     {
       title: "Noir WebProof SDK proposal",
       description: "WebAssembly-friendly Noir SDK, to make in-browser zkTLS web proofs practical",
@@ -135,7 +143,6 @@ const work: Record<string, TProject[]> = {
       href: "https://github.com/teddav/halo2-starter",
       tags: [Tags.halo2, Tags.testing],
       startDate: new Date("2024-06-01"),
-      details: <>All you need to start a Halo2 project, from testing to production</>,
     },
     {
       title: "Write secure Halo2 circuits",
@@ -177,7 +184,7 @@ const work: Record<string, TProject[]> = {
     },
   ],
 
-  "Other...": [
+  "Engineering & experience": [
     {
       title: "Security",
       description: "Low-level security, self-taught: from binary exploitation to kernel exploits",

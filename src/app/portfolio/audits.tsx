@@ -24,7 +24,7 @@ const audits: TAudit[] = [
     date: "January 2026",
     type: "Proof-carrying data (PCD) framework",
     summary:
-      "Review of Ragu, a new PCD (proof-carrying data) toolkit for Zcash's new Tachyon shielded protocol. Ragu enables recursive proving with the Pasta curve cycle.",
+      "Review of Ragu's recursive proving toolkit for Zcash's Tachyon shielded protocol, built on the Pasta curve cycle.",
     scope: [],
     reportUrl: "#",
     tags: [AuditTags.rust, AuditTags.bulletproofs, AuditTags.folding, AuditTags.pcd],
@@ -45,7 +45,7 @@ const audits: TAudit[] = [
     projectUrl: "https://silhouette.exchange/",
     date: "December 2025",
     type: "Private trading protocol",
-    summary: "Review of Silhouette, a private trading protocol built on HyperEVM (Hyperliquid) using TEEs (AWS Nitro Enclave).",
+    summary: "Private trading on HyperEVM (Hyperliquid), using TEEs backed by AWS Nitro Enclaves.",
     // "Review of Silhouette, a private trading protocol built on HyperEVM (Hyperliquid) using TEEs (AWS Nitro Enclave). Found a critical vulnerability in the AES-GCM implementation.",
     scope: [],
     reportUrl: "#",
@@ -57,7 +57,7 @@ const audits: TAudit[] = [
     date: "December 2025",
     type: "Digital identity protocol",
     summary:
-      "Review of Self, a privacy-preserving identity protocol that allows users to prove their identity through their passport while selectively disclosing only chosen fields.",
+      "Passport-based identity proofs with selective disclosure of personal information.",
     scope: ["Circom circuits JWT verification from GCP TEE attestations", "TEE server implementation"],
     reportUrl: "#",
     tags: [AuditTags.circom, AuditTags.tee, AuditTags.rust, AuditTags.identity],
@@ -68,10 +68,10 @@ const audits: TAudit[] = [
     date: "November 2025",
     type: "Cross-chain messaging protocol",
     summary:
-      "Review of Hyperlane's Aleo implementation, the main interoperability bridge on Aleo. Hyperlane is a universal cross-chain messaging protocol deployed across many chains.",
+      "Aleo messaging and token implementations for Hyperlane's cross-chain protocol.",
     details: (
       <ExternalLink href="https://github.com/hyperlane-xyz/hyperlane-aleo/tree/8a57aacba2a9fdae038f21db68611665398e6f07">
-        Github repo
+        GitHub repository
       </ExternalLink>
     ),
     scope: [
@@ -88,7 +88,7 @@ const audits: TAudit[] = [
     date: "November 2025",
     type: "Post-quantum proof system",
     summary:
-      "Review of a LaBRADOR implementation, a cutting-edge post-quantum proof system based on lattice assumptions, offering an alternative to pairing-based SNARKs.",
+      "LaBRADOR implementation: a post-quantum proof system based on lattice assumptions.",
     details: <ExternalLink href="https://eprint.iacr.org/2022/1341">LaBRADOR paper</ExternalLink>,
     scope: [],
     reportUrl: "#",
@@ -100,7 +100,7 @@ const audits: TAudit[] = [
     date: "October 2025",
     type: "Data availability sampling protocol",
     summary:
-      "Review of Celestia's ZODA implementation, a new data availability encoding protocol that is significantly more efficient than KZG-based approaches, powering Celestia's Fibre Blockspace upgrade.",
+      "ZODA data availability encoding implementation for Celestia's Fibre Blockspace upgrade.",
     details: (
       <>
         <ExternalLink href="https://eprint.iacr.org/2025/034">ZODA paper</ExternalLink>
@@ -118,7 +118,7 @@ const audits: TAudit[] = [
     date: "September 2025",
 
     type: "Private token",
-    summary: 'Review of the implementation of the Confidential Transfers extension for the "Token Extensions Program" (Token 2022)',
+    summary: 'Confidential Transfers extension for Solana’s Token Extensions Program (Token 2022).',
 
     scope: ["ZK El Gamal proof program and SDK", "Token 2022 confidential transfers extension"],
     reportUrl: "https://reports.zksecurity.xyz/reports/anza-solana-token2022/",
@@ -168,52 +168,50 @@ function Audit({ audit }: { audit: TAudit }) {
     .replace(/(^-|-$)/g, "");
 
   return (
-    <article id={anchorId} className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333] rounded-lg p-6 flex flex-col group">
-      <div className="flex items-start justify-between gap-3 mb-4">
-        <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            <ExternalLink href={audit.projectUrl ?? "#"}>{audit.project}</ExternalLink>
-            <a
-              href={`#${anchorId}`}
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 ml-1.5 align-middle inline"
-              aria-label="Copy link to this audit"
-            >
-              <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                />
-              </svg>
-            </a>
+    <article id={anchorId} className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-[#333] rounded-lg p-5 sm:p-6 flex flex-col group scroll-mt-24">
+      <header className="mb-4">
+        <div className="flex items-start gap-3">
+          <h3 className="min-w-0 flex-1 text-xl font-semibold leading-snug text-gray-900 dark:text-gray-100 break-words">
+            {audit.projectUrl ? (
+              <ExternalLink href={audit.projectUrl} className="text-blue-700 dark:text-blue-300 hover:underline underline-offset-4">
+                {audit.project}
+              </ExternalLink>
+            ) : audit.project}
           </h3>
-
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{audit.type}</p>
+          <a
+            href={`#${anchorId}`}
+            className="mt-1 shrink-0 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+            aria-label="Link to this audit"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+          </a>
         </div>
-        <span className="text-xs text-gray-500 dark:text-gray-500 font-medium whitespace-nowrap">{audit.date}</span>
-      </div>
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+          <span className="whitespace-nowrap">{audit.date}</span>
+          <span aria-hidden="true"> · </span>
+          {audit.type}
+        </p>
+      </header>
 
-      <div className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed flex-1">
+      <div className="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed flex-1">
         <p>{audit.summary}</p>
-        {audit.details && <div className="mt-4 leading-relaxed">{audit.details}</div>}
+        {audit.details && <div className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{audit.details}</div>}
 
         {scopeItems.length > 0 && (
           <div className="mt-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-500 mb-2">Scope</p>
-            <ul className="space-y-1.5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Scope</p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600 dark:text-gray-400">
               {scopeItems.map((item) => (
-                <li key={item} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
-                  <span className="text-gray-400 dark:text-gray-400 mr-2">•</span>
-                  <span>{item}</span>
-                </li>
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
         )}
       </div>
 
-      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
+      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
         {audit.reportUrl && audit.reportUrl !== "#" ? (
           <ExternalLink
             href={audit.reportUrl}
@@ -230,11 +228,11 @@ function Audit({ audit }: { audit: TAudit }) {
             </svg>
           </ExternalLink>
         ) : (
-          <span className="text-sm text-gray-400 dark:text-gray-400">Report coming soon</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400">Report coming soon</span>
         )}
 
         {audit.tags && audit.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-3">
+          <div className="flex flex-wrap gap-1.5 mt-3">
             <TagsComponent tags={audit.tags} />
           </div>
         )}
@@ -245,14 +243,11 @@ function Audit({ audit }: { audit: TAudit }) {
 
 export default function Audits() {
   return (
-    <section className="mb-10 rounded-2xl border border-blue-100 bg-blue-50/80 px-6 py-6 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">Auditing</p>
-          <h2 className="text-2xl font-semibold text-blue-950 dark:text-blue-100">Recent cryptography &amp; ZK audits</h2>
-          <p className="text-blue-900 dark:text-blue-200">Deep reviews of protocols I&apos;ve been helping secure lately.</p>
-        </div>
-      </div>
+    <section className="mb-12 rounded-xl border border-blue-100 bg-blue-50/60 p-4 sm:p-6 dark:border-blue-900/50 dark:bg-blue-950/20">
+      <header>
+        <h2 className="text-2xl font-semibold text-blue-950 dark:text-blue-100">Security audits</h2>
+        <p className="mt-2 text-sm text-blue-900 dark:text-blue-200 leading-relaxed">Cryptography, ZK proofs, and protocol implementations.</p>
+      </header>
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         {audits.map((audit) => (
           <Audit key={audit.project} audit={audit} />

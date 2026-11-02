@@ -13,18 +13,19 @@ export default function Portfolio() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <p className="mb-6">
-        Not really a &quot;portfolio&quot; or a CV, more of a list of things I&apos;ve been working on lately...
-        <br />
-        Enjoy 😊
-      </p>
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">Portfolio</h1>
+        <p className="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+          Selected security audits, cryptography projects, and open-source contributions.
+        </p>
+      </header>
 
       <Audits />
 
       {sections.length > 0 &&
         sections.map((section) => (
           <Section key={section} title={section}>
-            <div className="space-y-6">
+            <div className="space-y-4">
               {workList[section].map((project) => (
                 <ProjectCard key={project.title} {...project} />
               ))}
